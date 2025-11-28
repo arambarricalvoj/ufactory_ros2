@@ -14,6 +14,9 @@ RUN apt-get update && apt-get install -y \
     ros-jazzy-moveit \
     && rm -rf /var/lib/apt/lists/*
 
+# Instalar joint state publisher GUI (opcional)
+RUN apt-get install ros-jazzy-joint-state-publisher-gui
+
 # Crear workspace
 WORKDIR /home/xarm_ws/src
 
