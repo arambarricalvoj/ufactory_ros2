@@ -1,5 +1,5 @@
 # FALTA AÑADIR CÓMO HE ARREGLADO LO DE NVIDIA
-en el host es necesario: sudo prime-select nvidia
+en el host es necesario: sudo prime-select nvidia (poner intel para volver a intel)
 y al ejecutar "glxinfo | grep "OpenGL renderer" que aparezca NVIDIA
 
 --

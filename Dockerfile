@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     git \
     python3-pip \
     build-essential \
+    mesa-utils \
     && rm -rf /var/lib/apt/lists/*
 
 # Instalar MoveIt 2 (no viene en desktop-full)
