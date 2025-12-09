@@ -1,0 +1,21 @@
+>> ejercicio14
+ 
+T =
+ 
+[cos(phi)*cos(theta), cos(phi)*sin(psi)*sin(theta) - cos(psi)*sin(phi),
+sin(phi)*sin(psi) + cos(phi)*cos(psi)*sin(theta), 0]
+[cos(theta)*sin(phi), cos(phi)*cos(psi) + sin(phi)*sin(psi)*sin(theta),
+cos(psi)*sin(phi)*sin(theta) - cos(phi)*sin(psi), 0]
+[        -sin(theta),                              cos(theta)*sin(psi),
+cos(psi)*cos(theta), 0]
+[0, 0, 0, 1]
+ 
+
+eul =
+
+    0.5236    0.7854    1.0472
+
+
+eul_deg =
+
+    30    45    60

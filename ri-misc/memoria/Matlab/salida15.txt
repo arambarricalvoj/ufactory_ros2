@@ -1,0 +1,11 @@
+>> ejercicio15
+Matriz de rotación:
+     0     0     1
+     1     0     0
+     0     1     0
+
+Matriz de rotación:
+     0     0     1
+     1     0     0
+     0     1     0
+

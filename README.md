@@ -1,3 +1,8 @@
+
+# NOTA: la carpeta ``ri-misc`` contiene el proyecto que estoy desarrollando en la asignatura de Robótica Industrial del Máster. El fichero ``ri-misc/memoria/main.pdf`` es la memoria en desarrollo en la que describo el robot de UFactory, por lo que es de interés para conocer el brazo manipulador. En este sentido, en dicha carpeta se encuentran varios manuales y trabajos publicados en internet en los que han utilizado en mismo robot.
+
+--
+
 # UFactory XArm6 ROS2 + Docker - EIB/EHU
 In order to build the image, you can either follow the steps manually or run the bash script ``build.sh``, but first make sure to meet all the prerrequisites!<br>
 In order to run the container, you can run it manually as shown below or run the bash script ``run.sh``.

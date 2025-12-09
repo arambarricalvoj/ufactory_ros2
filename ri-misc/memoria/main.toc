@@ -1,0 +1,13 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Introducción}{4}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Objetivo y motivación del proyecto}{4}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Metodología}{4}{subsection.1.2}%
+\contentsline {section}{\numberline {2}\textit {UFactory xArm 6}}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Estructura mecánica: eslabones y articulaciones}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Actuadores}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Sensores integrados y opcionales}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Efector}{8}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Sistema de control}{9}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}\textit {Software}}{10}{subsection.2.6}%
+\contentsline {section}{\numberline {3}Estudio cinemático}{11}{section.3}%
+\contentsline {section}{Referencias adicionales al material del Campus Virtual}{12}{section*.4}%
