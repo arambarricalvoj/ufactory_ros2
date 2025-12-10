@@ -1,3 +1,6 @@
 [submodule "xarm_ros2"]
 	path = xarm_ros2
 	url = https://github.com/xArm-Developer/xarm_ros2.git
+[submodule "vpc-misc/Week-5-6-Gazebo-sensors"]
+	path = vpc-misc/Week-5-6-Gazebo-sensors
+	url = https://github.com/MOGI-ROS/Week-5-6-Gazebo-sensors
