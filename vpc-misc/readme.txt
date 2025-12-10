@@ -44,3 +44,6 @@ root@90fcba602f5a:/home/javierac/camera_gz#
 Como está todo compilado: source install/setup.bash
 Ejecutamos: ros2 launch bme_gazebo_sensors spawn_robot.launch.py
 Para el teleop: ros2 run teleop_twist_keyboard teleop_twist_keyboard
+
+DOCKER: descargar la imagen provisional para cargar este repo de la camara en gz harmonic. El docker incluye todas las peculiaridades.... (menos mal)
+docker pull arambarricalvoj/camera_gz
