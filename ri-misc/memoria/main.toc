@@ -10,4 +10,8 @@
 \contentsline {subsection}{\numberline {2.5}Sistema de control}{9}{subsection.2.5}%
 \contentsline {subsection}{\numberline {2.6}\textit {Software}}{10}{subsection.2.6}%
 \contentsline {section}{\numberline {3}Estudio cinemático}{11}{section.3}%
-\contentsline {section}{Referencias adicionales al material del Campus Virtual}{12}{section*.4}%
+\contentsline {subsection}{\numberline {3.1}Cinemática directa}{11}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Parámetros de Denavit-Hartenberg}{11}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Parámetros modificados de Denavit-Hartenberg}{14}{subsubsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.2}Cinemática inversa}{18}{subsection.3.2}%
+\contentsline {section}{Referencias adicionales al material del Campus Virtual}{20}{section*.4}%

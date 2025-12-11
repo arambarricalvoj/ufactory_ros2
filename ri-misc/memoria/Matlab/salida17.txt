@@ -1,6 +1,0 @@
->> ejercicio17
-Ángulos de Euler [W phi , Y theta, W psi] en grados:
-  -15.0000   70.5288   75.0000
-
-Ángulos de Euler ZYZ [W psi, Y theta, W phi] en grados:
-   75.0000   70.5288  -15.0000

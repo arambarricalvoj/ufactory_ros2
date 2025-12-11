@@ -255,9 +255,9 @@
       \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://www.ufactory.cc/wp-content/uploads/2023/05/xArm-User-Manual-V2.0.0.pdf}}
+      \field{howpublished}{\url{https://docs.ufactory.cc/, https://www.ufactory.cc/wp-content/uploads/2023/05/xArm-User-Manual-V2.0.0.pdf}}
       \field{note}{Accedido: 8 de diciembre de 2025}
-      \field{title}{xArm User Manual V2.0.0}
+      \field{title}{UFactory Docs, xArm User Manual V2.0.0}
       \field{year}{2023}
     \endentry
     \entry{ufactory_xarm}{misc}{}
@@ -447,6 +447,131 @@
       \field{note}{Accedido: 9 de diciembre de 2025}
       \field{title}{xArm Studio User Manual}
       \field{year}{2025}
+    \endentry
+    \entry{corke1996}{article}{}
+      \name{author}{1}{}{%
+        {{hash=ba5ce54787abcff8c806d8a8c4d85c30}{%
+           family={Corke},
+           familyi={C\bibinitperiod},
+           given={Peter\bibnamedelima I.},
+           giveni={P\bibinitperiod\bibinitdelim I\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{ba5ce54787abcff8c806d8a8c4d85c30}
+      \strng{fullhash}{ba5ce54787abcff8c806d8a8c4d85c30}
+      \strng{bibnamehash}{ba5ce54787abcff8c806d8a8c4d85c30}
+      \strng{authorbibnamehash}{ba5ce54787abcff8c806d8a8c4d85c30}
+      \strng{authornamehash}{ba5ce54787abcff8c806d8a8c4d85c30}
+      \strng{authorfullhash}{ba5ce54787abcff8c806d8a8c4d85c30}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the IEEE International Conference on Robotics and Automation}
+      \field{title}{A Simple and Systematic Approach to Assigning Denavit--Hartenberg Parameters}
+      \field{year}{1996}
+      \field{pages}{1834\bibrangedash 1839}
+      \range{pages}{6}
+      \verb{urlraw}
+      \verb https://petercorke.com/doc/simple_systematic.pdf
+      \endverb
+      \verb{url}
+      \verb https://petercorke.com/doc/simple_systematic.pdf
+      \endverb
+    \endentry
+    \entry{corke_robotics_toolbox}{online}{}
+      \name{author}{1}{}{%
+        {{hash=c0e503339314930d140b67b5e7c55c3e}{%
+           family={Corke},
+           familyi={C\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{c0e503339314930d140b67b5e7c55c3e}
+      \strng{fullhash}{c0e503339314930d140b67b5e7c55c3e}
+      \strng{bibnamehash}{c0e503339314930d140b67b5e7c55c3e}
+      \strng{authorbibnamehash}{c0e503339314930d140b67b5e7c55c3e}
+      \strng{authornamehash}{c0e503339314930d140b67b5e7c55c3e}
+      \strng{authorfullhash}{c0e503339314930d140b67b5e7c55c3e}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Robotics Toolbox}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://petercorke.com/toolboxes/robotics-toolbox/
+      \endverb
+      \verb{url}
+      \verb https://petercorke.com/toolboxes/robotics-toolbox/
+      \endverb
+    \endentry
+    \entry{craig1986}{book}{}
+      \name{author}{1}{}{%
+        {{hash=57c29b307f6e70b7216c8c696af16b58}{%
+           family={Craig},
+           familyi={C\bibinitperiod},
+           given={John\bibnamedelima J.},
+           giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Boston, MA}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley}%
+      }
+      \strng{namehash}{57c29b307f6e70b7216c8c696af16b58}
+      \strng{fullhash}{57c29b307f6e70b7216c8c696af16b58}
+      \strng{bibnamehash}{57c29b307f6e70b7216c8c696af16b58}
+      \strng{authorbibnamehash}{57c29b307f6e70b7216c8c696af16b58}
+      \strng{authornamehash}{57c29b307f6e70b7216c8c696af16b58}
+      \strng{authorfullhash}{57c29b307f6e70b7216c8c696af16b58}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1st}
+      \field{title}{Introduction to Robotics: Mechanics and Control}
+      \field{year}{1986}
+    \endentry
+    \entry{paul1986}{report}{}
+      \name{author}{1}{}{%
+        {{hash=b5d408d4422e7a5c063f812d702e6cba}{%
+           family={Paul},
+           familyi={P\bibinitperiod},
+           given={Richard\bibnamedelima P.},
+           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {NASA}%
+      }
+      \list{location}{1}{%
+        {Washington, D.C.}%
+      }
+      \strng{namehash}{b5d408d4422e7a5c063f812d702e6cba}
+      \strng{fullhash}{b5d408d4422e7a5c063f812d702e6cba}
+      \strng{bibnamehash}{b5d408d4422e7a5c063f812d702e6cba}
+      \strng{authorbibnamehash}{b5d408d4422e7a5c063f812d702e6cba}
+      \strng{authornamehash}{b5d408d4422e7a5c063f812d702e6cba}
+      \strng{authorfullhash}{b5d408d4422e7a5c063f812d702e6cba}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{NASA Technical Paper 1800}
+      \field{title}{Robot Manipulators: Mathematics, Programming, and Control --- The Computer Control of Robot Manipulators}
+      \field{type}{techreport}
+      \field{year}{1986}
+      \verb{urlraw}
+      \verb https://ntrs.nasa.gov/api/citations/19860018481/downloads/19860018481.pdf
+      \endverb
+      \verb{url}
+      \verb https://ntrs.nasa.gov/api/citations/19860018481/downloads/19860018481.pdf
+      \endverb
     \endentry
   \enddatalist
 \endrefsection

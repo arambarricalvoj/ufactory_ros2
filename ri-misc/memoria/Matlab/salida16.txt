@@ -1,6 +1,0 @@
->> ejercicio16
-Cuaternión (formato [s, v]):
-  UnitQuaternion with properties:
-
-    s: 0.9239
-    v: [0.3827 0 0]

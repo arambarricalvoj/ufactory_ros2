@@ -2382,6 +2382,19 @@
     <bcf:citekey order="19" intorder="1">xarm_ros2</bcf:citekey>
     <bcf:citekey order="20" intorder="1">ufactory_xarmstudio</bcf:citekey>
     <bcf:citekey order="21" intorder="1">ufactory_xarm6</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">barrientos2007fundamentos</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">ufactory_xarm_manual</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">corke1996</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">barrientos2007fundamentos</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">matlabonline2025</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">corke_robotics_toolbox</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">craig1986</bcf:citekey>
+    <bcf:citekey order="28" intorder="2">paul1986</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">corke1996</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">corke1996</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">ufactory_xarm_manual</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">matlabonline2025</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">corke_robotics_toolbox</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

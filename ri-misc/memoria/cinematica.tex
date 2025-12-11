@@ -1,3 +1,283 @@
 \datos{color}{}{}
 
 \section{Estudio cinemático}
+El fabricante proporciona los parámetros clásicos y modificados de Denavit-Hartenberg en el manual del usuario. En las 
+siguientes secciones se van a estudiar dichos parámetros.
+
+\subsection{Cinemática directa}
+\subsubsection{Parámetros de Denavit-Hartenberg} \label{classDH}
+En la figura \ref{fig:dh} se presentan los parámetros clásicos de Denavit-Hartenberg \cite{barrientos2007fundamentos} proporcionados por el fabricante, con 
+\[
+a_2 = \sqrt{284.5^2 + 53.5^2} = 289.48866
+\]
+\[
+T_{2,\text{offset}} = -\arctan\left(\frac{284.5}{53.5}\right) = -1.3849179 \; (-79.34995^\circ);\;
+T_{3,\text{offset}} = -T_{2,\text{offset}}.
+\]
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=0.45]{Images/cinematica/dh.png}
+    \caption{Parámetros clásicos Denavit-Hartenberg. Fuente: \cite{ufactory_xarm_manual}.}
+    \label{fig:dh}
+\end{figure}
+
+\newpage
+Para alcanzar los sitemas $2$ y $3$ se introduce un \textit{offset} dado que en la imagen la tercera articulación no están 
+representada en el cero, por lo que el \textit{offset} es el ángulo de compensación de la articulación desde la posición
+matemática cero hasta la posición mecánica cero que se muestra en la imagen. Esto se debe a que si se colocase en el cero, 
+en la imagen quedaría detrás de otros eslabones y no se visualizaría. En otras palabras, el \textit{offset} angular corrige la
+orientación sin necesidad de modificar el ángulo $\theta$ de la articulación y se suma directamente a $\theta_i$.\\
+
+Además, a partir del análisis de la figura \ref{fig:dh} se observa la particularidad en la ubicación del origen de algunos sistemas,
+como $3$ y $4$. Esta elección, aunque poco convencional, facilita el cálculo de los parámetros al estar directamente fundamentada en las dimensiones 
+geométricas del robot. De este modo, el parámetro $d_4$ coincide con la distancia medida que aparece en la imagen de los 
+parámetros de tamaño. Este hecho se repite para el resto de de parámetros longitudinales $d_1$, $a_3$, $a_5$, $d_6$. \\
+
+La secuencia de transformaciones \cite{corke1996} y la matriz de transformación homogénea \cite{barrientos2007fundamentos}
+asociada a dichas transformaciones se presentan en las ecuaciones \ref{eq:dh-seq} y \ref{eq:dh-a}:
+
+\begin{equation}
+{^{i-1}A_{i}} = 
+\textbf{R}_Z(\theta^*_i = \theta_i + \text{\textit{offset}$_i$})\,
+\textbf{T}_Z(d_i)\,
+\textbf{T}_X(a_{i})\,
+\textbf{R}_X(\alpha_{i})
+\label{eq:dh-seq}
+\end{equation}
+
+\begin{equation}
+{}^{i-1}\mathbf{A}_i =
+\begin{bmatrix}
+\cos\theta^*_i                  & -\sin\theta^*_i \cos\alpha_i     &  \sin\theta^*_i \sin\alpha_i     & a_i \cos\theta^*_i          \\
+\sin\theta^*_i                  &  \cos\theta_i \cos\alpha_i     & -\cos\theta^*_i \sin\alpha_i     & a_i \sin\theta^*_i          \\
+0                             &  \sin\alpha_i                  &  \cos\alpha_i                  & d_i                       \\
+0                             &  0                             &  0                             & 1
+\end{bmatrix}
+\label{eq:dh-a}
+\end{equation} \\
+
+Se calculan a continuación las matrices de transformación del robot \textit{UFactory xArm 6} utilizando
+los parámetros clásicos de Denavit-Hartenberg:
+\[
+A_1 =
+\begin{bmatrix}
+C(q_1) & 0 & -S(q_1) & 0 \\
+S(q_1) & 0 & C(q_1) & 0 \\
+0 & -1 & 0 & 267 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\]
+
+\[
+A_2 =
+\begin{bmatrix}
+C(q_2+\text{offset}_2) & -S(q_2+\text{offset}_2) & 0 & a_2\,C(q_2+\text{offset}_2) \\
+S(q_2+\text{offset}_2) & C(q_2+\text{offset}_2) & 0 & a_2\,S(q_2+\text{offset}_2) \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\quad a_2=289.48866
+\]
+
+\[
+A_3 =
+\begin{bmatrix}
+C(q_3+\text{offset}_3) & 0 & -S(q_3+\text{offset}_3) & a_3\,C(q_3+\text{offset}_3) \\
+S(q_3+\text{offset}_3) & 0 & C(q_3+\text{offset}_3) & a_3\,S(q_3+\text{offset}_3) \\
+0 & -1 & 0 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\quad a_3=77.5
+\]
+
+\[
+A_4 =
+\begin{bmatrix}
+C(q_4) & 0 & S(q_4) & 0 \\
+S(q_4) & 0 & -C(q_4) & 0 \\
+0 & 1 & 0 & 342.5 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+,\;
+A_5 =
+\begin{bmatrix}
+C(q_5) & 0 & -S(q_5) & a_5\,C(q_5) \\
+S(q_5) & 0 & C(q_5) & a_5\,S(q_5) \\
+0 & -1 & 0 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\quad a_5=76
+\]
+
+\[
+A_6 =
+\begin{bmatrix}
+C(q_6) & -S(q_6) & 0 & 0 \\
+S(q_6) & C(q_6) & 0 & 0 \\
+0 & 0 & 1 & 97 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\]
+
+Siendo la transformación total:
+\[
+T_0^{\,6}(q) = A_1(q_1)\;A_2(q_2+\text{offset}_2)\;A_3(q_3+\text{offset}_3)\;A_4(q_4)\;A_5(q_5)\;A_6(q_6)
+\] \\
+
+Podemos calcular y comprobar el resultado en \textit{Matlab} \cite{matlabonline2025} y la \textit{toolbox} de
+Peter Corke \cite{corke_robotics_toolbox}:
+\lstinputlisting[]{Matlab/dh.m}
+\lstinputlisting[]{Matlab/dh_salida.txt}
+
+\newpage
+\subsubsection{Parámetros modificados de Denavit-Hartenberg}
+El método clásico de Denavit-Hartenberg, propuesto en 1955, presentaba ciertas limitaciones en la colocación de los sistemas
+de referencia, especialmente cuando dos ejes consecutivos eran paralelos. En estos casos podían aparecer ambigüedades en la
+definición de los parámetros y problemas numéricos en las matrices de transformación. \\
+
+Para superar estas dificultades John J. Craig introdujo el método modificado de Denavit-Hartenberg o convención de Craig
+\cite{craig1986, paul1986}, que redefine las transformaciones con respecto al sistema $i$ en lugar de hacerlo respecto al sistema $i-1$. El método modificado mantiene los
+cuatro parámetros $\theta_i, d_i, a_i, \alpha_i$, pero cambia la referencia de los ejes lo que hace más intuitiva la
+asignación de marcos. El nuevo procedimiento para asignar los sistemas de referencia se resume en los siguientes pasos:
+\begin{enumerate}
+    \item Identificar los ejes de las articulaciones.
+    \item Considerar dos ejes consecutivos ($i$ y $i+1$) e identificar la perpendicular común entre ellos, o bien el punto de intersección.
+          En dicho punto de intersección, o en el punto donde la perpendicular común corta al eje $i$, se asigna el origen del sistema de enlace.
+    \item Asignar el eje $Z_i$ apuntando a lo largo del eje de la articulación $i$.
+    \item Asignar el eje $X_i$ apuntando a lo largo de la perpendicular común. Si los ejes se intersectan, se asigna $X_i$ como normal al plano que contiene ambos ejes.
+    \item Asignar el eje $Y_i$ de manera que se complete un sistema de coordenadas con la regla de la mano derecha (sistema dextrógiro).
+    \item Asignar el sistema $\{0\}$ coincidiendo con $\{1\}$ cuando la primera variable articular sea cero. Para el sistema $\{N\}$, elegir libremente la posición del origen y la dirección de $X_N$, procurando que el mayor número posible de parámetros de enlace se anulen.
+\end{enumerate}
+
+Consecuentemente, la secuencia de transformaciones \cite{corke1996} y la matriz de transformación homogénea
+asociada a dichas transformaciones se presentan en las ecuaciones \ref{eq:dh_mod-seq} y \ref{eq:dh_mod-a}:
+\begin{equation}
+{^{i-1}\bar{A}_{i}} = 
+\textbf{R}_X(\alpha_{i-1})\,
+\textbf{T}_X(a_{i-1})\,
+\textbf{R}_Z(\theta_i)
+\textbf{T}_Z(d_i)\,
+\label{eq:dh_mod-seq}
+\end{equation}
+
+\begin{equation}
+{}^{i-1}\mathbf{A}_i = 
+\begin{bmatrix}
+\cos\theta_i                  & -\sin\theta_i &  0 & a_{i-1}      \\
+\sin\theta_i \cos\alpha_{i-1}                  &  \cos\theta_i \cos\alpha_{i-1} & -\sin\alpha_{i-1} & -d_i \sin\alpha_{i-1}      \\
+\sin\theta_i \sin\alpha_{i-1}              &  \sin\alpha_{i-1} \cos\theta_i              &  \cos\alpha_{i-1}              & d_i \cos\alpha_{i-1}                      \\
+0                             &  0                             &  0                             & 1
+\end{bmatrix}
+\label{eq:dh_mod-a}
+\end{equation} \\
+
+Esta convención ofrece ventajas como la asignación única y consistente de marcos a cada eslabón porque simplifica la 
+implementación computacional y la integración con modelos de diseño asistido por computadora (CAD), donde se prefieren
+coordenadas locales de eslabón \cite{corke1996}. Además, facilita los cálculos recursivos de cinemática, Jacobianos
+y dinámica, evitando las ambigüedades de colocación presentes en el método estándar y es la notación más clara
+y transparente para el análisis mecánico. \\
+
+\newpage
+En la figura \ref{fig:dh_mod} se presentan los parámetros modificados de Denavit-Hartenberg proporcionados por el fabricante, con 
+\[
+a_2 = \sqrt{284.5^2 + 53.5^2} = 289.48866
+\]
+\[
+T_{2,\text{offset}} = -\arctan\left(\frac{284.5}{53.5}\right) = -1.3849179 \; (-79.34995^\circ)
+\]
+\[
+T_{3,\text{offset}} = -T_{2,\text{offset}} = 1.3849179 \; (79.34995^\circ).
+\]
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=0.45]{Images/cinematica/dh_mod.png}
+    \caption{Parámetros modificados Denavit-Hartenberg. Fuente: \cite{ufactory_xarm_manual}.}
+    \label{fig:dh_mod}
+\end{figure}
+
+Al igual que con los parámetros clásicos, sección \ref{classDH}, para alcanzar los sitemas $2$ y $3$ se introduce un \textit{offset} dado que en la imagen la tercera articulación no están 
+representada en el cero y se observa la particularidad en la ubicación del origen de algunos sistemas,
+como $3$ y $4$, que facilita el cálculo de los parámetros al estar directamente fundamentada en las dimensiones 
+geométricas del robot. \\
+
+Se calculan a continuación las matrices de transformación del robot \textit{UFactory xArm 6} utilizando
+los parámetros modificados de Denavit-Hartenberg:
+
+\[
+A_1 =
+\begin{bmatrix}
+C(q_1) & -S(q_1) & 0 & 0 \\
+S(q_1) & C(q_1) & 0 & 0 \\
+0 & 0 & 1 & d_1 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\quad d_1 = 267
+\]
+
+\[
+A_2 =
+\begin{bmatrix}
+C(q_2+T2_{\text{offset}}) & -S(q_2+T2_{\text{offset}}) & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+-\,S(q_2+T2_{\text{offset}}) & -\,C(q_2+T2_{\text{offset}}) & 0 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\]
+
+\[
+A_3 =
+\begin{bmatrix}
+C(q_3+T3_{\text{offset}}) & -S(q_3+T3_{\text{offset}}) & 0 & a_2 \\
+S(q_3+T3_{\text{offset}}) & C(q_3+T3_{\text{offset}}) & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\quad a_2 = 289.48866
+\]
+
+\[
+A_4 =
+\begin{bmatrix}
+C(q_4) & -S(q_4) & 0 & a_3 \\
+0 & 0 & 1 & d_4 \\
+-\,S(q_4) & -\,C(q_4) & 0 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\quad a_3 = 77.5,\; d_4 = 342.5
+\]
+
+\[
+A_5 =
+\begin{bmatrix}
+C(q_5) & 0 & S(q_5) & 0 \\
+S(q_5) & 0 & -C(q_5) & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\]
+
+\[
+A_6 =
+\begin{bmatrix}
+C(q_6) & -S(q_6) & 0 & a_5 \\
+0 & 0 & 1 & d_6 \\
+-\,S(q_6) & -\,C(q_6) & 0 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\quad a_5 = 76,\; d_6 = 97
+\] \\
+
+Siendo la transformación total:
+\[
+T_0^{\,6}(q) = A_1(q_1)\;A_2(q_2+T2_{\text{offset}})\;A_3(q_3+T3_{\text{offset}})\;A_4(q_4)\;A_5(q_5)\;A_6(q_6)
+\]\\
+
+Podemos calcular y comprobar el resultado en \textit{Matlab} \cite{matlabonline2025} y la \textit{toolbox} de
+Peter Corke \cite{corke_robotics_toolbox}:
+\lstinputlisting[]{Matlab/dh_mod.m}
+\lstinputlisting[]{Matlab/dh_mod_salida.txt}
+
+\newpage
+\subsection{Cinemática inversa}
+
