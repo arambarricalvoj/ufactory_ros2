@@ -127,18 +127,18 @@ T_0^{\,6}(q) = A_1(q_1)\;A_2(q_2+\text{offset}_2)\;A_3(q_3+\text{offset}_3)\;A_4
 
 Podemos calcular y comprobar el resultado en \textit{Matlab} \cite{matlabonline2025} y la \textit{toolbox} de
 Peter Corke \cite{corke_robotics_toolbox}:
-\begin{listing}[htb]
-    \centering
-    \lstinputlisting[]{Matlab/dh.m}
-    \caption{Código Matlab para la cinemática directa con parámetros DH clásicos.}
-    \label{lst:dh}
-\end{listing}
-\begin{listing}[htb]
-    \centering
-    \lstinputlisting[]{Matlab/dh_salida.txt}
-    \caption{Salida numérica de la cinemática directa DH clásica.}
-    \label{lst:dh_salida}
-\end{listing}
+\lstinputlisting[
+    caption={Código Matlab para la cinemática directa con parámetros DH clásicos.},
+    label={lst:dh},
+    breaklines=true,
+    breakatwhitespace=true
+]{Matlab/dh.m}
+\lstinputlisting[
+    caption={Salida numérica de la cinemática directa DH clásica.},
+    label={lst:dh_salida},
+    breaklines=true,
+    breakatwhitespace=true
+]{Matlab/dh_salida.txt}
 
 \clearpage
 \subsubsection{Parámetros modificados de Denavit-Hartenberg}
@@ -283,20 +283,21 @@ Siendo la transformación total:
 T_0^{\,6}(q) = A_1(q_1)\;A_2(q_2+T2_{\text{offset}})\;A_3(q_3+T3_{\text{offset}})\;A_4(q_4)\;A_5(q_5)\;A_6(q_6)
 \]\\
 
+\newpage
 Podemos calcular y comprobar el resultado en \textit{Matlab} \cite{matlabonline2025} y la \textit{toolbox} de
 Peter Corke \cite{corke_robotics_toolbox}:
-\begin{listing}[htb]
-    \centering
-    \lstinputlisting[]{Matlab/dh_mod.m}
-    \caption{Código Matlab para la cinemática directa con parámetros DH modificados.}
-    \label{lst:dh_mod}
-\end{listing}
-\begin{listing}[htb]
-    \centering
-    \lstinputlisting[]{Matlab/dh_mod_salida.txt}
-    \caption{Salida numérica de la cinemática directa DH modificada.}
-    \label{lst:dh_mod_salida}
-\end{listing}
+\lstinputlisting[
+    caption={Código Matlab para la cinemática directa con parámetros DH modificados.},
+    label={lst:dh_mod},
+    breaklines=true,
+    breakatwhitespace=true
+]{Matlab/dh_mod.m}
+\lstinputlisting[
+    caption={Salida numérica de la cinemática directa DH modificada.},
+    label={lst:dh_mod_salida},
+    breaklines=true,
+    breakatwhitespace=true
+]{Matlab/dh_mod_salida.txt}
 
 \clearpage
 \subsection{Cinemática inversa}
@@ -439,27 +440,35 @@ r_{33} &=
 
 % https://www.youtube.com/watch?v=mxf5H84L0Wo
 
+\newpage
 Estas ecuaciones se han obtenido con la ayuda de \textit{Matlab} \cite{matlabonline2025} y la
 \textit{toolbox} de Peter Corke \cite{corke_robotics_toolbox}:
-\begin{listing}[htb]
-    \centering
-    \lstinputlisting[]{Matlab/ik.m}
-    \caption{Código Matlab para obtener las ecuaciones de posición y orientación con parámetros DH modificados.}
-    \label{lst:ik}
-\end{listing}
+\lstinputlisting[
+    caption={Código Matlab para obtener las ecuaciones de posición y orientación con parámetros DH modificados.},
+    label={lst:ik},
+    breaklines=true,
+    breakatwhitespace=true
+]{Matlab/ik.m}
 
 \clearpage
-\subsection{Pseudoinversa del Jacobiano y Newton--Raphson}
-Como se expone en \cite{barrientos2007fundamentos}, la relación
-entre las velocidades articulares y la velocidad del efector final viene dada por
+\subsubsection{Pseudoinversa del Jacobiano y Newton--Raphson}
+
+Como se expone en \cite{barrientos2007fundamentos}, la relación entre las velocidades
+articulares y la velocidad del efector final viene dada por
+
+
 
 \[
 \dot{x} = J(q)\,\dot{q},
 \]
 
-donde $J(q)$ es el Jacobiano geométrico. Para invertir esta relación y obtener un
-incremento articular a partir del error cartesiano, se emplea la pseudoinversa de
-Moore--Penrose:
+
+
+donde $J(q)$ es el Jacobiano geométrico del manipulador. Para invertir esta relación y
+obtener un incremento articular a partir de un desplazamiento cartesiano, se emplea la
+pseudoinversa del Jacobiano,
+
+
 
 \[
 \dot{q} = J^{\dagger}(q)\,\dot{x},
@@ -467,31 +476,285 @@ Moore--Penrose:
 J^{\dagger} = (J^\top J)^{-1} J^\top,
 \]
 
-si el Jacobiano es de rango completo. Este enfoque permite calcular un incremento articular
-que minimiza en norma cuadrática el error cartesiano, incluso en configuraciones próximas a
-singularidades o en robots redundantes.
 
-Aplicando este principio a la cinemática inversa, se plantea el problema como la resolución
-iterativa de
+
+válida cuando el Jacobiano es de rango completo. Este operador permite calcular un
+incremento articular que minimiza en norma cuadrática el error cartesiano, incluso en
+configuraciones próximas a singularidades o en robots redundantes.
+
+Este mismo principio se aplica a la resolución numérica de la cinemática inversa. El
+objetivo consiste en encontrar un vector articular $q$ tal que
+
+
+
+\[
+f(q) = x_d,
+\]
+
+
+
+siendo $f(q)$ la cinemática directa y $x_d$ la posición y orientación deseadas del
+efector final. Definiendo el error cartesiano como
+
+
 
 \[
 e = x_d - f(q),
 \]
 
-donde $f(q)$ es la cinemática directa. Linealizando mediante el Jacobiano se obtiene el
-método de Newton--Raphson:
+
+
+y linealizando la cinemática directa alrededor de la configuración actual,
+
+
 
 \[
-q_{k+1} = q_k + J^{\dagger}(q_k)\, (x_d - f(q_k)).
+f(q + \Delta q) \approx f(q) + J(q)\,\Delta q,
 \]
 
-Este procedimiento converge de forma eficiente cuando la estimación inicial es adecuada y
-constituye uno de los métodos numéricos más utilizados en robótica para resolver la
-cinemática inversa de manipuladores sin muñeca esférica.
+
+
+se obtiene la actualización iterativa característica del método de Newton--Raphson \cite{siciliano2009robotics}:
 
 
 
+\[
+q_{k+1} = q_k + J^{\dagger}(q_k)\,(x_d - f(q_k)).
+\]
 
 
 
+En esta expresión, $J^{\dagger}(q_k)$ actúa como una inversa generalizada del Jacobiano,
+permitiendo calcular un incremento articular coherente incluso cuando $J(q_k)$ no es
+cuadrado o se encuentra próximo a una singularidad. Este procedimiento converge de forma
+eficiente siempre que la estimación inicial sea adecuada, y constituye uno de los métodos
+numéricos más empleados para resolver la cinemática inversa en manipuladores sin solución
+analítica cerrada. \\
 
+\subsubsection*{Ejemplo sencillo de Newton--Raphson a mano}
+
+Para ilustrar el método de Newton--Raphson, se considera un manipulador
+unidimensional con una sola articulación \(q \in \mathbb{R}\), cuya cinemática directa
+viene dada por
+\[
+f(q) = q^2.
+\]
+El objetivo es encontrar el valor de \(q\) tal que la posición cartesiana del efector
+final coincida con una posición deseada \(x_d\). En este ejemplo se fija
+\[
+x_d = 4.
+\]
+El problema de cinemática inversa se escribe entonces como
+\[
+f(q) = x_d
+\quad\Longleftrightarrow\quad
+q^2 = 4.
+\]
+
+Siguiendo la estructura anterior, se define el error cartesiano como
+\[
+e(q) = x_d - f(q) = 4 - q^2.
+\]
+
+En este caso, como se trata de un problema unidimensional, el Jacobiano geométrico se
+reduce a la derivada de \(f(q)\) con respecto a \(q\):
+\[
+J(q) = \frac{\partial f}{\partial q} = 2q.
+\]
+Para \(J(q) \neq 0\), la pseudoinversa de un escalar coincide con su inversa
+\[
+J^{\dagger}(q) = \frac{1}{J(q)} = \frac{1}{2q}.
+\]
+
+Aplicando el esquema iterativo de Newton--Raphson para la cinemática inversa, se obtiene
+\[
+q_{k+1} = q_k + J^{\dagger}(q_k)\,\bigl(x_d - f(q_k)\bigr).
+\]
+Sustituyendo las expresiones de \(f(q)\), \(x_d\) y \(J^{\dagger}(q)\),
+\[
+q_{k+1} = q_k + \frac{1}{2q_k}\,\bigl(4 - q_k^2\bigr).
+\]
+
+\subsubsection*{Cálculo iterativo a mano}
+
+Se elige, por ejemplo, una estimación inicial
+\[
+q_0 = 1.
+\]
+A partir de esta estimación, se calcula paso a paso:
+
+\paragraph{Iteración 1}
+\[
+f(q_0) = f(1) = 1^2 = 1,
+\]
+\[
+x_d - f(q_0) = 4 - 1 = 3,
+\]
+\[
+J(q_0) = 2q_0 = 2\cdot 1 = 2,
+\qquad
+J^{\dagger}(q_0) = \frac{1}{2}.
+\]
+Por tanto,
+\[
+q_1 = q_0 + J^{\dagger}(q_0)\,\bigl(x_d - f(q_0)\bigr)
+    = 1 + \frac{1}{2}\cdot 3
+    = 1 + 1.5
+    = 2.5.
+\]
+
+\paragraph{Iteración 2}
+\[
+f(q_1) = f(2.5) = (2.5)^2 = 6.25,
+\]
+\[
+x_d - f(q_1) = 4 - 6.25 = -2.25,
+\]
+\[
+J(q_1) = 2q_1 = 2\cdot 2.5 = 5,
+\qquad
+J^{\dagger}(q_1) = \frac{1}{5}.
+\]
+Así,
+\[
+q_2 = q_1 + J^{\dagger}(q_1)\,\bigl(x_d - f(q_1)\bigr)
+    = 2.5 + \frac{1}{5}\cdot(-2.25)
+    = 2.5 - 0.45
+    = 2.05.
+\]
+
+\paragraph{Iteración 3}
+\[
+f(q_2) = f(2.05) = (2.05)^2 \approx 4.2025,
+\]
+\[
+x_d - f(q_2) \approx 4 - 4.2025 = -0.2025,
+\]
+\[
+J(q_2) = 2q_2 = 2\cdot 2.05 = 4.10,
+\qquad
+J^{\dagger}(q_2) = \frac{1}{4.10}.
+\]
+La siguiente actualización es
+\[
+q_3 = q_2 + J^{\dagger}(q_2)\,\bigl(x_d - f(q_2)\bigr)
+    \approx 2.05 + \frac{1}{4.10}\cdot(-0.2025)
+    \approx 2.05 - 0.0494
+    \approx 2.0006.
+\]
+
+Después de unas pocas iteraciones, el valor de \(q_k\) converge rápidamente hacia
+\[
+q^\star \approx 2,
+\]
+que es una de las soluciones exactas de la ecuación \(q^2 = 4\). En este ejemplo tan
+simple, el Jacobiano es un escalar y su pseudoinversa coincide con la inversa, de modo
+que la actualización de Newton--Raphson se interpreta exactamente como en el caso
+general:
+\[
+q_{k+1} = q_k + J^{\dagger}(q_k)\,(x_d - f(q_k)),
+\]
+pero aplicada a una cinemática directa escalar y sencilla. \\
+
+
+\subsubsection{Cálculo de cinemática inversa para \textit{UFactory xArm6}}
+
+De la tabla \ref{tab:actuators} se conoce que las articulaciones del robot presentan límites 
+físicos de movimiento, por lo que el método iterativo de Newton–Raphson debe modificarse para 
+garantizar que las soluciones obtenidas se mantengan dentro de dichos rangos. Este problema es
+bien conocido en robótica y suele abordarse mediante técnicas de \textit{joint limit avoidance} 
+\cite{siciliano2009robotics, nakamura1991advanced}, que introducen un término adicional en la
+actualización de las articulaciones para alejar la solución de los límites articulares. \\
+
+En lugar de aplicar un recorte directo de las articulaciones (\textit{clamping}), que puede 
+bloquear la convergencia cuando la solución se encuentra cerca de un límite, se define una 
+función de coste que penaliza la proximidad a los extremos del rango articular:
+\[
+H(q) = \sum_{i=1}^{6} 
+\left( \frac{q_i - q_{i,\text{mid}}}{q_{i,\text{max}} - q_{i,\text{min}}} \right)^2,
+\]
+donde $q_{i,\text{min}}$ y $q_{i,\text{max}}$ son los límites articulares y 
+$q_{i,\text{mid}} = (q_{i,\text{min}} + q_{i,\text{max}})/2$ es el punto medio del rango.  
+El gradiente de esta función,
+
+\[
+\nabla H_i = 
+2\,\frac{q_i - q_{i,\text{mid}}}{(q_{i,\text{max}} - q_{i,\text{min}})^2},
+\]
+indica la dirección en la que cada articulación debe desplazarse para alejarse de los límites.  
+Este gradiente se incorpora directamente en la ecuación iterativa del método de Newton–Raphson, 
+modificando la actualización clásica $\Delta q = J^{+}(q_k)\, e(q_k)$, para incluir un término de
+penalización:
+\[
+\Delta q = J^{+}(q_k)\, e(q_k) \;-\; K\, \nabla H(q_k),
+\]
+donde $K$ es un coeficiente positivo que controla la intensidad de la penalización.  
+Este enfoque permite que el algoritmo reduzca el error de posición garantizando que las posiciones 
+articulares obtenidas son factibles y se utiliza ampliamente en control redundante y cinemática
+inversa con restricciones \cite{buss2004selectively}. \\
+
+Además, para mejorar la estabilidad numérica cerca de singularidades, se emplea la variante 
+amortiguada del método, conocida como \textit{Damped Least Squares} (DLS) o método de Levenberg–Marquardt 
+\cite{wampler1986manipulator, nakamura1991advanced}. En este caso, la pseudoinversa se sustituye por:
+\[
+\Delta q = 
+J^\top (J J^\top + \lambda^2 I)^{-1} e(q_k) \;-\; K\, \nabla H(q_k),
+\]
+donde $\lambda$ es un factor de amortiguación que evita que el Jacobiano se acerque a una singularidad
+o configuración geométricamente desfavorable.\\
+
+La combinación de penalización suave y amortiguación
+permite obtener soluciones de cinemática inversa que respetan los límites articulares, evitan configuraciones cercanas a singularidades y mantienen la 
+convergencia del método incluso en zonas estrechas del espacio de trabajo. \\
+
+A continuación se expone la porción de código de \textit{Matlab} \cite{matlabonline2025} y la \textit{Robotics Toolbox} de
+Peter Corke \cite{corke_robotics_toolbox} con la que se ha programado la 
+cinemática inversa para el \textit{UFactory xArm6}:
+\lstinputlisting[
+    caption={Cálculo de la cinemática inversa del robot \textit{UFactory xArm6}.},
+    label={lst:ik_nr},
+    breaklines=true,
+    breakatwhitespace=true
+]{Matlab/ik_nr.m}
+
+\lstinputlisting[
+    caption={Salida del cálculo de la cinemática inversa del robot \textit{UFactory xArm6}.},
+    label={lst:ik_nr},
+    breaklines=true,
+    breakatwhitespace=true
+]{Matlab/ik_nr_salida.m}
+
+
+\newpage
+
+\subsection{Cinemática diferencial y Jacobiano}
+Tal y como se expone en el apartado anterior, la cinemática diferencial describe la relación entre las velocidades articulares $\dot{q}$ y la
+velocidad del efector final $\dot{x}$. Esta relación viene dada por \[ \dot{x} = J(q)\,\dot{q}, \]
+donde $J(q)$ es el Jacobiano geométrico del manipulador. El Jacobiano recoge cómo las variaciones
+infinitesimales de las articulaciones se traducen en variaciones infinitesimales en el espacio
+cartesiano, y constituye la herramienta fundamental para analizar velocidades, singularidades y
+la cinemática inversa diferencial. Cuando se desea obtener un incremento articular a partir de un
+desplazamiento cartesiano, es necesario invertir esta relación. Sin embargo, el Jacobiano no siempre 
+es cuadrado ni invertible, por lo que se recurre a una inversa generalizada, como la pseudoinversa,
+que permite obtener soluciones en mínimos cuadrados incluso en configuraciones próximas a 
+singularidades. \\
+
+A partir de la transformación homogénea total
+\[ T_0^{\,6}(q) = A_1(q_1)\;A_2(q_2+T2_{\text{offset}})\;A_3(q_3+T3_{\text{offset}})
+\;A_4(q_4)\;A_5(q_5)\;A_6(q_6), \] 
+ 
+se pueden calcular las matrices de rotación y vectores de posición necesarios para construir
+el Jacobiano y para calcular las velocidades lineales y angulares de las articulaciones y del efector.
+Dado que la matriz de transformación resultante es una expresión grande, su manejo 
+manual simbólico resulta muy tedioso, por lo que se ha calculado con ayuda de \textit{Matlab} 
+\cite{matlabonline2025} y la \textit{Robotics Toolbox} de Peter Corke \cite{corke_robotics_toolbox}: \\
+\lstinputlisting[
+    caption={Cálculo de la cinemática diferencial y Jacobiano mediante parámetros DH modificados.},
+    label={lst:jac},
+    breaklines=true,
+    breakatwhitespace=true
+]{Matlab/jac.m}
+
+\subsection{Generación de trayectorias}
+\subsection{Control cinemático}
+aunque la parte de control ya estaría hecha con la cinemática inversa...

@@ -102,8 +102,8 @@
       \strng{authornamehash}{77c923124be487106eadc22c65fcb8ff}
       \strng{authorfullhash}{77c923124be487106eadc22c65fcb8ff}
       \field{extraname}{1}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://www.ufactory.us/product/ufactory-xarm-6}}
@@ -145,8 +145,8 @@
       \strng{authorbibnamehash}{4a195e02383364d4009f77ca22451e11}
       \strng{authornamehash}{4a195e02383364d4009f77ca22451e11}
       \strng{authorfullhash}{c321d95ccac4f92536f0f1ed99f34d05}
-      \field{sortinit}{5}
-      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Science Robotics}
@@ -185,8 +185,8 @@
       \strng{authorbibnamehash}{dd57c47cf644621a8d6776d616e65000}
       \strng{authornamehash}{dd57c47cf644621a8d6776d616e65000}
       \strng{authorfullhash}{dd57c47cf644621a8d6776d616e65000}
-      \field{sortinit}{6}
-      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://gazebosim.org/docs/harmonic}}
@@ -208,8 +208,8 @@
       \strng{authorbibnamehash}{da3f2037cc0123c47ff0d1c42d82001f}
       \strng{authornamehash}{da3f2037cc0123c47ff0d1c42d82001f}
       \strng{authorfullhash}{da3f2037cc0123c47ff0d1c42d82001f}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://docs.ros.org/en/jazzy/}}
@@ -229,8 +229,8 @@
       \strng{authorbibnamehash}{c7ec7f9ad012f365991e595cae76a15c}
       \strng{authornamehash}{c7ec7f9ad012f365991e595cae76a15c}
       \strng{authorfullhash}{c7ec7f9ad012f365991e595cae76a15c}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://github.com/xArm-Developer/xarm_ros2}}
@@ -251,8 +251,8 @@
       \strng{authornamehash}{77c923124be487106eadc22c65fcb8ff}
       \strng{authorfullhash}{77c923124be487106eadc22c65fcb8ff}
       \field{extraname}{2}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://docs.ufactory.cc/, https://www.ufactory.cc/wp-content/uploads/2023/05/xArm-User-Manual-V2.0.0.pdf}}
@@ -364,8 +364,8 @@
       \strng{authorbibnamehash}{556e730c6e2d46e9f791a20f4d23be15}
       \strng{authornamehash}{556e730c6e2d46e9f791a20f4d23be15}
       \strng{authorfullhash}{86ea741233a0bee5b467682cbe743098}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{edition}{2}
@@ -386,8 +386,8 @@
       \strng{authorbibnamehash}{b7f0fb90e404efb48f8a85a517dec3c9}
       \strng{authornamehash}{b7f0fb90e404efb48f8a85a517dec3c9}
       \strng{authorfullhash}{b7f0fb90e404efb48f8a85a517dec3c9}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{note}{Datasheet y documentación técnica}
@@ -412,8 +412,8 @@
       \strng{authorbibnamehash}{7058e4bd76f877c52b621c942b30613c}
       \strng{authornamehash}{7058e4bd76f877c52b621c942b30613c}
       \strng{authorfullhash}{7058e4bd76f877c52b621c942b30613c}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{note}{Norma internacional sobre interfaces mecánicas de robots industriales}
@@ -466,8 +466,8 @@
       \strng{authornamehash}{ba5ce54787abcff8c806d8a8c4d85c30}
       \strng{authorfullhash}{ba5ce54787abcff8c806d8a8c4d85c30}
       \field{extraname}{1}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Proceedings of the IEEE International Conference on Robotics and Automation}
@@ -497,8 +497,8 @@
       \strng{authornamehash}{c0e503339314930d140b67b5e7c55c3e}
       \strng{authorfullhash}{c0e503339314930d140b67b5e7c55c3e}
       \field{extraname}{2}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Robotics Toolbox}
@@ -530,8 +530,8 @@
       \strng{authorbibnamehash}{57c29b307f6e70b7216c8c696af16b58}
       \strng{authornamehash}{57c29b307f6e70b7216c8c696af16b58}
       \strng{authorfullhash}{57c29b307f6e70b7216c8c696af16b58}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{edition}{1st}
@@ -558,8 +558,8 @@
       \strng{authorbibnamehash}{b5d408d4422e7a5c063f812d702e6cba}
       \strng{authornamehash}{b5d408d4422e7a5c063f812d702e6cba}
       \strng{authorfullhash}{b5d408d4422e7a5c063f812d702e6cba}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{number}{NASA Technical Paper 1800}
@@ -587,14 +587,138 @@
       \strng{authorbibnamehash}{c675f16c785a845b4191bd1dee5606b2}
       \strng{authornamehash}{c675f16c785a845b4191bd1dee5606b2}
       \strng{authorfullhash}{c675f16c785a845b4191bd1dee5606b2}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{howpublished}{\url{https://moveit.ros.org}}
       \field{note}{Accessed: 2025-01-15}
       \field{title}{MoveIt 2}
       \field{year}{2024}
+    \endentry
+    \entry{siciliano2009robotics}{book}{}
+      \name{author}{4}{}{%
+        {{hash=38f7a70abf2d86e432d63826f560ab93}{%
+           family={Siciliano},
+           familyi={S\bibinitperiod},
+           given={Bruno},
+           giveni={B\bibinitperiod}}}%
+        {{hash=8ee631ade831cd9df4fdd3ecba074704}{%
+           family={Sciavicco},
+           familyi={S\bibinitperiod},
+           given={Lorenzo},
+           giveni={L\bibinitperiod}}}%
+        {{hash=ff3e3865edda89166207ec2d8a4c22aa}{%
+           family={Villani},
+           familyi={V\bibinitperiod},
+           given={Luigi},
+           giveni={L\bibinitperiod}}}%
+        {{hash=dcc89269b2eb1155024b2da9fd7c68eb}{%
+           family={Oriolo},
+           familyi={O\bibinitperiod},
+           given={Giuseppe},
+           giveni={G\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {London}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{87b7a62a01263043a997b937dfe79845}
+      \strng{fullhash}{ee90168e098b65fb796c51b65c7348da}
+      \strng{bibnamehash}{87b7a62a01263043a997b937dfe79845}
+      \strng{authorbibnamehash}{87b7a62a01263043a997b937dfe79845}
+      \strng{authornamehash}{87b7a62a01263043a997b937dfe79845}
+      \strng{authorfullhash}{ee90168e098b65fb796c51b65c7348da}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-1-84628-641-4}
+      \field{title}{Robotics: Modelling, Planning and Control}
+      \field{year}{2009}
+    \endentry
+    \entry{nakamura1991advanced}{book}{}
+      \name{author}{1}{}{%
+        {{hash=9b20cab1212374ead2722ffc6828f603}{%
+           family={Nakamura},
+           familyi={N\bibinitperiod},
+           given={Yoshihiko},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Addison-Wesley}%
+      }
+      \strng{namehash}{9b20cab1212374ead2722ffc6828f603}
+      \strng{fullhash}{9b20cab1212374ead2722ffc6828f603}
+      \strng{bibnamehash}{9b20cab1212374ead2722ffc6828f603}
+      \strng{authorbibnamehash}{9b20cab1212374ead2722ffc6828f603}
+      \strng{authornamehash}{9b20cab1212374ead2722ffc6828f603}
+      \strng{authorfullhash}{9b20cab1212374ead2722ffc6828f603}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Advanced Robotics: Redundancy and Optimization}
+      \field{year}{1991}
+    \endentry
+    \entry{buss2004selectively}{article}{}
+      \name{author}{2}{}{%
+        {{hash=fdb35f8cb8d96afe96b6c8bcf69467b5}{%
+           family={Buss},
+           familyi={B\bibinitperiod},
+           given={Samuel\bibnamedelima R.},
+           giveni={S\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=30d972d1aa8202b1287f63b1a60c8763}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Jin-Su},
+           giveni={J\bibinithyphendelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{713ac1bca9d1f89eb29d9be5f6f24319}
+      \strng{fullhash}{713ac1bca9d1f89eb29d9be5f6f24319}
+      \strng{bibnamehash}{713ac1bca9d1f89eb29d9be5f6f24319}
+      \strng{authorbibnamehash}{713ac1bca9d1f89eb29d9be5f6f24319}
+      \strng{authornamehash}{713ac1bca9d1f89eb29d9be5f6f24319}
+      \strng{authorfullhash}{713ac1bca9d1f89eb29d9be5f6f24319}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Graphics Tools}
+      \field{number}{3}
+      \field{title}{Selectively damped least squares for inverse kinematics}
+      \field{volume}{10}
+      \field{year}{2004}
+      \field{pages}{37\bibrangedash 49}
+      \range{pages}{13}
+    \endentry
+    \entry{wampler1986manipulator}{article}{}
+      \name{author}{1}{}{%
+        {{hash=5b37d2784c3c9bf078012aa6d441f04f}{%
+           family={Wampler},
+           familyi={W\bibinitperiod},
+           given={Charles\bibnamedelima W.},
+           giveni={C\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \strng{namehash}{5b37d2784c3c9bf078012aa6d441f04f}
+      \strng{fullhash}{5b37d2784c3c9bf078012aa6d441f04f}
+      \strng{bibnamehash}{5b37d2784c3c9bf078012aa6d441f04f}
+      \strng{authorbibnamehash}{5b37d2784c3c9bf078012aa6d441f04f}
+      \strng{authornamehash}{5b37d2784c3c9bf078012aa6d441f04f}
+      \strng{authorfullhash}{5b37d2784c3c9bf078012aa6d441f04f}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Systems, Man, and Cybernetics}
+      \field{number}{1}
+      \field{title}{Manipulator inverse kinematic solutions based on vector formulations and damped least-squares methods}
+      \field{volume}{16}
+      \field{year}{1986}
+      \field{pages}{93\bibrangedash 101}
+      \range{pages}{9}
     \endentry
   \enddatalist
 \endrefsection

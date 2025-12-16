@@ -52,6 +52,9 @@
   numbersep=5pt            % ← Espacio entre números y código
 }
 
+\renewcommand{\lstlistingname}{Código}
+\renewcommand{\lstlistlistingname}{Índice de códigos}
+
 \usepackage{csquotes}
 
 %\setlength{\parindent}{12pt}

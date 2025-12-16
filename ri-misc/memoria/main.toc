@@ -1,18 +1,25 @@
 \babel@toc {spanish}{}\relax 
-\contentsline {section}{\numberline {1}Introducción}{4}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Objetivo y motivación del proyecto}{4}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Metodología}{4}{subsection.1.2}%
-\contentsline {section}{\numberline {2}\textit {UFactory xArm 6}}{5}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Estructura mecánica: eslabones y articulaciones}{5}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Actuadores}{6}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Sensores integrados y opcionales}{7}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Efector}{8}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Sistema de control}{9}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}\textit {Software}}{10}{subsection.2.6}%
-\contentsline {section}{\numberline {3}Estudio cinemático}{11}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Cinemática directa}{11}{subsection.3.1}%
-\contentsline {subsubsection}{\numberline {3.1.1}Parámetros de Denavit-Hartenberg}{11}{subsubsection.3.1.1}%
-\contentsline {subsubsection}{\numberline {3.1.2}Parámetros modificados de Denavit-Hartenberg}{15}{subsubsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.2}Cinemática inversa}{19}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Pseudoinversa del Jacobiano y Newton--Raphson}{22}{subsection.3.3}%
-\contentsline {section}{Referencias adicionales al material del Campus Virtual}{24}{section*.4}%
+\contentsline {section}{\numberline {1}Introducción}{7}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Objetivo y motivación del proyecto}{7}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Metodología}{7}{subsection.1.2}%
+\contentsline {section}{\numberline {2}\textit {UFactory xArm 6}}{8}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Estructura mecánica: eslabones y articulaciones}{8}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Actuadores}{9}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Sensores integrados y opcionales}{10}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Efector}{11}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Sistema de control}{12}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}\textit {Software}}{13}{subsection.2.6}%
+\contentsline {section}{\numberline {3}Estudio cinemático}{14}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Cinemática directa}{14}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Parámetros de Denavit-Hartenberg}{14}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Parámetros modificados de Denavit-Hartenberg}{17}{subsubsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.2}Cinemática inversa}{21}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Pseudoinversa del Jacobiano y Newton--Raphson}{24}{subsubsection.3.2.1}%
+\contentsline {paragraph}{Iteración 1}{25}{section*.9}%
+\contentsline {paragraph}{Iteración 2}{25}{section*.10}%
+\contentsline {paragraph}{Iteración 3}{26}{section*.11}%
+\contentsline {subsubsection}{\numberline {3.2.2}Cálculo de cinemática inversa para \textit {UFactory xArm6}}{26}{subsubsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.3}Cinemática diferencial y Jacobiano}{30}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Generación de trayectorias}{32}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Control cinemático}{32}{subsection.3.5}%
+\contentsline {section}{Referencias adicionales al material del Campus Virtual}{34}{section*.12}%
