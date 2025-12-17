@@ -6,3 +6,7 @@
 \contentsline {lstlisting}{\numberline {6}Cálculo de la cinemática inversa del robot \textit {UFactory xArm6}.}{27}{lstlisting.6}%
 \contentsline {lstlisting}{\numberline {7}Salida del cálculo de la cinemática inversa del robot \textit {UFactory xArm6}.}{29}{lstlisting.7}%
 \contentsline {lstlisting}{\numberline {8}Cálculo de la cinemática diferencial y Jacobiano mediante parámetros DH modificados.}{30}{lstlisting.8}%
+\contentsline {lstlisting}{\numberline {9}Generación de trayectoria articular realizable.}{36}{lstlisting.9}%
+\contentsline {lstlisting}{\numberline {10}Salida de la generación de trayectoria articular realizable.}{38}{lstlisting.10}%
+\contentsline {lstlisting}{\numberline {11}Control cinemático completo.}{43}{lstlisting.11}%
+\contentsline {lstlisting}{\numberline {12}Salida del control cinemático completo.}{47}{lstlisting.12}%

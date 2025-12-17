@@ -1,0 +1,120 @@
+\datos{color}{}{}
+
+\section{Estudio dinámico}
+El fabricante proporciona los parámetros clásicos y modificados de Denavit-Hartenberg en el manual del usuario. En las 
+siguientes secciones se van a estudiar dichos parámetros.
+
+\begin{comment}
+    Recopilar parámetros dinámicos del fabricante
+
+Masas de cada eslabón.
+
+Posición del centro de masas de cada eslabón.
+
+Tensores de inercia respecto a los ejes locales.
+
+Parámetros DH (clásicos o modificados) para definir la geometría.
+
+Elegir el modelo dinámico
+
+Euler–Lagrange: parte de la energía cinética y potencial para derivar las ecuaciones de movimiento.
+
+Newton–Euler recursivo: más eficiente computacionalmente, calcula fuerzas y pares propagando desde la base al efector y viceversa.
+
+Formulación general La dinámica inversa se expresa como:
+
+𝜏
+(
+𝑡
+)
+=
+𝑀
+(
+𝑞
+)
+ 
+𝑞
+¨
+(
+𝑡
+)
++
+𝐶
+(
+𝑞
+,
+𝑞
+˙
+)
+ 
+𝑞
+˙
+(
+𝑡
+)
++
+𝑔
+(
+𝑞
+)
+𝑀
+(
+𝑞
+)
+: matriz de inercia.
+
+𝐶
+(
+𝑞
+,
+𝑞
+˙
+)
+: términos de Coriolis y centrífugos.
+
+𝑔
+(
+𝑞
+)
+: vector de gravedad.
+
+𝜏
+(
+𝑡
+)
+: pares articulares.
+
+Usar tus trayectorias calculadas
+
+Ya tienes 
+𝑞
+(
+𝑡
+)
+, 
+𝑞
+˙
+(
+𝑡
+)
+, 
+𝑞
+¨
+(
+𝑡
+)
+ de la interpolación quíntica.
+
+Sustituye esos valores en las ecuaciones dinámicas para obtener 
+𝜏
+(
+𝑡
+)
+.
+
+Validar con software
+
+MATLAB/Simulink tiene librerías de dinámica de robots (rigidBodyTree, inverseDynamics).
+
+También puedes implementar las ecuaciones manualmente si el fabricante te da los parámetros.
+\end{comment}

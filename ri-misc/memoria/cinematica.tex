@@ -321,7 +321,7 @@ mediante iteraciones sucesivas, minimizando el error entre la posición y orient
 la alcanzada alcanzada por el robot.\\
 
 El repositorio oficial del fabricante \cite{xarm_ros2} utiliza \textit{MoveIt 2} \cite{moveit2}, que 
-resuelve la cinemática directa mediante Jacobiano pseudo-inverso y métodos iterativos de tipo 
+resuelve la cinemática inversa mediante Jacobiano pseudo-inverso y métodos iterativos de tipo 
 Newton–Raphson.
 
 De la matriz de transformación obtenida en el código \ref{lst:dh_mod},
@@ -755,6 +755,338 @@ manual simbólico resulta muy tedioso, por lo que se ha calculado con ayuda de \
     breakatwhitespace=true
 ]{Matlab/jac.m}
 
+\newpage
 \subsection{Generación de trayectorias}
+
+La generación de trayectorias se implementa mediante
+el planificador de \textit{MoveIt 2} y el paquete \textit{xarm\_planner}, integrados en el repositorio
+oficial \cite{xarm_ros2}. Este planificador permite definir trayectorias en espacio articular 
+y cartesiano, que son posteriormente ejecutadas en tiempo real a través de \textit{ros2\_control}
+\cite{ros2_control}. \\
+
+Los tipos de trayectorias que se pueden generar son \cite{barrientos2007fundamentos}: lineales y circulares en espacio cartesiano, 
+polinómicas en espacio articular y multipunto (\textit{multi-waypoint}). \\
+
+\subsubsection{\textbf{Trayectorias lineales en espacio cartesiano}} 
+    el efector final se desplaza siguiendo una línea recta entre dos poses definidas. 
+    Matemáticamente,
+\[
+    x(t) = x_0 + \frac{t}{T}\,(x_f - x_0), \qquad t \in [0,T],
+    \]
+    con condiciones de contorno
+\[
+    x(0) = x_0, \qquad x(T) = x_f.
+    \]
+    Aunque la interpolación cartesiana es lineal, \textit{MoveIt} aplica una 
+    parametrización temporal que suaviza la velocidad y 
+    aceleración, evitando discontinuidades. En particular, se emplea el algoritmo 
+    \textit{Iterative Parabolic Time Parameterization (IPTP)}, que ajusta los perfiles de 
+    velocidad y aceleración de cada articulación para cumplir los límites dinámicos del robot. \\
+
+\subsubsection{\textbf{Trayectorias circulares en espacio cartesiano}}
+    se definen mediante un arco de circunferencia, especificando centro $c$, radio $r$ y ángulo 
+    barrido $\theta(t)$:
+\[
+    x(t) = c + r \begin{bmatrix}
+        \cos \theta(t) \\ \sin \theta(t) \\ 0
+    \end{bmatrix}, \qquad 
+    \theta(t) = \theta_0 + \frac{t}{T}(\theta_f - \theta_0).
+    \]
+
+    Estas trayectorias se utilizan para movimientos de arco, por ejemplo en operaciones de 
+    pulido o soldadura. En este caso, también pueden aparecer discontinuidades en la velocidad
+    y aceleración, siendo necesario aplicar el algoritmo \textit{IPTP}. \\
+
+
+\subsubsection{Corrección de discontinuidades mediante \textit{IPTP}}
+El procedimiento consiste en recorrer iterativamente la trayectoria 
+    planificada y asignar tiempos de paso a cada segmento de manera que:
+\[
+\dot{q}_i(t) \leq \dot{q}_{i,\text{max}}, 
+\qquad 
+\ddot{q}_i(t) \leq \ddot{q}_{i,\text{max}},
+\]
+para todas las articulaciones \(i\), garantizando que las velocidades y aceleraciones nunca 
+superen los valores máximos permitidos. \\
+
+El algoritmo \textit{IPTP} utiliza perfiles de velocidad parabólicos para cada segmento, de modo que 
+la aceleración se mantiene constante dentro de cada tramo y se ajusta en los puntos de unión 
+para asegurar continuidad. Esto permite que las trayectorias lineales o circulares en espacio 
+cartesiano se conviertan en trayectorias articulares suaves y físicamente realizables. \\
+
+Para ilustrar el problema, supóngase una trayectoria lineal cartesiana definida por dos 
+segmentos consecutivos en el espacio articular de una sola articulación \(q(t)\):
+\[
+q(t) = 
+\begin{cases}
+q_0 + \dfrac{t}{T_1}(q_1 - q_0), & t \in [0, T_1], \\
+q_1 + \dfrac{t-T_1}{T_2}(q_2 - q_1), & t \in [T_1, T_1+T_2].
+\end{cases}
+\]
+
+Las condiciones de contorno son:
+\[
+q(0) = q_0, \quad q(T_1) = q_1, \quad q(T_1+T_2) = q_2.
+\]
+
+La velocidad resultante en cada tramo es constante:
+\[
+\dot{q}(t) = 
+\begin{cases}
+\dfrac{q_1 - q_0}{T_1}, & t \in [0, T_1], \\
+\dfrac{q_2 - q_1}{T_2}, & t \in [T_1, T_1+T_2].
+\end{cases}
+\]
+
+Esto implica una discontinuidad en la velocidad en el punto de unión \(t = T_1\), ya que:
+\[
+\dot{q}(T_1^-) = \dfrac{q_1 - q_0}{T_1}
+\quad \neq \quad
+\dot{q}(T_1^+) = \dfrac{q_2 - q_1}{T_2}.
+\]
+
+Si los valores difieren, se produce un salto brusco en la velocidad, y por tanto una 
+aceleración infinita en ese instante:
+\[
+\ddot{q}(t) = \delta(t-T_1)\,\bigl(\dot{q}(T_1^+) - \dot{q}(T_1^-)\bigr),
+\]
+donde \(\delta(t-T_1)\) representa la función delta de Dirac, que permite modelar esa variación brusca. \\
+
+El algoritmo \textit{Iterative Parabolic Time Parameterization (IPTP)} corrige este problema 
+introduciendo perfiles de velocidad parabólicos en cada segmento. En lugar de mantener 
+velocidad constante, se define un perfil con aceleración constante en la fase inicial y 
+final de cada tramo y velocidad constante en la fase intermedia:
+\[
+\dot{q}(t) = 
+\begin{cases}
+\dot{q}_0 + \ddot{q}\,t, & \text{fase de aceleración}, \\
+\dot{q}_{\text{const}}, & \text{fase de velocidad constante}, \\
+\dot{q}_{\text{const}} - \ddot{q}\,(t-t_f), & \text{fase de deceleración}.
+\end{cases}
+\]
+
+De este modo, la aceleración \(\ddot{q}\) se mantiene finita y constante en cada tramo, 
+y la velocidad se ajusta suavemente en los puntos de unión, garantizando continuidad:
+\[
+\dot{q}(T_1^-) = \dot{q}(T_1^+).
+\] \\
+
+\subsubsection{\textbf{Trayectorias polinómicas en espacio articular}}
+Cuando se especifican directamente configuraciones articulares, \textit{MoveIt} genera 
+trayectorias suaves mediante interpolación polinómica que garantizan continuidad en posición
+y velocidad evitando saltos bruscos. Sin embargo, con el objetivo de asegurar que 
+la trayectoria sea físicamente realizable y que se respeten los límites dinámicos del robot, 
+es necesario realizar una parametrización temporal mediante el algoritmo 
+\textit{Iterative Parabolic Time Parameterization (IPTP)}. \\
+
+Las trayectorias polinómicas más habituales son el polinomio cúbico:
+\[
+    q_i(t) = a_0 + a_1 t + a_2 t^2 + a_3 t^3, \qquad t \in [0,T].
+    \]
+    con condiciones de contorno en posición y velocidad:
+    
+\[
+    q_i(0) = q_{i,0}, \quad \dot{q}_i(0) = \dot{q}_{i,0}, \quad
+    q_i(T) = q_{i,f}, \quad \dot{q}_i(T) = \dot{q}_{i,f}.
+    \]
+
+\[a_0 = q_{i,0}, \quad a_1 = \dot{q}_{i,0},\]
+\[a_2 = \frac{3\,(q_{i,f} - q_{i,0}) - (2\,\dot{q}_{i,0} + \dot{q}_{i,f})\,T}{T^2},
+\quad
+a_3 = \frac{2\,(q_{i,0} - q_{i,f}) + (\dot{q}_{i,0} + \dot{q}_{i,f})\,T}{T^3}.\] \\
+
+Y el polinomio quíntico:
+\[
+q_i(t) = a_0 + a_1 t + a_2 t^2 + a_3 t^3 + a_4 t^4 + a_5 t^5, \qquad t \in [0,T].
+\]
+
+\[
+q_i(0) = q_{i,0}, \quad \dot{q}_i(0) = \dot{q}_{i,0}, \quad \ddot{q}_i(0) = \ddot{q}_{i,0},
+\]
+\[
+q_i(T) = q_{i,f}, \quad \dot{q}_i(T) = \dot{q}_{i,f}, \quad \ddot{q}_i(T) = \ddot{q}_{i,f}.
+\]
+
+\[
+\begin{aligned}
+a_0 &= q_{i,0}, \\ a_1 &= \dot{q}_{i,0}, \\
+a_2 &= \tfrac{1}{2}\,\ddot{q}_{i,0}, \\
+a_3 &= \frac{20(q_{i,f} - q_{i,0}) - (8\dot{q}_{i,f} + 12\dot{q}_{i,0})T - (3\ddot{q}_{i,0} - \ddot{q}_{i,f})T^2}{2T^3}, \\
+a_4 &= \frac{30(q_{i,0} - q_{i,f}) + (14\dot{q}_{i,f} + 16\dot{q}_{i,0})T + (3\ddot{q}_{i,0} - 2\ddot{q}_{i,f})T^2}{2T^4}, \\
+a_5 &= \frac{12(q_{i,f} - q_{i,0}) - (6\dot{q}_{i,f} + 6\dot{q}_{i,0})T - (\ddot{q}_{i,0} - \ddot{q}_{i,f})T^2}{2T^5}.
+\end{aligned}
+\] \\
+
+\subsubsection{\textbf{Trayectorias \textit{spline} (\textit{multi-waypoint})}}
+Cuando se definen múltiples puntos intermedios en espacio cartesiano, \textit{MoveIt} 
+interpola mediante \textit{splines} cúbicos, asegurando continuidad en posición y velocidad a lo 
+largo de toda la trayectoria. Sin embargo, esta interpolación geométrica 
+no garantiza por sí sola que se respeten los límites dinámicos del robot. Por ello, el 
+algoritmo de parametrización temporal \textit{Iterative Spline Parameterization (ISP)} 
+ajusta los tiempos de paso de cada segmento para evitar oscilaciones y asegurar un 
+movimiento fluido y físicamente realizable. \\
+
+Un \textit{spline} cúbico se define en cada intervalo $[t_k, t_{k+1}]$ como:
+\[
+q_i(t) = b_0 + b_1 (t-t_k) + b_2 (t-t_k)^2 + b_3 (t-t_k)^3,
+\]
+donde los coeficientes $b_j$ se calculan imponiendo continuidad en posición, velocidad y 
+aceleración en los puntos de unión:
+\[
+q_i(t_k^-) = q_i(t_k^+), \quad 
+\dot{q}_i(t_k^-) = \dot{q}_i(t_k^+), \quad 
+\ddot{q}_i(t_k^-) = \ddot{q}_i(t_k^+).
+\]
+
+\[
+q_i(t_k) = q_{i,k}, \quad \dot{q}_i(t_k) = v_{i,k}, \quad
+q_i(t_{k+1}) = q_{i,k+1}, \quad \dot{q}_i(t_{k+1}) = v_{i,k+1}.
+\]
+
+\[
+\begin{aligned}
+b_0 &= q_{i,k}, \\
+b_1 &= v_{i,k}, \\
+b_2 &= \frac{3(q_{i,k+1} - q_{i,k})}{h^2} - \frac{2v_{i,k} + v_{i,k+1}}{h}, \\
+b_3 &= \frac{2(q_{i,k} - q_{i,k+1})}{h^3} + \frac{v_{i,k} + v_{i,k+1}}{h^2},
+\end{aligned}
+\]
+donde $h = t_{k+1} - t_k$ es la duración del intervalo. De este modo, la trayectoria completa es continua en posición, velocidad y aceleración, 
+evitando saltos bruscos y oscilaciones no deseadas. El algoritmo \textit{ISP} recorre iterativamente 
+todos los segmentos y ajusta los tiempos de paso para cumplir los límites dinámicos del robot:
+\[
+\dot{q}_i(t) \leq \dot{q}_{i,\text{max}}, 
+\qquad 
+\ddot{q}_i(t) \leq \ddot{q}_{i,\text{max}}.
+\]
+
+Cabe destacar que los coeficientes $b_j$ en cada intervalo se obtienen a partir de las 
+condiciones de posición y velocidad en los extremos, mientras que la continuidad en 
+aceleración se garantiza al resolver el sistema \textit{spline} completo para todos los
+\textit{waypoints} o puntos de paso.\\
+
+\subsection{Cálculo de la trayectoria en \textit{Matlab} con la \textit{toolbox} de Peter Corke}
+Se ha programado una trayectoria articular quíntica para el robot en estudio, garantizando 
+que las posiciones obtenidas en durante la trayectoria son realizables. Es importante 
+tener en cuenta que previo al cálculo de esta trayectoria es necesario obtener las posiciones 
+articulares finales deseadas mediante cinemática inversa. \\
+
+Las imágenes \ref{fig:traj} y \ref{fig:traj2} muestran la trayectoria calculada mediante el código 
+\ref{lst:traj} para las posiciones indicadas en el código \ref{lst:traj_salida}. \\
+
+\lstinputlisting[
+    caption={Generación de trayectoria articular realizable.},
+    label={lst:traj},
+    breaklines=true,
+    breakatwhitespace=true
+]{Matlab/traj.m}
+\lstinputlisting[
+    caption={Salida de la generación de trayectoria articular realizable.},
+    label={lst:traj_salida},
+    breaklines=true,
+    breakatwhitespace=true
+]{Matlab/traj_salida.m}
+
+\clearpage
+\vfill
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=0.9]{Images/cinematica/traj.png}
+    \caption{Trayectoria articular realizable.}
+    \label{fig:traj}
+\end{figure}
+\vfill
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=0.9]{Images/cinematica/traj2.png}
+    \caption{Trayectoria realizable del efector.}
+    \label{fig:traj2}
+\end{figure}
+\vfill
+
+\clearpage
 \subsection{Control cinemático}
-aunque la parte de control ya estaría hecha con la cinemática inversa...
+Para llevar a cabo el control cinemático del brazo robótico es necesario combinar todo el estudio
+cinemático presentado, tal que los pasos a seguir son:
+
+\begin{enumerate}
+    \item Calcular la cinemática directa.
+    \item Calcular la cinemática diferencial.
+    \item Calcular la cinemática inversa.
+    \item Generar las trayectorias de movimiento.
+\end{enumerate}
+
+En este sentido, se ha programado en \textit{Matlab}, junto con la \textit{toolbox} de Peter Corke, 
+el control cinemático completo del robot \textit{UFactory xArm6}. Al inicio, el programa solicita 
+la posición articular de origen, dado que el robot conoce con exactitud las posiciones de sus 
+articulaciones; la posición cartesiana a alcanzar, ya que es de interés del usuario mover el 
+robot a una posición cartesiana, y la duración en segundos de la trayectoria. La aplicación comprueba 
+que la posición final es alcanzable según el rango de trabajo del robot de $700$ mm, calcula las posiciones,
+velocidades y aceleraciones articulares necesarias para alcanzar la posición cartesiana final mediante 
+cinemática inversa y genera la trayectoria correspondiente. \\
+
+Las imágenes \ref{fig:cin_control}, \ref{fig:cin_control2}, \ref{fig:cin_control_v_art}, 
+\ref{fig:cin_control_v_cart}, \ref{fig:cin_control_a_art} y \ref{fig:cin_control_vcart}
+muestran la trayectoria articular y del efector y las velocidades y aceleraciones 
+articulares y cartesianas, y los códigos \ref{lst:cin_control} y \ref{lst:cin_control2} la implementación y la salida por terminal. \\
+
+\vspace{1.3cm}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=0.9]{Images/cinematica/cin_control.png}
+    \caption{Trayectoria articular realizable.}
+    \label{fig:cin_control}
+\end{figure}
+\clearpage
+\vfill
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=0.9]{Images/cinematica/cin_control2.png}
+    \caption{Trayectoria realizable del efector.}
+    \label{fig:cin_control2}
+\end{figure}
+\vfill
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=0.9]{Images/cinematica/cin_control_v_cart.png}
+    \caption{Velocidad cartesiana del efector.}
+    \label{fig:cin_control_v_art}
+\end{figure}
+\vfill
+\clearpage
+\vfill
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=0.9]{Images/cinematica/cin_control_v_art.png}
+    \caption{Velocidades articulares.}
+    \label{fig:cin_control_v_cart}
+\end{figure}
+\vfill
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=0.9]{Images/cinematica/cin_control_a_cart.png}
+    \caption{Aceleración cartesiana del efector.}
+    \label{fig:cin_control_a_art}
+\end{figure}
+\vfill
+\clearpage
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=0.9]{Images/cinematica/cin_control_a_art.png}
+    \caption{Aceleraciones articulares.}
+    \label{fig:cin_control_vcart}
+\end{figure}
+
+\lstinputlisting[
+    caption={Control cinemático completo.},
+    label={lst:cin_control},
+    breaklines=true,
+    breakatwhitespace=true
+]{Matlab/cin_control.m}
+\lstinputlisting[
+    caption={Salida del control cinemático completo.},
+    label={lst:cin_control2},
+    breaklines=true,
+    breakatwhitespace=true
+]{Matlab/cin_control_salida.m}
+

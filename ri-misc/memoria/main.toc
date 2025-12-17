@@ -20,6 +20,13 @@
 \contentsline {paragraph}{Iteración 3}{26}{section*.11}%
 \contentsline {subsubsection}{\numberline {3.2.2}Cálculo de cinemática inversa para \textit {UFactory xArm6}}{26}{subsubsection.3.2.2}%
 \contentsline {subsection}{\numberline {3.3}Cinemática diferencial y Jacobiano}{30}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}Generación de trayectorias}{32}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Control cinemático}{32}{subsection.3.5}%
-\contentsline {section}{Referencias adicionales al material del Campus Virtual}{34}{section*.12}%
+\contentsline {subsection}{\numberline {3.4}Generación de trayectorias}{33}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}\textbf {Trayectorias lineales en espacio cartesiano}}{33}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}\textbf {Trayectorias circulares en espacio cartesiano}}{33}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Corrección de discontinuidades mediante \textit {IPTP}}{33}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}\textbf {Trayectorias polinómicas en espacio articular}}{34}{subsubsection.3.4.4}%
+\contentsline {subsubsection}{\numberline {3.4.5}\textbf {Trayectorias \textit {spline} (\textit {multi-waypoint})}}{35}{subsubsection.3.4.5}%
+\contentsline {subsection}{\numberline {3.5}Cálculo de la trayectoria en \textit {Matlab} con la \textit {toolbox} de Peter Corke}{36}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Control cinemático}{40}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Estudio dinámico}{48}{section.4}%
+\contentsline {section}{Referencias adicionales al material del Campus Virtual}{50}{section*.12}%
