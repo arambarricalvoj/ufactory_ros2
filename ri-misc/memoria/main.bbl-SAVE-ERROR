@@ -720,6 +720,26 @@
       \field{pages}{93\bibrangedash 101}
       \range{pages}{9}
     \endentry
+    \entry{ros2_control}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=910d91ed5a5fd0ce3cc5d4d81d35f210}{%
+           family={ros-controls},
+           familyi={r\bibinithyphendelim c\bibinitperiod}}}%
+      }
+      \strng{namehash}{910d91ed5a5fd0ce3cc5d4d81d35f210}
+      \strng{fullhash}{910d91ed5a5fd0ce3cc5d4d81d35f210}
+      \strng{bibnamehash}{910d91ed5a5fd0ce3cc5d4d81d35f210}
+      \strng{authorbibnamehash}{910d91ed5a5fd0ce3cc5d4d81d35f210}
+      \strng{authornamehash}{910d91ed5a5fd0ce3cc5d4d81d35f210}
+      \strng{authorfullhash}{910d91ed5a5fd0ce3cc5d4d81d35f210}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://github.com/ros-controls/ros2_control}}
+      \field{note}{Accessed: December 17, 2025}
+      \field{title}{ros2\_control: A framework for robot control in ROS 2}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

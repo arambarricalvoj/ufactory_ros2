@@ -1,120 +1,561 @@
 \datos{color}{}{}
 
 \section{Estudio dinámico}
-El fabricante proporciona los parámetros clásicos y modificados de Denavit-Hartenberg en el manual del usuario. En las 
-siguientes secciones se van a estudiar dichos parámetros.
+El fabricante proporciona las características físicas de cada eslabón, 
+en particular la masa y la posición de su centro de masa (\textit{CoM}), figura \ref{fig:dinamica_param},
+respecto de los sistemas de referencia de la figura \ref{fig:dinamica_sist} con la tabla de parámetros 
+\ref{tab:dh_modificada_din}. También proporcionan en los modelos de simulación los momentos de inercia \cite{Spong2006} 
+de cada eslabón, expuestos en el código \ref{lst:inercia}. El modelo del robot con el que se trabaja 
+corresponde al modelo 1 del robot, que se alimenta a través de la \textit{AC Control Box}.
 
-\begin{comment}
-    Recopilar parámetros dinámicos del fabricante
+\begin{figure}[htb]
+    \centering
+    \begin{minipage}[t]{0.3\textwidth}
+        \centering
+        \includegraphics[scale=0.375]{Images/dinamica/sistemas.png}
+        \caption{Sistemas de referencia para el estudio dinámico. Fuente: \cite{ufactory_xarm_manual}.}
+        \label{fig:dinamica_sist}
+    \end{minipage}
+    \begin{minipage}[t]{0.65\textwidth}
+        \centering
+        \includegraphics[scale=0.315]{Images/dinamica/tabla.png}
+        \caption{Parámetros de la dinámica del robot. Fuente: \cite{ufactory_xarm_manual}.}
+        \label{fig:dinamica_param}
+    \end{minipage}
+\end{figure}
 
-Masas de cada eslabón.
+\vspace{-0.3cm}
+\begin{table}[htb]
+\centering
+\begin{tabular}{c c c c c}
+\hline
+\textbf{$i$} & \textbf{$\theta_i$} ($^\circ$) & \textbf{$d_i$} (mm) & \textbf{$a_{i-1}$} (mm) & \textbf{$\alpha_{i-1} (^\circ)$} \\
+\hline
+1 & $\theta_1$         & $267$         & $0$         & $0$         \\
+2 & $\theta_2$         & $0$         & $0$         & $-90$         \\
+3 & $\theta_3 + (\textit{T2\_offset} = -79.34995)$         & $d_3$         & $a_2 = 289.48866$         & $0$         \\
+4 & $\theta_4 + (\textit{T2\_offset} = 79.34995)$         & $342.5$         & $77.5$         & $-90$         \\
+5 & $0$         & $0$         & $0$         & $90$         \\
+6 & $0$         & $97$         & $76$         & $-90$         \\
+\hline
+\end{tabular}
+\caption{Parámetros DH modificados del \textit{UFactory xArm6} para el estudio dinámico.}
+\label{tab:dh_modificada_din}
+\end{table}
 
-Posición del centro de masas de cada eslabón.
+\lstinputlisting[
+    caption={Momentos de inercia del los eslabones del robot en estudio.},
+    label={lst:inercia},
+    breaklines=true,
+    breakatwhitespace=true
+]{Matlab/inercias.txt}
 
-Tensores de inercia respecto a los ejes locales.
 
-Parámetros DH (clásicos o modificados) para definir la geometría.
+\newpage
+\subsection{Ecuaciones de movimiento}
 
-Elegir el modelo dinámico
+Las ecuaciones de movimiento de un robot manipulador son las expresiones matemáticas que describes cómo las
+fuerzas y pares aplicados en las articulaciones producen el movimiento del sistema, teniendo en cuenta 
+su masa, inercias, geometría y la acción de la gravedad. Se tendrá una ecuación de movimiento 
+por cada eslabón y finalmente se obtiene el vector de pares articulares $\tau = [\tau_1, \tau_2, ..., 
+\tau_6]\; N\cdot m$. La expresión general de la ecuación de movimiento es la siguiente:
+\begin{equation} 
+M(q)\,\ddot{q} + C(q,\dot{q})\,\dot{q} + g(q) = \tau 
+\label{eq:movimiento_estandar} 
+\end{equation}
 
-Euler–Lagrange: parte de la energía cinética y potencial para derivar las ecuaciones de movimiento.
+donde:
+\begin{itemize}
+    \item \(M(q)\) es la matriz de inercia (simétrica definida positiva).
+    \item \(C(q,\dot{q})\,\dot{q}\) agrupa términos centrífugos y de Coriolis.
+    \item \(g(q)\) es el vector de gravedad.
+    %\item \(F_v\,\dot{q}\) y \(F_c\,\mathrm{sgn}(\dot{q})\) modelan la fricción viscosa y de Coulomb, respectivamente.
+    \item \(\tau\) son los pares actuados en las articulaciones.
+    %\item \(J(q)\) es el jacobiano geométrico del efector final y \(f_{\text{ext}}\) fuerzas/momentos externos aplicados.
+\end{itemize}
 
-Newton–Euler recursivo: más eficiente computacionalmente, calcula fuerzas y pares propagando desde la base al efector y viceversa.
+En \cite{siciliano2009robotics} se extiende la ecuación de movimiento para añadir las fricciones viscosa
+\(F_v\,\dot{q}\) y de Coulomb \(F_c\,\mathrm{sgn}(\dot{q})\) y las fuerzas externas, donde 
+\(J(q)\) es el jacobiano geométrico del efector final y \(f_{\text{ext}}\) las fuerzas externas aplicadas.
+Esta versión extendida se presenta a continuación: 
+\[
+M(q)\,\ddot{q} + C(q,\dot{q})\,\dot{q} + g(q) + F_v\,\dot{q} + F_c\,\mathrm{sgn}(\dot{q}) = \tau + J^\top(q)\,f_{\text{ext}}
+\]
 
-Formulación general La dinámica inversa se expresa como:
+Como el fabricante no proporciona los datos de friccioón y se va a trabajar en simulación, 
+únicamente se estudia la expresión general. \\
 
-𝜏
-(
-𝑡
-)
+Las ecuaciones de movimiento pueden calcularse mediante el balance de energías Lagrangiano
+\cite{siciliano2009robotics} o por el método recursivo de Newton–Euler \cite{barrientos2007fundamentos}, siendo este último
+el más habitual por ser computacionalmente más eficiente.
+
+\subsubsection{Enfoque energético (Lagrangiano)}
+
+En términos energéticos, los componentes pueden obtenerse a partir del lagrangiano \(\mathcal{L}=T-V\), 
+donde \(T\) es la energía cinética total del manipulador y \(V\) la energía potencial gravitatoria.
+
+La energía cinética se calcula como:
+
+
+\[
+T = \frac{1}{2}\sum_{i=1}^{n}\left( m_i\,\dot{p}_{c_i}^\top \dot{p}_{c_i} 
++ \omega_i^\top I_{c_i}\,\omega_i \right),
+\]
+
+
+donde \(m_i\) es la masa del eslabón \(i\), \(\dot{p}_{c_i}\) la velocidad del centro de masa del eslabón \(i\), 
+\(\omega_i\) la velocidad angular del eslabón \(i\) e \(I_{c_i}\) su tensor de inercia respecto al centro de masa.\\
+
+La energía potencial gravitatoria se expresa como:
+\[
+V = \sum_{i=1}^{n} m_i\,g^\top p_{c_i},
+\]
+donde \(g\) es el vector de aceleración de la gravedad y \(p_{c_i}\) la posición del centro de masa del eslabón \(i\). \\
+
+A partir de estas expresiones, se obtienen los componentes de la ecuación de movimiento (ec. \ref{eq:movimiento_estandar}):
+\[
+M_{ij}(q) = \frac{\partial^2 T}{\partial \dot{q}_i \,\partial \dot{q}_j}, 
+\qquad
+g_i(q) = \frac{\partial V}{\partial q_i},
+\]
+y los elementos de \(C(q,\dot{q})\) mediante los símbolos de Christoffel:
+
+\[
+c_{ijk} = \frac{1}{2}\left(\frac{\partial M_{ij}}{\partial q_k} + \frac{\partial M_{ik}}{\partial q_j} - \frac{\partial M_{jk}}{\partial q_i}\right),
+\qquad
+[C(q,\dot{q})]_{ij} = \sum_{k=1}^{n} c_{ijk}\,\dot{q}_k.
+\] \\
+
+
+\subsubsection{Método recursivo de Newton--Euler}
+Mientras que el enfoque Lagrangiano produce explícitamente \(M(q), C(q,\dot{q}), g(q)\),
+Newton--Euler es más eficiente computacionalmente para evaluar \(\tau\) dado \(\{q,\dot{q},\ddot{q}\}\)
+y es el más usado en simulación y control en tiempo real. \\
+
+El método recursivo de Newton--Euler calcula directamente los pares articulares \(\tau_i\)
+a partir de \(\{q,\dot{q},\ddot{q}\}\) (variables articulares) y los parámetros dinámicos \(\{m_i, r_{c_i}, I_{c_i}\}\)
+(masas, centros de masa e inercias), mediante un barrido hacia adelante (cinemática y aceleraciones) 
+y otro hacia atrás (acumulación de fuerzas y momentos).
+
+\paragraph{Barrido hacia adelante}
+Condiciones en la base:
+\[
+\omega_0 = 0,\quad \alpha_0 = 0,\quad a_0 = -g.
+\]
+
+Para \(i=1,\dots,n\), con \(R_i\) y \(p_i\) de las transformaciones homogéneas y \(z_i\) el eje articular:
+\[
+\omega_i = R_i^\top \omega_{i-1} + \dot{q}_i z_i,
+\]
+
+\[
+\alpha_i = R_i^\top \alpha_{i-1} + \ddot{q}_i z_i + \dot{q}_i z_i \times (R_i^\top \omega_{i-1}),
+\]
+
+\[
+a_i = R_i^\top \left( a_{i-1} + \alpha_{i-1} \times p_i + \omega_{i-1} \times (\omega_{i-1} \times p_i) \right),
+\]
+
+\[
+a_{c_i} = a_i + \alpha_i \times r_{c_i} + \omega_i \times (\omega_i \times r_{c_i}).
+\]
+
+\paragraph{Fuerzas y momentos en el centro de masa}
+\[
+F_i = m_i a_{c_i}, \qquad
+N_i = I_{c_i} \alpha_i + \omega_i \times (I_{c_i} \omega_i).
+\]
+
+
+\paragraph{Barrido hacia atrás}
+Acumulación desde el efector hasta la base. Para \(i=n,\dots,1\):
+\[
+f_i = F_i + \sum_{k=i+1}^{n} R_k f_k,
+\]
+
+\[
+n_i = N_i + r_{c_i} \times F_i + \sum_{k=i+1}^{n} \left( R_k n_k + r_{ik} \times (R_k f_k) \right),
+\]
+
+donde \(r_{ik}\) es el vector del origen \(i\) al origen \(k\).
+
+\paragraph{Proyección sobre el eje articular}
+Para articulación rotacional:
+\[
+\tau_i = n_i^\top z_i,
+\]
+
+y opcionalmente se añaden fricciones \cite{siciliano2009robotics}:
+\[
+\tau_i \leftarrow \tau_i + f_{v,i} \dot{q}_i + f_{c,i} \mathrm{sgn}(\dot{q}_i).
+\] \\
+
+\subsubsection{Ejemplo de una iteración para el eslabón 3 del \textit{UFactory xArm6}}
+
+A modo ilustrativo, se muestra una iteración completa del método recursivo de Newton--Euler
+para el eslabón $i=3$ del robot en estudio, utilizando la tabla \ref{tab:dh_modificada_din} y 
+las matrices \(A_i\) calculadas en el apartado \ref{sec:dh-mod}.
+
+\paragraph{Transformaciones homogéneas y descomposición en rotación y traslación}
+\[
+d_1 = 267,\qquad a_2 = 289.48866,\qquad a_3 = 77.5,\qquad d_4 = 342.5,\qquad a_5 = 76,\qquad d_6 = 97.
+\]
+
+Para el cálculo en el barrido hacia adelante del eslabón \(3\), necesitamos
+\({}^{0}\!A_1\), \({}^{1}\!A_2\) y \({}^{2}\!A_3\). Denotando \(C_i=\cos(\cdot)\) y \(S_i=\sin(\cdot)\):
+
+\[
+A_1(q_1) =
+\begin{bmatrix}
+\cos q_1 & -\sin q_1 & 0 & 0 \\
+\sin q_1 & \cos q_1 & 0 & 0 \\
+0 & 0 & 1 & d_1 \\
+0 & 0 & 0 & 1
+\end{bmatrix}
+\Rightarrow
+{}^{0}\!R_1=
+\begin{bmatrix}
+\cos q_1 & -\sin q_1 & 0 \\
+\sin q_1 & \cos q_1 & 0 \\
+0 & 0 & 1
+\end{bmatrix},\quad
+{}^{0}\!p_1=\begin{bmatrix}0\\0\\d_1\end{bmatrix}.
+\]
+
+\[
+A_2(\theta_2 = q_2+T2_{\text{offset}}) =
+\begin{bmatrix}
+\cos \theta_2 & -\sin \theta_2 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+-\,\sin \theta_2 & -\,\cos \theta_2 & 0 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix},
+\Rightarrow
+{}^{1}\!R_2=
+\begin{bmatrix}
+\cos \theta_2 & -\sin \theta_2 & 0 \\
+0 & 0 & 1 \\
+-\,\sin \theta_2 & -\,\cos \theta_2 & 0
+\end{bmatrix},\quad
+{}^{1}\!p_2=\begin{bmatrix}0\\0\\0\end{bmatrix}.
+\]
+
+\[
+A_3(\theta_3 = q_3+T3_{\text{offset}}) =
+\begin{bmatrix}
+\cos \theta_3 & -\sin \theta_3 & 0 & a_2 \\
+\sin \theta_3 & \cos \theta_3 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix},
+\Rightarrow
+{}^{2}\!R_3=
+\begin{bmatrix}
+\cos \theta_3 & -\sin \theta_3 & 0 \\
+\sin \theta_3 & \cos \theta_3 & 0 \\
+0 & 0 & 1
+\end{bmatrix},\quad
+{}^{2}\!p_3=\begin{bmatrix}a_2\\0\\0\end{bmatrix}.
+\]
+
+
+
+La pose del marco \(3\) respecto a la base se obtiene con:
+
+
+\[
+{}^{0}\!T_3 = {}^{0}\!A_1\,{}^{1}\!A_2\,{}^{2}\!A_3,\qquad
+{}^{0}\!R_3 = {}^{0}\!R_1\,{}^{1}\!R_2\,{}^{2}\!R_3,\qquad
+{}^{0}\!p_3 = {}^{0}\!p_1 + {}^{0}\!R_1\,{}^{1}\!p_2 + {}^{0}\!R_1\,{}^{1}\!R_2\,{}^{2}\!p_3.
+\]
+
+\[
+{}^{0}\!R_3 = {}^{0}\!R_1\,{}^{1}\!R_2\,{}^{2}\!R_3
 =
-𝑀
-(
-𝑞
-)
- 
-𝑞
-¨
-(
-𝑡
-)
+\begin{bmatrix}
+\cos q_1 & -\sin q_1 & 0 \\
+\sin q_1 & \cos q_1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\!
+\begin{bmatrix}
+\cos \theta_2 & -\sin \theta_2 & 0 \\
+0 & 0 & 1 \\
+-\,\sin \theta_2 & -\,\cos \theta_2 & 0
+\end{bmatrix}
+\!
+\begin{bmatrix}
+\cos \theta_3 & -\sin \theta_3 & 0 \\
+\sin \theta_3 & \cos \theta_3 & 0 \\
+0 & 0 & 1
+\end{bmatrix}.
+\]
+
+\[
+{}^{0}\!R_3 = {}^{0}\!R_2\,{}^{2}\!R_3
+=
+\begin{bmatrix}
+\cos q_1 \cos \theta_2 & -\cos q_1 \sin \theta_2 & -\sin q_1 \\
+\sin q_1 \cos \theta_2 & -\sin q_1 \sin \theta_2 & \cos q_1 \\
+-\,\sin \theta_2 & -\,\cos \theta_2 & 0
+\end{bmatrix}
+\!
+\begin{bmatrix}
+\cos \theta_3 & -\sin \theta_3 & 0 \\
+\sin \theta_3 & \cos \theta_3 & 0 \\
+0 & 0 & 1
+\end{bmatrix}.
+\]
+
+\[
+{}^{0}\!R_3 =
+\begin{bmatrix}
+\cos q_1(\cos \theta_2 \cos \theta_3 - \sin \theta_2 \sin \theta_3)
+&
+\cos q_1(-\cos \theta_2 \sin \theta_3 - \sin \theta_2 \cos \theta_3)
+&
+-\sin q_1
+\\
+\sin q_1(\cos \theta_2 \cos \theta_3 - \sin \theta_2 \sin \theta_3)
+&
+\sin q_1(-\cos \theta_2 \sin \theta_3 - \sin \theta_2 \cos \theta_3)
+&
+\cos q_1
+\\
+-(\sin \theta_2 \cos \theta_3 + \cos \theta_2 \sin \theta_3)
+&
+\sin \theta_2 \sin \theta_3 - \cos \theta_2 \cos \theta_3
+&
+0
+\end{bmatrix}.
+\]
+
+
+
+
+
+\[
+{}^{0}\!p_3 = {}^{0}\!p_1 + {}^{0}\!R_1\,{}^{1}\!p_2 + {}^{0}\!R_1\,{}^{1}\!R_2\,{}^{2}\!p_3
+= 
+\begin{bmatrix}0\\0\\267\end{bmatrix}
 +
-𝐶
-(
-𝑞
-,
-𝑞
-˙
-)
- 
-𝑞
-˙
-(
-𝑡
-)
+\underbrace{{}^{0}\!R_1\,\begin{bmatrix}0\\0\\0\end{bmatrix}}_{=\,\mathbf{0}}
 +
-𝑔
-(
-𝑞
-)
-𝑀
-(
-𝑞
-)
-: matriz de inercia.
+\left({}^{0}\!R_1\,{}^{1}\!R_2\right)\begin{bmatrix}289.48866\\0\\0\end{bmatrix}.
+\]
 
-𝐶
-(
-𝑞
-,
-𝑞
-˙
-)
-: términos de Coriolis y centrífugos.
 
-𝑔
-(
-𝑞
-)
-: vector de gravedad.
 
-𝜏
-(
-𝑡
-)
-: pares articulares.
+Como \({}^{0}\!R_1\,{}^{1}\!R_2\) tiene primera columna
+\(\big[\cos q_1 \cos \theta_2,\; \sin q_1 \cos \theta_2,\; -\sin \theta_2\big]^\top\),
+se obtiene:
 
-Usar tus trayectorias calculadas
 
-Ya tienes 
-𝑞
-(
-𝑡
-)
-, 
-𝑞
-˙
-(
-𝑡
-)
-, 
-𝑞
-¨
-(
-𝑡
-)
- de la interpolación quíntica.
+\[
+{}^{0}\!p_3 =
+\begin{bmatrix}
+289.48866\,\cos q_1 \cos \theta_2 \\
+289.48866\,\sin q_1 \cos \theta_2 \\
+267 - 289.48866\,\sin \theta_2
+\end{bmatrix}.
+\]
 
-Sustituye esos valores en las ecuaciones dinámicas para obtener 
-𝜏
-(
-𝑡
-)
-.
 
-Validar con software
 
-MATLAB/Simulink tiene librerías de dinámica de robots (rigidBodyTree, inverseDynamics).
 
-También puedes implementar las ecuaciones manualmente si el fabricante te da los parámetros.
-\end{comment}
+
+\[
+{}^{0}\!T_3 =
+\begin{bmatrix}
+{}^{0}\!R_3 & {}^{0}\!p_3 \\
+\mathbf{0}_{1\times 3} & 1
+\end{bmatrix}.
+\]
+
+
+
+
+
+\paragraph{Barrido hacia adelante}
+
+Tomamos el eje articular local $z_3 = [0, 0, 1]^{T}$ y convertimos las longitudes a unidades 
+del Sistema Internacional: $d_1 = 0.267 \;\text{m},\; a_2 = 0.28948866 \;\text{m}$.
+
+
+\subparagraph{Velocidad angular}
+\[
+\omega_3 = R_3^\top\,\omega_2 + \dot{q}_3\,z_3
+=
+\begin{bmatrix}
+\cos\theta_3 & \sin\theta_3 & 0 \\
+-\sin\theta_3 & \cos\theta_3 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}\omega_{2x}\\\omega_{2y}\\\omega_{2z}\end{bmatrix}
++
+\dot{q}_3\begin{bmatrix}0\\0\\1\end{bmatrix}.
+\]
+
+\[
+\Rightarrow
+\begin{cases}
+\omega_{3x} = \cos\theta_3\,\omega_{2x} + \sin\theta_3\,\omega_{2y},\\
+\omega_{3y} = -\sin\theta_3\,\omega_{2x} + \cos\theta_3\,\omega_{2y},\\
+\omega_{3z} = \omega_{2z} + \dot{q}_3.
+\end{cases}
+\]
+
+
+\subparagraph{Aceleración angular}
+\[
+\alpha_3 = R_3^\top\,\alpha_2 + \ddot{q}_3\,z_3 + \dot{q}_3\,(z_3 \times (R_3^\top\,\omega_2)),
+\]
+
+con
+
+\[
+R_3^\top\,\omega_2 =
+\begin{bmatrix}
+\cos\theta_3\,\omega_{2x} + \sin\theta_3\,\omega_{2y}\\
+-\sin\theta_3\,\omega_{2x} + \cos\theta_3\,\omega_{2y}\\
+\omega_{2z}
+\end{bmatrix}.
+\]
+
+\[
+\Rightarrow
+\begin{cases}
+\alpha_{3x} = \cos\theta_3\,\alpha_{2x} + \sin\theta_3\,\alpha_{2y} - \dot{q}_3(-\sin\theta_3\,\omega_{2x} + \cos\theta_3\,\omega_{2y}),\\
+\alpha_{3y} = -\sin\theta_3\,\alpha_{2x} + \cos\theta_3\,\alpha_{2y} + \dot{q}_3(\cos\theta_3\,\omega_{2x} + \sin\theta_3\,\omega_{2y}),\\
+\alpha_{3z} = \alpha_{2z} + \ddot{q}_3.
+\end{cases}
+\]
+
+\subparagraph{Aceleración lineal del origen del marco 3}
+Con $p_3 = [0.28948866, 0, 0]\; \text{m}$ se obtiene
+
+\[
+a_3 = R_3^\top\left( a_2 + \alpha_2 \times p_3 + \omega_2 \times (\omega_2 \times p_3) \right).
+\]
+
+
+Expandiendo:
+\[
+\alpha_2 \times p_3 =
+\begin{bmatrix}
+0\\ \alpha_{2z}\,0.28948866\\ -\alpha_{2y}\,0.28948866
+\end{bmatrix},\qquad
+\omega_2 \times (\omega_2 \times p_3) =
+\begin{bmatrix}
+-0.28948866(\omega_{2y}^2+\omega_{2z}^2)\\
+0.28948866\,\omega_{2x}\omega_{2y}\\
+0.28948866\,\omega_{2x}\omega_{2z}
+\end{bmatrix}.
+\]
+
+\[
+\Rightarrow
+a_3 = R_3^\top
+\begin{bmatrix}
+a_{2x} - 0.28948866(\omega_{2y}^2+\omega_{2z}^2)\\
+a_{2y} + 0.28948866\,\alpha_{2z} + 0.28948866\,\omega_{2x}\omega_{2y}\\
+a_{2z} - 0.28948866\,\alpha_{2y} + 0.28948866\,\omega_{2x}\omega_{2z}
+\end{bmatrix}.
+\]
+
+
+
+\subparagraph{Aceleración del centro de masa}
+Finalmente, con \(r_{c_3}=[r_x,r_y,r_z]^\top\) (coordenadas del centro de masa del eslabón 3,
+figura \ref{fig:dinamica_param}):
+\[
+a_{c_3} = a_3 + \alpha_3 \times r_{c_3} + \omega_3 \times (\omega_3 \times r_{c_3}).
+\]
+
+
+
+
+
+
+\paragraph{Fuerzas y momentos en el centro de masa}
+Con la masa \(m_3\) y el tensor de inercia en el \textit{CoM} \(I_{c_3}\):
+
+
+\[
+F_3 = m_3\,a_{c_3},
+\qquad
+N_3 = I_{c_3}\,\alpha_3 + \omega_3 \times (I_{c_3}\,\omega_3).
+\]
+
+
+\paragraph{Barrido hacia atrás}
+Contribuciones de los eslabones posteriores (\(k=4,5,6\)) ya acumuladas y expresadas en el marco \(3\) mediante:
+\[
+f_3 = F_3 + \sum_{k=4}^{6} R_k\,f_k,
+\]
+
+\[
+n_3 = N_3 + r_{c_3} \times F_3 + \sum_{k=4}^{6} \left( R_k\,n_k + r_{3k} \times (R_k\,f_k) \right),
+\]
+donde:
+
+\begin{itemize}
+  \item \(R_k\): matriz de rotación que transforma vectores desde el marco del eslabón \(k\) al marco del eslabón 3. 
+  Matemáticamente, \(R_k = {}^{3}\!R_k = ({}^{0}\!R_3)^\top \, {}^{0}\!R_k\).
+  \item \(r_{3k}\): vector de posición desde el origen del marco 3 hasta el origen del marco \(k\), expresado en el marco 3. 
+  Se obtiene como \(r_{3k} = ({}^{0}\!R_3)^\top \left( {}^{0}\!p_k - {}^{0}\!p_3 \right)\).
+\end{itemize}
+
+Cada término \(R_k f_k\) representa la fuerza del eslabón \(k\) expresada en el marco 3, y 
+\(r_{3k} \times (R_k f_k)\) es el momento adicional debido a la aplicación de esa fuerza a una distancia \(r_{3k}\) del origen del marco 3.
+
+
+
+\paragraph{Proyección sobre el eje articular}
+El par en la articulación \(3\) se obtiene proyectando el momento sobre su eje:
+
+
+\[
+\tau_3 = n_3^\top\,z_3,
+\]
+
+
+y, si se modela fricción:
+
+
+\[
+\tau_3 \leftarrow \tau_3 + f_{v,3}\,\dot{q}_3 + f_{c,3}\,\mathrm{sgn}(\dot{q}_3).
+\]
+
+\clearpage
+\subsection{Control dinámico}
+Para llevar a cabo el control dinámico del brazo robótico es necesario combinar el estudio
+cinemático y dinámico presentado, tal que los pasos a seguir son:
+
+\begin{enumerate}
+    \item Calcular la cinemática directa y diferencial.
+    \item Calcular la cinemática inversa y generar trayectorias articulares.
+    \item Propagar velocidades y aceleraciones mediante el barrido hacia adelante.
+    \item Calcular fuerzas y momentos en cada eslabón.
+    \item Acumular las contribuciones mediante el barrido hacia atrás.
+    \item Proyectar los momentos sobre los ejes articulares para obtener los pares $\tau_i$.
+\end{enumerate}
+
+En este sentido, se ha programado en \textit{Matlab}, junto con la \textit{Robotics Toolbox} de Peter Corke, 
+el control dinámico completo del robot \textit{UFactory xArm6}. El programa utiliza los parámetros dinámicos
+del modelo (masas, centros de masa e inercias) extraídos del URDF oficial, y permite calcular tanto la
+dinámica inversa (torques articulares $\tau$ dados $q,\dot{q},\ddot{q}$) como la dinámica directa
+(aceleraciones articulares $\ddot{q}$ dadas $q,\dot{q},\tau$). \\
+
+Al inicio, el programa solicita la posición articular de origen y la posición cartesiana a alcanzar,
+junto con la duración en segundos de la trayectoria. La aplicación comprueba que la posición final es
+alcanzable según el rango de trabajo del robot de $700$ mm, calcula las posiciones, velocidades y
+aceleraciones articulares necesarias para alcanzar la posición cartesiana final mediante cinemática inversa
+y genera la trayectoria correspondiente. A partir de estas trayectorias articulares, se aplica el algoritmo
+de Newton--Euler para obtener los torques requeridos en cada articulación. \\
+
+Las imágenes \ref{fig:din_control_tau}, \ref{fig:din_control_ddq} y \ref{fig:din_control_error}
+muestran los torques articulares calculados, las aceleraciones articulares obtenidas por dinámica directa
+y la comparación entre las aceleraciones de referencia y las reconstruidas. Los códigos 
+\ref{lst:din_control} y \ref{lst:din_control2} recogen la implementación en \textit{Matlab} y la salida
+por terminal. \\
