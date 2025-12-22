@@ -535,10 +535,8 @@ cinemático y dinámico presentado, tal que los pasos a seguir son:
 \begin{enumerate}
     \item Calcular la cinemática directa y diferencial.
     \item Calcular la cinemática inversa y generar trayectorias articulares.
-    \item Propagar velocidades y aceleraciones mediante el barrido hacia adelante.
-    \item Calcular fuerzas y momentos en cada eslabón.
-    \item Acumular las contribuciones mediante el barrido hacia atrás.
-    \item Proyectar los momentos sobre los ejes articulares para obtener los pares $\tau_i$.
+    \item Calcular los pares necesarios en cada articulación.
+    \item Recalcular la trayectoria o escalar temporalmente si los pares superan los valores máximos.
 \end{enumerate}
 
 En este sentido, se ha programado en \textit{Matlab}, junto con la \textit{Robotics Toolbox} de Peter Corke, 
@@ -571,9 +569,15 @@ Estos parámetros permiten extender el modelo dinámico clásico añadiendo los 
 y transmisión \cite{siciliano2009robotics}, de modo que la ecuación completa se expresa como:
 \[
 \tau = M(q)\ddot{q} + C(q,\dot{q})\dot{q} + g(q) + B\dot{q} + T_c.
-\] \\
+\]
 
-El fabricante no aporta estos valores, pero se puede realizar una estimación teórica, 
+El fabricante no aporta estos valores, y aunque se pueden obtener experimentalmente, 
+se va a utilizar la ecuación dinámica simple al igual que se emplea en el simulador \textit{Gazebo}, 
+que se implementar en el código \ref{lst:din_control}.  que 
+calcula los pares de los motores necesarios a aplicar. En la salida del programa, \ref{lst:din_control2},
+se observa que el par del tercer motor es superior a su par máximo: $|\tau_3(t)| > \tau_{3,\max}$. \\
+\begin{comment}
+    pero se puede realizar una estimación teórica, 
 \ref{tab:dynparams}, a partir de la tabla \ref{tab:actuators} \cite{siciliano2009robotics, craig2005}:
 
 \begin{itemize}
@@ -681,10 +685,7 @@ articulación, dichos parámetros se reflejan en el eje de salida de la siguient
     donde $J_m$ es la inercia del rotor del motor, y $J_{\text{ref}}$ es la inercia reflejada en el eje de salida. 
     El factor $G^2$ aparece porque la energía cinética depende cuadráticamente de la velocidad angular.
 \end{itemize}
-
-Con todos estos parámetros definidos se implementa el código \ref{lst:din_control}, que 
-calcula los pares de los motores necesarios a aplicar. En la salida del programa, \ref{lst:din_control2},
-se observa que el par del tercer motor es superior a su par máximo: $|\tau_3(t)| > \tau_{3,\max}$. \\
+\end{comment} 
 
 Esto se debe principalmente 
 a que únicamente se han introducido valores arbitrarios de velocidades, aceleraciones y posiciones 
@@ -709,6 +710,47 @@ queda fuera del alcance de esta asignatura, ya que requiere un desarrollo más p
 de regulación automática. Además, el repositorio oficial del fabricante \cite{xarm_ros2}
 ya incorpora estos controladores. \\
 
+\subsection{Escalado temporal de la trayectoria para garantizar el cumplimiento de los límites de par}
+
+En un manipulador industrial, los actuadores suelen estar dimensionados para generar el par necesario frente
+a la dinámica del robot en condiciones nominales. Sin embargo, durante la planificación de trayectorias es
+posible que el par teórico obtenido a partir del modelo dinámico supere el par máximo admisible por los motores.
+Cuando esto ocurre, la trayectoria debe ser modificada para asegurar que se cumple la restricción:
+
+\[
+\forall i \in \{1,\dots,6\},\ \forall t \in [0,T], \qquad |\tau_i(t)| \le \tau_{i,\max}.
+\]
+
+Una estrategia clásica y ampliamente utilizada en la literatura consiste en aplicar un escalado temporal
+de la trayectoria. Este enfoque, introducido originalmente en el contexto de la planificación dinámica por Bobrow
+\cite{bobrow1985time} y posteriormente extendido por Shin y McKay~\cite{shin1986minimum}, se basa en
+modificar la parametrización temporal de la trayectoria manteniendo su forma geométrica. Si la trayectoria
+original se parametriza mediante un tiempo $t$, el escalado consiste en definir un nuevo tiempo
+$\tilde{t} = k\,t$, con $k > 1$, lo que reduce las velocidades y aceleraciones articulares según
+
+\[
+\dot{q}(t) \mapsto \frac{1}{k}\,\dot{q}(t), 
+\qquad
+\ddot{q}(t) \mapsto \frac{1}{k^2}\,\ddot{q}(t),
+\]
+
+y, en consecuencia, disminuye el par requerido por la ecuación dinámica (ec. \ref{eq:movimiento_estandar}). \\
+
+En este trabajo se ha implementado un algoritmo de retiming iterativo basado en búsqueda binaria sobre el factor
+de escalado $k$. El procedimiento evalúa repetidamente el par resultante para distintos valores de $k$ hasta
+encontrar el mínimo escalado que garantiza el cumplimiento de los límites de par. Este enfoque es sencillo,
+robusto y adecuado para trayectorias suaves generadas mediante interpolación polinómica. \\
+
+No obstante, tal como se indica en la tabla~\ref{tab:actuators}, el fabricante no proporciona los valores
+reales de par máximo de cada articulación, ya que el controlador comercial opera como una ``caja negra''.
+Por este motivo, en la práctica no es posible aplicar un retiming basado en límites reales del actuador.
+Aun así, se ha implementado el algoritmo con fines didácticos, utilizando valores estimados de $\tau_{\max}$ para
+ilustrar el funcionamiento del método. Si se desea observar el efecto del escalado, basta con modificar el
+vector de pares máximos en el código mostrado en el código \ref{lst:main}. El escalado se ha programado 
+en el código \ref{lst:dynamic_replanner}.
+
+
+
 \lstinputlisting[
     caption={Cálculo de pares de los actuadores.},
     label={lst:din_control},
@@ -721,3 +763,4 @@ ya incorpora estos controladores. \\
     breaklines=true,
     breakatwhitespace=true
 ]{Matlab/din_control_salida.m}
+

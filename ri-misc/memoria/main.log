@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2025.10.21)  19 DEC 2025 13:15
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2025.10.21)  22 DEC 2025 17:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -777,7 +777,7 @@ LaTeX Warning: Label `fig:dh' multiply defined.
 
 LaTeX Warning: Label `lst:ik_nr' multiply defined.
 
-) (./dinamica.aux))
+) (./dinamica.aux) (./escalado.aux) (./controlador.aux) (./prog.aux) (./coste.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
@@ -854,15 +854,7 @@ Package biblatex Info: Automatic encoding selection.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
- (./main.bbl
-
-Package biblatex Warning: The following entry could not be found
-(biblatex)                in the database:
-(biblatex)                craig2005
-(biblatex)                Please verify the spelling and rerun
-(biblatex)                LaTeX afterwards.
-
-)
+ (./main.bbl)
 Package biblatex Info: Reference section=0 on input line 5.
 Package biblatex Info: Reference segment=0 on input line 5.
 Package hyperref Info: Link coloring OFF on input line 5.
@@ -965,7 +957,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
  [3
 
 
-] (./main.lof
+] [4] (./main.lof
 LaTeX Info: Redefining \sptext on input line 1.
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
@@ -973,7 +965,7 @@ LaTeX Info: Redefining \% on input line 1.
 \tf@lof=\write8
 \openout8 = `main.lof'.
 
- [4] (./main.lot
+ [5] (./main.lot
 LaTeX Info: Redefining \sptext on input line 1.
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
@@ -986,7 +978,7 @@ Underfull \hbox (badness 1902) in paragraph at lines 4--4
 \tf@lot=\write9
 \openout9 = `main.lot'.
 
- [5] (./main.lol
+ [6] (./main.lol
 Underfull \hbox (badness 2351) in paragraph at lines 5--5
  [][] [][]\TU/4.ttf(0)/m/n/12 Código Matlab para obtener las ecuaciones de posición y orientación con 
  []
@@ -1000,7 +992,7 @@ Underfull \hbox (badness 3009) in paragraph at lines 8--8
 \tf@lol=\write10
 \openout10 = `main.lol'.
 
- [6]
+ [7]
 \openout2 = `introduccion.aux'.
 
  (./introduccion.tex
@@ -1031,7 +1023,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 22--26
 
  []
 
-) [7
+) [8
 
 ]
 \openout2 = `ufactory.aux'.
@@ -1071,7 +1063,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 46--53
 
  []
 
-[8
+[9
 
 
 
@@ -1087,7 +1079,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 114--120
 
  []
 
-[9]
+[10]
 Underfull \hbox (badness 10000) in paragraph at lines 121--125
 
  []
@@ -1102,7 +1094,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 131--135
 
  []
 
-[10]
+[11]
 Underfull \hbox (badness 10000) in paragraph at lines 162--167
 
  []
@@ -1124,7 +1116,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 214--216
 
  []
 
-[11]
+[12]
 Underfull \hbox (badness 10000) in paragraph at lines 217--221
 
  []
@@ -1154,7 +1146,7 @@ File: Images/ufactory/ac_controlBox.png Graphic file (type bmp)
 <Images/ufactory/ac_controlBox.png>
 File: Images/ufactory/dc_controlBox.png Graphic file (type bmp)
 <Images/ufactory/dc_controlBox.png>
-[12]
+[13]
 Underfull \hbox (badness 10000) in paragraph at lines 286--290
 
  []
@@ -1166,7 +1158,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 291--297
 
 File: Images/ufactory/gui.png Graphic file (type bmp)
 <Images/ufactory/gui.png>
-) [13]
+) [14]
 \openout2 = `cinematica.aux'.
 
  (./cinematica.tex
@@ -1174,7 +1166,7 @@ File: Images/ucm_uned.png Graphic file (type bmp)
 <Images/ucm_uned.png>
 File: Images/cinematica/dh.png Graphic file (type bmp)
 <Images/cinematica/dh.png>
- [14
+ [15
 
 
 
@@ -1193,13 +1185,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 58--59
 
  []
 
-[15]
+[16]
 Underfull \hbox (badness 10000) in paragraph at lines 126--127
 
  []
 
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 135.
-(./Matlab/dh.m) (./Matlab/dh_salida.txt) [16]
+(./Matlab/dh.m) (./Matlab/dh_salida.txt) [17]
 Underfull \hbox (badness 10000) in paragraph at lines 145--148
 
  []
@@ -1224,7 +1216,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 185--190
 
  []
 
-[17
+[18
 
 ]
 File: Images/cinematica/dh_mod.png Graphic file (type bmp)
@@ -1234,7 +1226,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 209--213
 
  []
 
-[18]
+[19]
 Underfull \hbox (badness 10000) in paragraph at lines 279--280
 
  []
@@ -1244,10 +1236,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 284--285
 
  []
 
-[19] (./Matlab/dh_mod.m) (./Matlab/dh_mod_salida.txt)
+[20] (./Matlab/dh_mod.m) (./Matlab/dh_mod_salida.txt)
 File: Images/cinematica/modelado2.png Graphic file (type bmp)
 <Images/cinematica/modelado2.png>
- [20]
+ [21]
 Underfull \hbox (badness 10000) in paragraph at lines 311--315
 
  []
@@ -1272,7 +1264,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 366--367
 
  []
 
-[21
+[22
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 378--379
@@ -1284,14 +1276,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 445--446
 
  []
 
-[22] (./Matlab/ik.m) [23]
+[23] (./Matlab/ik.m) [24]
 Underfull \hbox (badness 10000) in paragraph at lines 534--540
 
  []
 
-[24
+[25
 
-] [25]
+] [26]
 Underfull \hbox (badness 10000) in paragraph at lines 663--665
 
  []
@@ -1311,7 +1303,7 @@ Underfull \hbox (badness 4454) in paragraph at lines 703--706
 \TU/4.ttf(0)/m/n/12 amortiguada del método, conocida como \TU/4.ttf(0)/m/it/12 Damped Least Squares \TU/4.ttf(0)/m/n/12 (DLS) o método de
  []
 
-[26]
+[27]
 Underfull \hbox (badness 10000) in paragraph at lines 709--712
 
  []
@@ -1321,10 +1313,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 713--716
 
  []
 
-(./Matlab/ik_nr.m [27]
+(./Matlab/ik_nr.m [28]
 Missing character: There is no ∈ (U+2208) in font [lmmono8-regular]:!
 Missing character: There is no ∈ (U+2208) in font [lmmono8-regular]:!
-[28]) (./Matlab/ik_nr_salida.m) [29]
+[29]) (./Matlab/ik_nr_salida.m) [30]
 Underfull \hbox (badness 2626) in paragraph at lines 739--748
 \TU/4.ttf(0)/m/n/12 donde $\OML/cmm/m/it/12 J\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 q\OT1/cmr/m/n/12 )$ \TU/4.ttf(0)/m/n/12 es el Jacobiano geométrico del manipulador. El Jacobiano recoge cómo las
  []
@@ -1349,7 +1341,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 753--763
 
  []
 
-(./Matlab/jac.m [30] [31]) [32]
+(./Matlab/jac.m [31] [32]) [33]
 Underfull \hbox (badness 10000) in paragraph at lines 768--773
 
  []
@@ -1384,7 +1376,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 819--823
 
  []
 
-[33]
+[34]
 Underfull \hbox (badness 10000) in paragraph at lines 859--861
 
  []
@@ -1395,266 +1387,39 @@ Underfull \hbox (badness 10000) in paragraph at lines 879--880
  []
 
 
-Underfull \hbox (badness 1259) in paragraph at lines 882--888
+Underfull \hbox (badness 1259) in paragraph at lines 888--894
 \TU/4.ttf(0)/m/n/12 evitando saltos bruscos. Sin embargo, con el objetivo de asegurar que la trayectoria sea
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 882--888
-
- []
-
-[34]
-Underfull \hbox (badness 10000) in paragraph at lines 903--904
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 925--926
-
- []
-
-
-Underfull \hbox (badness 2158) in paragraph at lines 928--935
-[]\TU/4.ttf(0)/m/n/12 Cuando se definen múltiples puntos intermedios en espacio cartesiano, \TU/4.ttf(0)/m/it/12 MoveIt \TU/4.ttf(0)/m/n/12 interpola
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 928--935
+Underfull \hbox (badness 10000) in paragraph at lines 888--894
 
  []
 
 [35]
-Underfull \hbox (badness 10000) in paragraph at lines 970--974
+Underfull \hbox (badness 10000) in paragraph at lines 909--910
 
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 931--932
+
+ []
+
+
+Underfull \hbox (badness 2158) in paragraph at lines 934--941
+[]\TU/4.ttf(0)/m/n/12 Cuando se definen múltiples puntos intermedios en espacio cartesiano, \TU/4.ttf(0)/m/it/12 MoveIt \TU/4.ttf(0)/m/n/12 interpola
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 934--941
+
+ []
+
+[36]
 Underfull \hbox (badness 10000) in paragraph at lines 976--980
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 981--983
-
- []
-
-(./Matlab/traj.m [36] [37]) (./Matlab/traj_salida.m) [38]
-File: Images/cinematica/traj.png Graphic file (type bmp)
-<Images/cinematica/traj.png>
-File: Images/cinematica/traj2.png Graphic file (type bmp)
-<Images/cinematica/traj2.png>
- [39
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 1026--1034
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1035--1039
-
- []
-
-File: Images/cinematica/cin_control.png Graphic file (type bmp)
-<Images/cinematica/cin_control.png>
-[40
-
-]
-File: Images/cinematica/cin_control2.png Graphic file (type bmp)
-<Images/cinematica/cin_control2.png>
-File: Images/cinematica/cin_control_v_cart.png Graphic file (type bmp)
-<Images/cinematica/cin_control_v_cart.png>
- [41
-
-]
-File: Images/cinematica/cin_control_v_art.png Graphic file (type bmp)
-<Images/cinematica/cin_control_v_art.png>
-File: Images/cinematica/cin_control_a_cart.png Graphic file (type bmp)
-<Images/cinematica/cin_control_a_cart.png>
- [42
-
-]
-File: Images/cinematica/cin_control_a_art.png Graphic file (type bmp)
-<Images/cinematica/cin_control_a_art.png>
- (./Matlab/cin_control.m [43
-
-] [44]
-Overfull \hbox (2.87476pt too wide) in paragraph at lines 185--186
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
- []
-
-[45] [46]) (./Matlab/cin_control_salida.m)) [47]
-\openout2 = `dinamica.aux'.
-
- (./dinamica.tex
-File: Images/ucm_uned.png Graphic file (type bmp)
-<Images/ucm_uned.png>
-File: Images/dinamica/sistemas.png Graphic file (type bmp)
-<Images/dinamica/sistemas.png>
-
-Underfull \hbox (badness 10000) in paragraph at lines 16--16
-[]\TU/4.ttf(0)/m/n/12 Figura 18: []Sistemas de
- []
-
-
-Underfull \hbox (badness 6910) in paragraph at lines 16--16
-\TU/4.ttf(0)/m/n/12 referencia para el estudio
- []
-
-File: Images/dinamica/tabla.png Graphic file (type bmp)
-<Images/dinamica/tabla.png>
-
-Overfull \hbox (8.43185pt too wide) in paragraph at lines 21--22
- [][] 
- []
-
-(./Matlab/inercias.txt [48
-
-
-
-]) [49]
-Underfull \hbox (badness 10000) in paragraph at lines 85--87
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 106--108
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 112--114
-
- []
-
-[50]
-Underfull \hbox (badness 10000) in paragraph at lines 127--128
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 131--134
-
- []
-
-[51]
-Underfull \hbox (badness 10000) in paragraph at lines 191--192
-
- []
-
-
-Overfull \hbox (19.03545pt too wide) detected at line 241
-\OML/cmm/m/it/12 A[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^R[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 q[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 T\OT1/cmr/m/n/12 2[]) = [] \OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 ) [][] \OML/cmm/m/it/12 R[] \OT1/cmr/m/n/12 = [] \OML/cmm/m/it/12 ;  [][] p[] \OT1/cmr/m/n/12 = [] \OML/cmm/m/it/12 :
- []
-
-[52] [53] [54]
-Underfull \hbox (badness 10000) in paragraph at lines 544--549
-
- []
-
-
-Underfull \hbox (badness 1838) in paragraph at lines 565--568
-[]$\OML/cmm/m/it/12 T[]$\TU/4.ttf(0)/m/n/12 : par de fricción de tipo Coulomb, independiente de la velocidad y dependiente
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 574--575
-
- []
-
-
-LaTeX Warning: Citation 'craig2005' on page 55 undefined on input line 577.
-
-[55
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 593--596
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 606--609
-
- []
-
-[56]
-Underfull \hbox (badness 10000) in paragraph at lines 685--688
-
- []
-
-
-Underfull \hbox (badness 1478) in paragraph at lines 689--700
-[]\TU/4.ttf(0)/m/n/12 Esto se debe principalmente a que únicamente se han introducido valores arbitrarios de
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 689--700
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 701--706
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 707--711
-
- []
-
-(./Matlab/din_control.m [57]) [58] (./Matlab/din_control_salida.m)) [59]
-File: Images/ucm_uned.png Graphic file (type bmp)
-<Images/ucm_uned.png>
-
-Underfull \hbox (badness 1210) in paragraph at lines 48--48
-[]\TU/4.ttf(0)/m/n/12 Intel Corporation. \TU/4.ttf(0)/m/it/12 Intel RealSense Depth Camera D435\TU/4.ttf(0)/m/n/12 . Datasheet y documentación
- []
-
-
-Underfull \hbox (badness 1242) in paragraph at lines 48--48
-\TU/4.ttf(0)/m/n/12 Parameters». En: \TU/4.ttf(0)/m/it/12 Proceedings of the IEEE International Conference on Robotics and
- []
-
-[60
-
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 48--48
-[]\TU/4.ttf(0)/m/n/12 Yoshihiko Nakamura. \TU/4.ttf(0)/m/it/12 Advanced Robotics: Redundancy and Optimization\TU/4.ttf(0)/m/n/12 .
- []
-
-
-Underfull \hbox (badness 6204) in paragraph at lines 48--48
-[]\TU/4.ttf(0)/m/n/12 Charles W. Wampler. «  Manipulator inverse kinematic solutions based on vector
- []
-
-[61] (./main.aux
-LaTeX Info: Redefining \sptext on input line 12.
-LaTeX Info: Redefining \. on input line 12.
-LaTeX Info: Redefining \% on input line 12.
- (./autoria.aux) (./introduccion.aux) (./ufactory.aux) (./cinematica.aux) (./dinamica.aux))
- ***********
-LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-01-22>
- ***********
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: D982240C40E2AF1C0345C31AC98BE346;7363.
-Package logreq Info: Writing requests to 'main.run.xml'.
-\openout1 = `main.run.xml'.
-
- ) 
-Here is how much of TeX's memory you used:
- 27798 strings out of 476824
- 537800 string characters out of 5803866
- 2223627 words of memory out of 5000000
- 49214 multiletter control sequences out of 15000+600000
- 563991 words of font info for 92 fonts, out of 8000000 for 9000
- 40 hyphenation exceptions out of 8191
- 109i,14n,107p,736b,6683s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-Output written on main.pdf (61 pages).
+Underfull \hbox (badness 10000) in paragraph at lines 982--

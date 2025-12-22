@@ -878,6 +878,12 @@ y la velocidad se ajusta suavemente en los puntos de unión, garantizando contin
 \dot{q}(T_1^-) = \dot{q}(T_1^+).
 \] \\
 
+escalado temporal uniforme + reinterpolación quíntica.
+
+%Aunque la función se denomina iptp_scale_time, no implementa el algoritmo IPTP clásico de Bobrow Shin McKay. En su lugar, aplica un escalado temporal global para garantizar que la trayectoria quíntica cumple los límites de velocidad y aceleración, regenerando una nueva interpolación polinómica con el tiempo ampliado. Este procedimiento es una forma simplificada de Time Optimal Trajectory Generation (TOTG), pero no constituye un retiming diferencial ni una parametrización óptima en el sentido de IPTP.
+
+%El escalado temporal implementado no corresponde al algoritmo IPTP clásico de Bobrow Shin McKay, pero sí se inspira en la misma idea fundamental: ajustar la parametrización temporal de la trayectoria para garantizar el cumplimiento de límites de velocidad y aceleración. En este trabajo se utiliza una versión simplificada basada en un factor global de escalado, en lugar del retiming diferencial forward backward característico de IPTP.
+
 \subsubsection{\textbf{Trayectorias polinómicas en espacio articular}}
 Cuando se especifican directamente configuraciones articulares, \textit{MoveIt} genera 
 trayectorias suaves mediante interpolación polinómica que garantizan continuidad en posición

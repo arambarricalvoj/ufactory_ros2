@@ -775,8 +775,80 @@
       \field{title}{Robot Modeling and Control}
       \field{year}{2006}
     \endentry
+    \entry{bobrow1985time}{article}{}
+      \name{author}{3}{}{%
+        {{hash=8aac4076f27aaf9a178297cc0a7c8f00}{%
+           family={Bobrow},
+           familyi={B\bibinitperiod},
+           given={James\bibnamedelima E},
+           giveni={J\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=46e5cf9b2668e84f9ecad7215f5e7d05}{%
+           family={Dubowsky},
+           familyi={D\bibinitperiod},
+           given={Steven},
+           giveni={S\bibinitperiod}}}%
+        {{hash=a3ffd7c2680ba022197e9a038e382470}{%
+           family={Gibson},
+           familyi={G\bibinitperiod},
+           given={John\bibnamedelima S},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {SAGE Publications}%
+      }
+      \strng{namehash}{da698ca89c9d41880ecd012ed713b503}
+      \strng{fullhash}{da698ca89c9d41880ecd012ed713b503}
+      \strng{bibnamehash}{da698ca89c9d41880ecd012ed713b503}
+      \strng{authorbibnamehash}{da698ca89c9d41880ecd012ed713b503}
+      \strng{authornamehash}{da698ca89c9d41880ecd012ed713b503}
+      \strng{authorfullhash}{da698ca89c9d41880ecd012ed713b503}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The International Journal of Robotics Research}
+      \field{number}{3}
+      \field{title}{Time-optimal control of robotic manipulators along specified paths}
+      \field{volume}{4}
+      \field{year}{1985}
+      \field{pages}{3\bibrangedash 17}
+      \range{pages}{15}
+    \endentry
+    \entry{shin1986minimum}{article}{}
+      \name{author}{2}{}{%
+        {{hash=163411def426f522803d5a27828d3b8d}{%
+           family={Shin},
+           familyi={S\bibinitperiod},
+           given={Kang\bibnamedelima G},
+           giveni={K\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=0ec7d028b21078c79b3dc85294c67a99}{%
+           family={McKay},
+           familyi={M\bibinitperiod},
+           given={N},
+           giveni={N\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{09e3d8f370f28cec5ef0c4a03474e874}
+      \strng{fullhash}{09e3d8f370f28cec5ef0c4a03474e874}
+      \strng{bibnamehash}{09e3d8f370f28cec5ef0c4a03474e874}
+      \strng{authorbibnamehash}{09e3d8f370f28cec5ef0c4a03474e874}
+      \strng{authornamehash}{09e3d8f370f28cec5ef0c4a03474e874}
+      \strng{authorfullhash}{09e3d8f370f28cec5ef0c4a03474e874}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Automatic Control}
+      \field{number}{6}
+      \field{title}{Minimum-time control of robotic manipulators with geometric path constraints}
+      \field{volume}{31}
+      \field{year}{1986}
+      \field{pages}{491\bibrangedash 498}
+      \range{pages}{8}
+    \endentry
   \enddatalist
-  \missing{craig2005}
 \endrefsection
 \endinput
 
