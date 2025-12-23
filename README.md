@@ -261,3 +261,90 @@ o
 ros2 launch xarm_planner test_xarm_planner_api_pose.launch.py dof:=6 robot_type:=xarm
 ```
 <br><br>
+
+## xArm gazebo+moveIt+rviz
+```bash
+ros2 launch xarm_moveit_config xarm6_moveit_gazebo.launch.py
+```
+<br><br>
+
+
+## MoveIt desde C++ (en desarrollo...)
+Llamar al servicio/acción correspondiente:
+```
+ros2 service call /plan_kinematic_path moveit_msgs/srv/GetMotionPlan "motion_plan_request:
+  workspace_parameters:
+    header:
+      frame_id: 'world'
+  start_state:
+    is_diff: true
+  goal_constraints:
+  - joint_constraints:
+    - joint_name: 'joint1'
+      position: -59
+    - joint_name: 'joint2'
+      position: -23
+    - joint_name: 'joint3'
+      position: -40
+    - joint_name: 'joint4'
+      position: 0
+    - joint_name: 'joint5'
+      position: 63
+    - joint_name: 'joint6'
+      position: -59
+  pipeline_id: ''
+  planner_id: ''
+  group_name: 'xarm6'
+  num_planning_attempts: 1
+  allowed_planning_time: 5.0"
+```
+
+```
+ros2 action send_goal /move_action moveit_msgs/action/MoveGroup "{request: {group_name: 'xarm6', goal_constraints: [{joint_constraints: [{joint_name: 'joint1', position: -59.0}, {joint_name: 'joint2', position: -23.0}, {joint_name: 'joint3', position: -40.0}, {joint_name: 'joint4', position: 0.0}, {joint_name: 'joint5', position: 63.0}, {joint_name: 'joint6', position: -59.0}]}]}}"
+```
+
+```ros2 action send_goal /move_action moveit_msgs/action/MoveGroup "{
+  request: {
+    group_name: 'xarm6',
+    max_velocity_scaling_factor: 0.2,
+    max_acceleration_scaling_factor: 0.2,
+    goal_constraints: [{
+      joint_constraints: [
+        {joint_name: 'joint1', position: 0.0},
+        {joint_name: 'joint2', position: 0.0},
+        {joint_name: 'joint3', position: 0.0},
+        {joint_name: 'joint4', position: 0.0},
+        {joint_name: 'joint5', position: 0.0},
+        {joint_name: 'joint6', position: 0.0}
+      ]
+    }]
+  }
+}"
+```
+
+```
+ros2 action send_goal /move_action moveit_msgs/action/MoveGroup "{
+  request: {
+    group_name: 'xarm6',
+    max_velocity_scaling_factor: 0.2,
+    max_acceleration_scaling_factor: 0.2,
+    goal_constraints: [{
+      joint_constraints: [
+        {joint_name: 'joint1', position: -59.0},
+        {joint_name: 'joint2', position: -23.0},
+        {joint_name: 'joint3', position: -40.0},
+        {joint_name: 'joint4', position: 0.0},
+        {joint_name: 'joint5', position: 63.0},
+        {joint_name: 'joint6', position: -59.0}
+      ]
+    }]
+  }
+}"
+```
+Se puede automatizar en un nodo:
+```bash
+cd /home/$USER/control_ws
+colcon build
+source install/setup.bash
+ros2 run xarm6_cpp_control xarm6_action_client
+```
