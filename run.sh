@@ -39,5 +39,3 @@ docker run -it --rm \
 #           --gpus all \
 #           --name eduros2_control_inteligente \
 #           arambarricalvoj/eduros2_ev3:control_inteligente
-
-

@@ -13,10 +13,8 @@ RUN apt-get update && apt-get install -y \
 # Instalar MoveIt 2 (no viene en desktop-full)
 RUN apt-get update && apt-get install -y \
     ros-jazzy-moveit \
+    ros-jazzy-joint-state-publisher-gui \
     && rm -rf /var/lib/apt/lists/*
-
-# Instalar joint state publisher GUI (opcional)
-RUN apt-get install ros-jazzy-joint-state-publisher-gui
 
 # Crear workspace
 WORKDIR /home/xarm_ws/src
