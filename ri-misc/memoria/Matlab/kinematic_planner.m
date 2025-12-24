@@ -1,16 +1,12 @@
 function [Q_des, dQ_des, ddQ_des, t, P, T_final] = kinematic_planner( ...
     robot, p_fun, J_fun, T_fun, q_init, p_goal_m, vel_max, acc_max)
 
-    %% ================================
-    %  Límites articulares (en rad)
-    % ================================
+    % Límites articulares (en deg)
     q_min = robot.qlim(:,1);
     q_max = robot.qlim(:,2);
     q_mid = (q_min + q_max)/2;
 
-    %% ================================
-    %  Verificación de alcanzabilidad (opcional)
-    % ================================
+    %  Verificación de alcanzabilidad
     reach_max_m = 0.7; % 700 mm
     if norm(p_goal_m) > reach_max_m
         fprintf('Objetivo fuera del alcance -> NO realizable\n');
@@ -18,9 +14,7 @@ function [Q_des, dQ_des, ddQ_des, t, P, T_final] = kinematic_planner( ...
         return
     end
 
-    %% ================================
-    %  IK numérica (posición) → q_goal
-    % ================================
+    % IK numérica
     tol     = 1e-6; 
     maxIter = 80; 
     K       = 0.005;
@@ -32,27 +26,23 @@ function [Q_des, dQ_des, ddQ_des, t, P, T_final] = kinematic_planner( ...
         error('IK no encontró solución válida.');
     end
 
-    %% ================================
-    %  Trayectoria quíntica base + TOTG (escalado óptimo)
-    % ================================
+    % Trayectoria quíntica base + escalado
     n  = 300;
-    T0 = 1.0;                   % tiempo base (se reescala luego)
+    T0 = 1.0;                   % tiempo base mínimo (se reescala luego)
     t0 = linspace(0, T0, n);
 
     % Quíntica base entre q_init y q_goal
     Q0 = quinticTraj(q_init.', q_goal.', T0, t0);
 
-    % Escalado óptimo de tiempo para cumplir vel/acc (tipo TOTG)
-    [Q_des, t, T_final] = iptp_scale_time(Q0, t0, vel_max, acc_max);
+    % Escalado óptimo de tiempo para cumplir vel/acc (estilo TOTG)
+    [Q_des, t, T_final] = scale_traj(Q0, t0, vel_max, acc_max);
 
     % Derivadas numéricas
     dt      = t(2) - t(1);
     dQ_des  = diff(Q_des) / dt;
     ddQ_des = diff(dQ_des) / dt;
 
-    %% ================================
-    %  Trayectoria cartesiana del efector
-    % ================================
+    % Trayectoria cartesiana del efector
     P = zeros(numel(t), 3);
     for k = 1:numel(t)
         Tnow   = T_fun(Q_des(k,1), Q_des(k,2), Q_des(k,3), ...
@@ -63,9 +53,7 @@ function [Q_des, dQ_des, ddQ_des, t, P, T_final] = kinematic_planner( ...
 
 end
 
-%% ================================
-%  IK numérica (igual que antes)
-% ================================
+% Funciones auxiliares
 function q_sol = newtonIK(p_d_m, q_seed, p_fun, J_fun, ...
                           q_min, q_max, q_mid, K, tol, maxIter)
 
@@ -85,9 +73,6 @@ function q_sol = newtonIK(p_d_m, q_seed, p_fun, J_fun, ...
     q_sol = qk;
 end
 
-%% ================================
-%  Quintic multieje
-% ================================
 function Q = quinticTraj(q0, qf, T, t)
     n = numel(t); 
     Q = zeros(n, numel(q0));
@@ -100,11 +85,7 @@ function Q = quinticTraj(q0, qf, T, t)
     end
 end
 
-%% ================================
-%  IPTP tipo TOTG para quíntica
-%  (encuentra tiempo mínimo que cumple vel/acc)
-% ================================
-function [Q_out, t_out, T_scaled] = iptp_scale_time(Q, t, vel_max, acc_max)
+function [Q_out, t_out, T_scaled] = scale_traj(Q, t, vel_max, acc_max)
     dt  = t(2) - t(1);
     dQ  = diff(Q)/dt;
     ddQ = diff(dQ)/dt;

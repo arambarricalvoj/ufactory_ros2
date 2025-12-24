@@ -43,13 +43,6 @@ corresponde al modelo 1 del robot, que se alimenta a través de la \textit{AC Co
 \label{tab:dh_modificada_din}
 \end{table}
 
-\lstinputlisting[
-    caption={Momentos de inercia del los eslabones del robot en estudio.},
-    label={lst:inercia},
-    breaklines=true,
-    breakatwhitespace=true
-]{Matlab/inercias.txt}
-
 
 \newpage
 \subsection{Ecuaciones de movimiento}
@@ -188,7 +181,7 @@ Para articulación rotacional:
 y opcionalmente se añaden fricciones \cite{siciliano2009robotics}:
 \[
 \tau_i \leftarrow \tau_i + f_{v,i} \dot{q}_i + f_{c,i} \mathrm{sgn}(\dot{q}_i).
-\] \\
+\]
 
 \subsubsection{Ejemplo de una iteración para el eslabón 3 del \textit{UFactory xArm6}}
 
@@ -527,7 +520,6 @@ y, si se modela fricción:
 \tau_3 \leftarrow \tau_3 + f_{v,3}\,\dot{q}_3 + f_{c,3}\,\mathrm{sgn}(\dot{q}_3).
 \]
 
-\clearpage
 \subsection{Control dinámico}
 Para llevar a cabo el control dinámico del brazo robótico es necesario combinar el estudio
 cinemático y dinámico presentado, tal que los pasos a seguir son:
@@ -574,7 +566,7 @@ y transmisión \cite{siciliano2009robotics}, de modo que la ecuación completa s
 El fabricante no aporta estos valores, y aunque se pueden obtener experimentalmente, 
 se va a utilizar la ecuación dinámica simple al igual que se emplea en el simulador \textit{Gazebo}, 
 que se implementar en el código \ref{lst:din_control}.  que 
-calcula los pares de los motores necesarios a aplicar. En la salida del programa, \ref{lst:din_control2},
+calcula los pares de los motores necesarios a aplicar. En la salida del programa, código \ref{lst:din_control2},
 se observa que el par del tercer motor es superior a su par máximo: $|\tau_3(t)| > \tau_{3,\max}$. \\
 \begin{comment}
     pero se puede realizar una estimación teórica, 
@@ -731,18 +723,3 @@ de escalado $k$. El procedimiento evalúa repetidamente el par resultante para d
 encontrar el mínimo escalado que garantiza el cumplimiento de los límites de par. Este enfoque es sencillo,
 robusto y adecuado para trayectorias suaves generadas mediante interpolación polinómica. \\
 \end{comment}
-
-
-\lstinputlisting[
-    caption={Cálculo de pares de los actuadores.},
-    label={lst:din_control},
-    breaklines=true,
-    breakatwhitespace=true
-]{Matlab/din_control.m}
-\lstinputlisting[
-    caption={Salida del cálculo de pares de los actuadores.},
-    label={lst:din_control2},
-    breaklines=true,
-    breakatwhitespace=true
-]{Matlab/din_control_salida.m}
-

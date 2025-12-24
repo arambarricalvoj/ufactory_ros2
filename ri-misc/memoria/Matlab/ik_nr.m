@@ -2,19 +2,15 @@ clear; clc;
 syms q1 q2 q3 q4 q5 q6 a2 T2_offset T3_offset real
 pi2 = sym(pi)/2;
 
-%% ================================================================
-%   DEFINICIÓN DE ESLABONES (DH MODIFICADO)
-% ================================================================
-L1 = Link([0     267    0      0        0  0],       'modified');
-L2 = Link([0     0      0     -pi2      0  T2_offset], 'modified');
-L3 = Link([0     0      a2     0        0  T3_offset], 'modified');
-L4 = Link([0     342.5  77.5  -pi2      0  0],       'modified');
-L5 = Link([0     0      0      pi2      0  0],       'modified');
-L6 = Link([0     97     76    -pi2      0  0],       'modified');
+% Definición de eslabones según la tabla DH modificada
+L1 = Link([0     267    0      0        0  0], 'modified');        % Eslabón 1
+L2 = Link([0     0      0     -pi2      0  T2_offset], 'modified');% Eslabón 2
+L3 = Link([0     0      a2     0        0  T3_offset], 'modified');% Eslabón 3
+L4 = Link([0     342.5  77.5  -pi2      0  0], 'modified');        % Eslabón 4
+L5 = Link([0     0      0      pi2      0  0], 'modified');        % Eslabón 5
+L6 = Link([0     97     76    -pi2      0  0], 'modified');        % Eslabón 6
 
-%% ================================================================
-%   MATRICES DE TRANSFORMACIÓN PARCIALES
-% ================================================================
+% Matrices parciales
 T01 = L1.A(q1).T;
 T12 = L2.A(q2).T;
 T23 = L3.A(q3).T;
@@ -22,51 +18,39 @@ T34 = L4.A(q4).T;
 T45 = L5.A(q5).T;
 T56 = L6.A(q6).T;
 
-%% ================================================================
-%   TRANSFORMACIÓN COMPLETA T_0^6
-% ================================================================
+% Transformación completa
 T06 = simplify(T01 * T12 * T23 * T34 * T45 * T56);
 p06 = T06(1:3,4);
 
-%% ================================================================
-%   JACOBIANO LINEAL (para cinemática inversa)
-% ================================================================
+% Jacobiano lineal (para cinemática inversa)
 Jv = jacobian(p06, [q1 q2 q3 q4 q5 q6]);
 
-%% ================================================================
-%   CONVERTIR A FUNCIONES NUMÉRICAS
-% ================================================================
+% Convertir a funciones numéricas
 p_fun = matlabFunction(p06, 'Vars', ...
     {q1, q2, q3, q4, q5, q6, a2, T2_offset, T3_offset});
-
 J_fun = matlabFunction(Jv, 'Vars', ...
     {q1, q2, q3, q4, q5, q6, a2, T2_offset, T3_offset});
-
 T_fun = matlabFunction(T06, 'Vars', ...
     {q1, q2, q3, q4, q5, q6, a2, T2_offset, T3_offset});
 
-%% ================================================================
-%   PARÁMETROS NUMÉRICOS DEL ROBOT
-% ================================================================
+% Parámetros numéricos del robot
 a2_val        = 289.48866;
 T2_offset_val = deg2rad(-79.34995);
 T3_offset_val = deg2rad(79.34995);
 
-
-%% ================================================================
-%   CINEMÁTICA INVERSA NUMÉRICA (NEWTON–RAPHSON, SOLO POSICIÓN)
-% ================================================================
+% ---
+% Cinemática inversa numérica (NEWTON–RAPHSON)
+% ---
 % Posición deseada (se sabe que corresponde a q_i = 0 con esos offsets)
 p_d = [207; 0; 112];
 
 % Configuración inicial
 qk = zeros(6,1);   % punto de partida
-
 tol     = 1e-6;
 maxIter = 50;
 
 % Límites matemáticos de las articulaciones (incluyendo offsets en 2 y 3)
-% Rangos físicos (tabla):
+% Rangos físicos (tabla 1):
 % J1:  ±360º
 % J2:  -117º -- 116º  (físicos)
 % J3:  -219º -- 10º   (físicos)
@@ -111,7 +95,7 @@ for k = 1:maxIter
         break
     end
     
-    % === GRADIENTE DE LA FUNCIÓN DE EVITACIÓN DE LÍMITES ===
+    % Gradiente de la función para evitar límites
     gradH = 2 * (qk - q_mid) ./ ((q_max - q_min).^2);
     
     % Paso Newton–Raphson (pseudoinversa) + penalización suave
@@ -123,18 +107,14 @@ end
 
 % Redondear solución para limpiar ruido numérico
 q_solution = round(qk, 12);
+% ---
 
-%% ================================================================
-%   VERIFICACIÓN: EVALUAR T06(q*)
-% ================================================================
+% Verificación: evaluar T06(q*)
 T_check = T_fun(q_solution(1), q_solution(2), q_solution(3), ...
                 q_solution(4), q_solution(5), q_solution(6), ...
                 a2_val, T2_offset_val, T3_offset_val);
 p_check = T_check(1:3,4);
 
-%% ================================================================
-%   MOSTRAR RESULTADOS
-% ================================================================
 disp('=== SOLUCIÓN DE CINEMÁTICA INVERSA (en radianes) ===')
 disp(q_solution.')
 

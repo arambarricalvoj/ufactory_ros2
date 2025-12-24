@@ -1,14 +1,10 @@
 clear; clc; close all;
 
-%% ================================
-%  Modelo del robot
-% ================================
+% Modelo del robot
 [robot, p_fun, J_fun, T_fun, a2_val, T2_offset_val, T3_offset_val] = model();
 robot.plot([0 0 0 0 0 0]);
 
-%% ================================
-%  Entrada usuario (SIN tiempo)
-% ================================
+%  Entrada usuario
 dlg = inputdlg( ...
     {'Articulaciones actuales [q1 q2 q3 q4 q5 q6] en grados (matemático):', ...
      'Posición final del efector [x y z] en mm:'}, ...
@@ -30,9 +26,8 @@ p_goal_m = p_goal_mm(:) / 1000;  % m
 
 grav = [0; 0; -9.81];
 
-%% ================================
-%  Planificador TOTG (solo vel/acc)
-% ================================
+% Planificador de trayectoria con escalado replanificación 
+% para cumplir los límites
 vel_max = deg2rad([180 180 180 180 180 180]); % rad/s
 acc_max = deg2rad([1500 1500 1500 1500 1500 1500]); % rad/s^2
 tau_max = [50 50 40 12 12 8]; % Nm
@@ -43,6 +38,7 @@ tau_max = [50 50 40 12 12 8]; % Nm
 [Q_torque, dQ_torque, ddQ_torque, t_torque, tau_all, tau_peak_final, k_opt] = ...
     dynamic_replanner(robot, Q_des, dQ_des, ddQ_des, t, tau_max);
 
+% Controlador PID
 Kp = [100 100 100 10 4 2];
 Kd = [20 20 20 20 15 5];
 Ki = [0 0 0 0 0 0];
@@ -50,11 +46,7 @@ Ki = [0 0 0 0 0 0];
 [q_real, dq_real, tau_hist] = controller(robot, Q_des, dQ_des, ddQ_des, t, grav, Kp, Kd, Ki);
 
 
-
-%% ===============================
-%  IMPRESIÓN DE ESTADOS INICIAL/FINAL Y MÁXIMOS
-% ===============================
-
+%  Impresión de estados inicial/final y máximos
 % 1) Posición articular inicial (ya en q_init)
 q_init_rad = q_init(:).';
 q_init_deg = rad2deg(q_init_rad);
@@ -131,13 +123,8 @@ disp(tau_max);
 
 fprintf('==============================\n\n');
 
-
-
-%% ===============================
-% GRÁFICAS COMPLETAS
-% ===============================
-
-% --- 1. Trayectoria articular óptima ---
+% Gráficas completas
+% 1) Trayectoria articular óptima
 figure;
 plot(t_torque, Q_torque, 'LineWidth', 1.4);
 title('Trayectoria articular óptima (Q\_torque)');
@@ -146,7 +133,7 @@ ylabel('q [rad]');
 grid on;
 legend('q1','q2','q3','q4','q5','q6');
 
-% --- 2. Velocidades articulares ---
+% 2) Velocidades articulares
 figure;
 plot(t_torque, dQ_torque, 'LineWidth', 1.4);
 title('Velocidades articulares óptimas');
@@ -155,7 +142,7 @@ ylabel('dq/dt [rad/s]');
 grid on;
 legend('dq1','dq2','dq3','dq4','dq5','dq6');
 
-% --- 3. Aceleraciones articulares ---
+% 3) Aceleraciones articulares
 figure;
 plot(t_torque, ddQ_torque, 'LineWidth', 1.4);
 title('Aceleraciones articulares óptimas');
@@ -164,7 +151,7 @@ ylabel('d^2q/dt^2 [rad/s^2]');
 grid on;
 legend('ddq1','ddq2','ddq3','ddq4','ddq5','ddq6');
 
-% --- 4. Trayectoria cartesiana ---
+% 4) Trayectoria cartesiana
 figure;
 plot3(P(:,1), P(:,2), P(:,3), 'LineWidth', 1.5);
 grid on;
@@ -173,7 +160,7 @@ ylabel('Y [mm]');
 zlabel('Z [mm]');
 title('Trayectoria cartesiana (quintic)');
 
-% --- 5. Par articular a lo largo del tiempo ---
+% 5) Par articular a lo largo del tiempo
 %{
 figure;
 plot(t_torque, tau_all, 'LineWidth', 1.4);

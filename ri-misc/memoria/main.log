@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2025.10.21)  23 DEC 2025 09:04
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023/Debian) (preloaded format=xelatex 2025.10.21)  24 DEC 2025 14:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -673,10 +673,7 @@ Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 \bigstrutjot=\dimen193
 ) (/usr/share/texlive/texmf-dist/tex/latex/tools/hhline.sty
 Package: hhline 2020/01/04 v2.04 Table rule package (DPC)
-)
-\@float@every@listing=\toks39
-\c@listing=\count441
- (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
  (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
@@ -690,32 +687,34 @@ Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
 \caption@hangindent=\dimen257
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count442
-\c@continuedfloat=\count443
+\c@caption@flags=\count441
+\c@continuedfloat=\count442
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 ) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count444
+\lst@mode=\count443
 \lst@gtempboxa=\box62
-\lst@token=\toks40
-\lst@length=\count445
+\lst@token=\toks39
+\lst@length=\count444
 \lst@currlwidth=\dimen258
-\lst@column=\count446
-\lst@pos=\count447
+\lst@column=\count445
+\lst@pos=\count446
 \lst@lostspace=\dimen259
 \lst@width=\dimen260
-\lst@newlines=\count448
-\lst@lineno=\count449
+\lst@newlines=\count447
+\lst@lineno=\count448
 \lst@maxwidth=\dimen261
  (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
-\c@lstnumber=\count450
-\lst@skipnumbers=\count451
+\c@lstnumber=\count449
+\lst@skipnumbers=\count450
 \lst@framebox=\box63
 ) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2023/02/27 1.9 listings configuration
 ))
 Package: listings 2023/02/27 1.9 (Carsten Heinz)
+\@float@every@listing=\toks40
+\c@listing=\count451
  (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 ) (/usr/share/texlive/texmf-dist/tex/latex/csquotes/csquotes.sty
@@ -776,7 +775,18 @@ Package fontspec Info: Font family '4.ttf(0)' created for font '4.ttf' with
 (fontspec)             <->"[Core/3.ttf]/OT:script=latn;language=dflt;mapping=tex-text;"
 (fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
 
-)
+ (/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2022/11/09 v4.1 Extensive control of page headers and footers
+\f@nch@headwidth=\skip82
+\f@nch@O@elh=\skip83
+\f@nch@O@erh=\skip84
+\f@nch@O@olh=\skip85
+\f@nch@O@orh=\skip86
+\f@nch@O@elf=\skip87
+\f@nch@O@erf=\skip88
+\f@nch@O@olf=\skip89
+\f@nch@O@orf=\skip90
+))
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
@@ -792,27 +802,7 @@ LaTeX Warning: Label `fig:efector' multiply defined.
 
 LaTeX Warning: Label `fig:dh' multiply defined.
 
-
-LaTeX Warning: Label `lst:ik_nr' multiply defined.
-
-) (./dinamica.aux) (./escalado.aux) (./controlador.aux
-
-LaTeX Warning: Label `fig:traj2' multiply defined.
-
-) (./prog.aux) (./coste.aux) (./anexo.aux
-
-LaTeX Warning: Label `lst:dh' multiply defined.
-
-
-LaTeX Warning: Label `lst:dh_salida' multiply defined.
-
-
-LaTeX Warning: Label `lst:dh_mod' multiply defined.
-
-
-LaTeX Warning: Label `lst:dh_mod_salida' multiply defined.
-
-))
+) (./dinamica.aux) (./escalado.aux) (./controlador.aux) (./prog.aux) (./coste.aux) (./anexo.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
@@ -959,6 +949,8 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 5.
 File: Images/ucm_uned.png Graphic file (type bmp)
 <Images/ucm_uned.png>
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
  [1
 
 ]
@@ -968,11 +960,39 @@ File: Images/ucm_uned.png Graphic file (type bmp)
 File: Images/ucm_uned.png Graphic file (type bmp)
 <Images/ucm_uned.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 4--5
+
+LaTeX Warning: Citation 'ehu_visens' on page 2 undefined on input line 7.
+
+
+Underfull \hbox (badness 1052) in paragraph at lines 7--8
+[]\TU/4.ttf(0)/m/it/12 El autor de este documento es Javier Arambarri Calvo, alumno del Máster en Ingeniería
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
 
  []
 
-) [2
+
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+
+ []
+
+)
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[2
 
 ]
 File: Images/ucm_uned.png Graphic file (type bmp)
@@ -988,14 +1008,31 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 3.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [3
+)
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[3
 
 
 ])
 \tf@toc=\write7
 \openout7 = `main.toc'.
 
- [4] (./main.lof
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[4] (./main.lof
 LaTeX Info: Redefining \sptext on input line 1.
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
@@ -1003,7 +1040,15 @@ LaTeX Info: Redefining \% on input line 1.
 \tf@lof=\write8
 \openout8 = `main.lof'.
 
- [5] (./main.lot
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[5] (./main.lot
 LaTeX Info: Redefining \sptext on input line 1.
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
@@ -1016,7 +1061,15 @@ Underfull \hbox (badness 1902) in paragraph at lines 4--4
 \tf@lot=\write9
 \openout9 = `main.lot'.
 
- [6] (./main.lol
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[6] (./main.lol
 Underfull \hbox (badness 2351) in paragraph at lines 5--5
  [][] [][]\TU/4.ttf(0)/m/n/12 Código Matlab para obtener las ecuaciones de posición y orientación con 
  []
@@ -1030,7 +1083,15 @@ Underfull \hbox (badness 3009) in paragraph at lines 8--8
 \tf@lol=\write10
 \openout10 = `main.lol'.
 
- [7]
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[7]
 \openout2 = `introduccion.aux'.
 
  (./introduccion.tex
@@ -1061,7 +1122,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 22--26
 
  []
 
-) [8
+)
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[8
 
 ]
 \openout2 = `ufactory.aux'.
@@ -1101,6 +1171,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 46--53
 
  []
 
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
 [9
 
 
@@ -1117,6 +1194,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 114--120
 
  []
 
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
 [10]
 Underfull \hbox (badness 10000) in paragraph at lines 121--125
 
@@ -1131,6 +1215,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 126--130
 Underfull \hbox (badness 10000) in paragraph at lines 131--135
 
  []
+
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
 
 [11]
 Underfull \hbox (badness 10000) in paragraph at lines 162--167
@@ -1153,6 +1244,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 185--188
 Underfull \hbox (badness 10000) in paragraph at lines 214--216
 
  []
+
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
 
 [12]
 Underfull \hbox (badness 10000) in paragraph at lines 217--221
@@ -1184,6 +1282,13 @@ File: Images/ufactory/ac_controlBox.png Graphic file (type bmp)
 <Images/ufactory/ac_controlBox.png>
 File: Images/ufactory/dc_controlBox.png Graphic file (type bmp)
 <Images/ufactory/dc_controlBox.png>
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
 [13]
 Underfull \hbox (badness 10000) in paragraph at lines 286--290
 
@@ -1196,7 +1301,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 291--297
 
 File: Images/ufactory/gui.png Graphic file (type bmp)
 <Images/ufactory/gui.png>
-) [14]
+)
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[14]
 \openout2 = `cinematica.aux'.
 
  (./cinematica.tex
@@ -1204,7 +1318,15 @@ File: Images/ucm_uned.png Graphic file (type bmp)
 <Images/ucm_uned.png>
 File: Images/cinematica/dh.png Graphic file (type bmp)
 <Images/cinematica/dh.png>
- [15
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[15
 
 
 
@@ -1223,278 +1345,405 @@ Underfull \hbox (badness 10000) in paragraph at lines 58--59
 
  []
 
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
 [16]
 Underfull \hbox (badness 10000) in paragraph at lines 126--127
 
  []
 
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 135.
-(./Matlab/dh.m) (./Matlab/dh_salida.txt) [17]
-Underfull \hbox (badness 10000) in paragraph at lines 145--148
+
+Underfull \hbox (badness 10000) in paragraph at lines 132--135
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--154
+Underfull \hbox (badness 10000) in paragraph at lines 136--141
 []\TU/4.ttf(0)/m/n/12 Para superar estas dificultades John J. Craig introdujo el método modificado de
  []
 
 
-Underfull \hbox (badness 2644) in paragraph at lines 163--165
+Underfull \hbox (badness 2644) in paragraph at lines 150--152
 []\TU/4.ttf(0)/m/n/12 Consecuentemente, la secuencia de transformaciones [[]16[]] y la matriz de transformación
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 183--184
+Underfull \hbox (badness 10000) in paragraph at lines 170--171
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--190
+Underfull \hbox (badness 10000) in paragraph at lines 172--177
 
  []
 
-[18
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
 
-]
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[17]
 File: Images/cinematica/dh_mod.png Graphic file (type bmp)
 <Images/cinematica/dh_mod.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 209--213
+Underfull \hbox (badness 10000) in paragraph at lines 195--199
 
  []
 
-[19]
-Underfull \hbox (badness 10000) in paragraph at lines 279--280
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 265--266
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 284--285
+Underfull \hbox (badness 10000) in paragraph at lines 270--271
 
  []
 
-[20] (./Matlab/dh_mod.m) (./Matlab/dh_mod_salida.txt)
+
+Underfull \hbox (badness 10000) in paragraph at lines 272--275
+
+ []
+
 File: Images/cinematica/modelado2.png Graphic file (type bmp)
 <Images/cinematica/modelado2.png>
- [21]
-Underfull \hbox (badness 10000) in paragraph at lines 311--315
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[19]
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 285--289
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 316--322
+Underfull \hbox (badness 10000) in paragraph at lines 290--296
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 323--329
+Underfull \hbox (badness 10000) in paragraph at lines 297--303
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 354--355
+Underfull \hbox (badness 10000) in paragraph at lines 328--329
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 366--367
+Underfull \hbox (badness 10000) in paragraph at lines 340--341
 
  []
 
-[22
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[21
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 378--379
+Underfull \hbox (badness 10000) in paragraph at lines 352--353
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 445--446
-
- []
-
-[23] (./Matlab/ik.m) [24]
-Underfull \hbox (badness 10000) in paragraph at lines 534--540
-
- []
-
-[25
-
-] [26]
-Underfull \hbox (badness 10000) in paragraph at lines 663--665
+Underfull \hbox (badness 10000) in paragraph at lines 419--420
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 669--675
+Underfull \hbox (badness 10000) in paragraph at lines 424--427
+
+ []
+
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 502--508
+
+ []
+
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[23
+
+]
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 631--633
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 697--702
+Underfull \hbox (badness 10000) in paragraph at lines 637--643
 
  []
 
 
-Underfull \hbox (badness 4454) in paragraph at lines 703--706
+Underfull \hbox (badness 10000) in paragraph at lines 665--670
+
+ []
+
+
+Underfull \hbox (badness 4454) in paragraph at lines 671--674
 \TU/4.ttf(0)/m/n/12 amortiguada del método, conocida como \TU/4.ttf(0)/m/it/12 Damped Least Squares \TU/4.ttf(0)/m/n/12 (DLS) o método de
  []
 
-[27]
-Underfull \hbox (badness 10000) in paragraph at lines 709--712
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 677--680
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 713--716
+Underfull \hbox (badness 10000) in paragraph at lines 681--684
 
  []
 
-(./Matlab/ik_nr.m [28]
-Missing character: There is no ∈ (U+2208) in font [lmmono8-regular]:!
-Missing character: There is no ∈ (U+2208) in font [lmmono8-regular]:!
-[29]) (./Matlab/ik_nr_salida.m) [30]
-Underfull \hbox (badness 2626) in paragraph at lines 739--748
+
+Underfull \hbox (badness 10000) in paragraph at lines 685--688
+
+ []
+
+
+Underfull \hbox (badness 2626) in paragraph at lines 691--700
 \TU/4.ttf(0)/m/n/12 donde $\OML/cmm/m/it/12 J\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 q\OT1/cmr/m/n/12 )$ \TU/4.ttf(0)/m/n/12 es el Jacobiano geométrico del manipulador. El Jacobiano recoge cómo las
  []
 
 
-Underfull \hbox (badness 2111) in paragraph at lines 739--748
+Underfull \hbox (badness 2111) in paragraph at lines 691--700
 \TU/4.ttf(0)/m/n/12 variaciones infinitesimales de las articulaciones se traducen en variaciones infinitesimales
  []
 
 
-Underfull \hbox (badness 1320) in paragraph at lines 739--748
+Underfull \hbox (badness 1320) in paragraph at lines 691--700
 \TU/4.ttf(0)/m/n/12 articular a partir de un desplazamiento cartesiano, es necesario invertir esta relación. Sin
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 739--748
+Underfull \hbox (badness 10000) in paragraph at lines 691--700
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 753--763
+Underfull \hbox (badness 10000) in paragraph at lines 705--711
 
  []
 
-(./Matlab/jac.m [31] [32]) [33]
-Underfull \hbox (badness 10000) in paragraph at lines 768--773
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[26]
+Underfull \hbox (badness 10000) in paragraph at lines 715--720
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 774--776
+Underfull \hbox (badness 10000) in paragraph at lines 721--723
 
  []
 
 
-Underfull \hbox (badness 1466) in paragraph at lines 786--792
+Underfull \hbox (badness 1466) in paragraph at lines 733--739
 \TU/4.ttf(0)/m/n/12 suaviza la velocidad y aceleración, evitando discontinuidades. En particular, se emplea el
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 786--792
+Underfull \hbox (badness 10000) in paragraph at lines 733--739
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 803--806
+Underfull \hbox (badness 10000) in paragraph at lines 750--753
 
  []
 
 
-Underfull \hbox (badness 1259) in paragraph at lines 808--814
+Underfull \hbox (badness 1259) in paragraph at lines 755--761
 \TU/4.ttf(0)/m/n/12 evitando saltos bruscos. Sin embargo, con el objetivo de asegurar que la trayectoria sea
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 808--814
+Underfull \hbox (badness 10000) in paragraph at lines 755--761
 
  []
 
-[34]
-Underfull \hbox (badness 10000) in paragraph at lines 829--830
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[27]
+Underfull \hbox (badness 10000) in paragraph at lines 776--777
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 851--852
+Underfull \hbox (badness 10000) in paragraph at lines 798--799
 
  []
 
 
-Underfull \hbox (badness 2158) in paragraph at lines 854--861
+Underfull \hbox (badness 2158) in paragraph at lines 801--808
 []\TU/4.ttf(0)/m/n/12 Cuando se definen múltiples puntos intermedios en espacio cartesiano, \TU/4.ttf(0)/m/it/12 MoveIt \TU/4.ttf(0)/m/n/12 interpola
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 854--861
+Underfull \hbox (badness 10000) in paragraph at lines 801--808
 
  []
 
-[35]
-Underfull \hbox (badness 10000) in paragraph at lines 896--900
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 843--847
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 902--906
+Underfull \hbox (badness 10000) in paragraph at lines 849--853
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 907--909
+Underfull \hbox (badness 10000) in paragraph at lines 854--856
 
  []
 
-(./Matlab/traj.m [36] [37]) (./Matlab/traj_salida.m) [38]
 File: Images/cinematica/traj.png Graphic file (type bmp)
 <Images/cinematica/traj.png>
 File: Images/cinematica/traj2.png Graphic file (type bmp)
 <Images/cinematica/traj2.png>
- [39
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 952--960
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[29]
+Underfull \hbox (badness 10000) in paragraph at lines 885--893
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 961--965
+Underfull \hbox (badness 10000) in paragraph at lines 894--898
 
  []
 
 File: Images/cinematica/cin_control.png Graphic file (type bmp)
 <Images/cinematica/cin_control.png>
-[40
-
-]
 File: Images/cinematica/cin_control2.png Graphic file (type bmp)
 <Images/cinematica/cin_control2.png>
 File: Images/cinematica/cin_control_v_cart.png Graphic file (type bmp)
 <Images/cinematica/cin_control_v_cart.png>
- [41
-
-]
 File: Images/cinematica/cin_control_v_art.png Graphic file (type bmp)
 <Images/cinematica/cin_control_v_art.png>
 File: Images/cinematica/cin_control_a_cart.png Graphic file (type bmp)
 <Images/cinematica/cin_control_a_cart.png>
- [42
-
-]
 File: Images/cinematica/cin_control_a_art.png Graphic file (type bmp)
 <Images/cinematica/cin_control_a_art.png>
- (./Matlab/cin_control.m [43
+)
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
 
-] [44]
-Overfull \hbox (2.87476pt too wide) in paragraph at lines 185--186
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
- []
 
-[45] [46]) (./Matlab/cin_control_salida.m)) [47]
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[30]
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[31]
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[32]
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[33]
 \openout2 = `dinamica.aux'.
 
  (./dinamica.tex
@@ -1519,150 +1768,233 @@ Overfull \hbox (8.43185pt too wide) in paragraph at lines 21--22
  [][] 
  []
 
-(./Matlab/inercias.txt [48
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[34
 
 
 
-]) [49]
-Underfull \hbox (badness 10000) in paragraph at lines 85--87
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 106--108
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 112--114
-
- []
-
-[50]
-Underfull \hbox (badness 10000) in paragraph at lines 127--128
+]
+Underfull \hbox (badness 10000) in paragraph at lines 78--80
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 131--134
-
- []
-
-[51]
-Underfull \hbox (badness 10000) in paragraph at lines 191--192
+Underfull \hbox (badness 10000) in paragraph at lines 99--101
 
  []
 
 
-Overfull \hbox (19.03545pt too wide) detected at line 241
+Underfull \hbox (badness 10000) in paragraph at lines 105--107
+
+ []
+
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[35]
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 124--127
+
+ []
+
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[36]
+Overfull \hbox (19.03545pt too wide) detected at line 234
 \OML/cmm/m/it/12 A[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 ^^R[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 q[] \OT1/cmr/m/n/12 + \OML/cmm/m/it/12 T\OT1/cmr/m/n/12 2[]) = [] \OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 ) [][] \OML/cmm/m/it/12 R[] \OT1/cmr/m/n/12 = [] \OML/cmm/m/it/12 ;  [][] p[] \OT1/cmr/m/n/12 = [] \OML/cmm/m/it/12 :
  []
 
-[52] [53] [54]
-Underfull \hbox (badness 10000) in paragraph at lines 542--547
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[37]
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[38]
+Underfull \hbox (badness 10000) in paragraph at lines 534--539
 
  []
 
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
 
-Underfull \hbox (badness 1838) in paragraph at lines 563--566
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[39]
+Underfull \hbox (badness 1838) in paragraph at lines 555--558
 []$\OML/cmm/m/it/12 T[]$\TU/4.ttf(0)/m/n/12 : par de fricción de tipo Coulomb, independiente de la velocidad y dependiente
  []
 
 Excluding 'comment' comment.
-Underfull \hbox (badness 10000) in paragraph at lines 574--689
+Underfull \hbox (badness 10000) in paragraph at lines 566--681
 
  []
 
 
-Underfull \hbox (badness 1478) in paragraph at lines 690--701
+Underfull \hbox (badness 1478) in paragraph at lines 682--693
 []\TU/4.ttf(0)/m/n/12 Esto se debe principalmente a que únicamente se han introducido valores arbitrarios de
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 690--701
+Underfull \hbox (badness 10000) in paragraph at lines 682--693
 
  []
 
-[55
+Excluding 'comment' comment.)
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
 
-] Excluding 'comment' comment. (./Matlab/din_control.m [56]) (./Matlab/din_control_salida.m)) [57]
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[40]
 \openout2 = `escalado.aux'.
 
  (./escalado.tex
 File: Images/ucm_uned.png Graphic file (type bmp)
 <Images/ucm_uned.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 24--26
+Underfull \hbox (badness 10000) in paragraph at lines 26--28
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 27--32
+Underfull \hbox (badness 10000) in paragraph at lines 29--34
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--70
+Underfull \hbox (badness 10000) in paragraph at lines 70--72
 
  []
 
-[58
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[41
 
 
 
 ] Excluding 'comment' comment.
-Underfull \hbox (badness 10000) in paragraph at lines 92--113
+Underfull \hbox (badness 10000) in paragraph at lines 94--115
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 128--130
+Underfull \hbox (badness 10000) in paragraph at lines 130--132
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 133--136
+Underfull \hbox (badness 10000) in paragraph at lines 135--138
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 137--139
+Underfull \hbox (badness 10000) in paragraph at lines 139--141
 
  []
 
-[59]
-Underfull \hbox (badness 10000) in paragraph at lines 171--173
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
 
- []
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 191--194
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 223--225
-
- []
-
-[60]
-
-LaTeX Warning: Reference `lst:kinematics_planner' on page 61 undefined on input line 247.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 245--248
+[42]
+Underfull \hbox (badness 10000) in paragraph at lines 173--175
 
  []
 
 
-LaTeX Warning: Reference `lst:dynamics_replanner' on page 61 undefined on input line 275.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 272--276
+Underfull \hbox (badness 10000) in paragraph at lines 193--196
 
  []
 
-[61]) [62]
+
+Underfull \hbox (badness 10000) in paragraph at lines 225--227
+
+ []
+
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[43]
+
+LaTeX Warning: Reference `lst:kinematics_planner' on page 44 undefined on input line 249.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 247--250
+
+ []
+
+
+LaTeX Warning: Reference `lst:dynamics_replanner' on page 44 undefined on input line 277.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 274--278
+
+ []
+
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[44])
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[45]
 \openout2 = `controlador.aux'.
 
  (./controlador.tex
@@ -1693,14 +2025,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 72--78
 
  []
 
-
-LaTeX Warning: Reference `lst:controller' on page 63 undefined on input line 79.
-
 File: Images/controlador/traj1.png Graphic file (type bmp)
 <Images/controlador/traj1.png>
 File: Images/controlador/traj2.png Graphic file (type bmp)
 <Images/controlador/traj2.png>
-[63
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[46
 
 
 
@@ -1721,40 +2057,552 @@ File: Images/controlador/vel_art.png Graphic file (type bmp)
 <Images/controlador/vel_art.png>
 File: Images/controlador/acc_art.png Graphic file (type bmp)
 <Images/controlador/acc_art.png>
- [64]
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[47]
 File: Images/controlador/par_art.png Graphic file (type bmp)
 <Images/controlador/par_art.png>
-) [65]
+)
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[48]
 \openout2 = `prog.aux'.
 
  (./prog.tex
 File: Images/ucm_uned.png Graphic file (type bmp)
 <Images/ucm_uned.png>
-) [66
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--7
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--11
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--16
+
+ []
+
+
+LaTeX Warning: Citation 'rviz' on page 49 undefined on input line 21.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--24
+\TU/4.ttf(0)/m/n/12 proporciona paquetes ROS2 ya configurados, incluyendo descripciones URDF/XACRO,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--24
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--31
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 32--35
+
+ []
+
+
+Underfull \hbox (badness 1546) in paragraph at lines 38--46
+[]\TU/4.ttf(0)/m/n/12 MoveIt2 no solo calcula rutas geométricas en el espacio articular o cartesiano, sino que
+ []
+
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[49
 
 
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 59--60
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 64--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 69--71
+
+ []
+
+
+Underfull \hbox (badness 1975) in paragraph at lines 87--91
+[]\TU/4.ttf(0)/m/it/12 Ruckig (jerk-limited)\TU/4.ttf(0)/m/n/12 : opción moderna para generar trayectorias con continuidad en
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 98--100
+
+ []
+
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[50]
+File: Images/moveIt/gui1.png Graphic file (type bmp)
+<Images/moveIt/gui1.png>
+File: Images/moveIt/gui2.png Graphic file (type bmp)
+<Images/moveIt/gui2.png>
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[51]
+File: Images/moveIt/gui3.png Graphic file (type bmp)
+<Images/moveIt/gui3.png>
+File: Images/moveIt/gui4.png Graphic file (type bmp)
+<Images/moveIt/gui4.png>
+File: Images/moveIt/gui5.png Graphic file (type bmp)
+<Images/moveIt/gui5.png>
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[52
+
+]
+File: Images/moveIt/gui6.png Graphic file (type bmp)
+<Images/moveIt/gui6.png>
+File: Images/moveIt/gui7.png Graphic file (type bmp)
+<Images/moveIt/gui7.png>
+File: Images/moveIt/gui8.png Graphic file (type bmp)
+<Images/moveIt/gui8.png>
+
+Underfull \hbox (badness 3291) in paragraph at lines 163--167
+[]\TU/4.ttf(0)/m/n/12 Otra forma de mover las poses inicial y final es mediante el panel “\TU/4.ttf(0)/m/it/12 Joints\TU/4.ttf(0)/m/n/12 ” del panel
+ []
+
+
+Underfull \hbox (badness 6173) in paragraph at lines 163--167
+\TU/4.ttf(0)/m/n/12 de \TU/4.ttf(0)/m/it/12 MotionPlanning\TU/4.ttf(0)/m/n/12 , figura []34[], donde “\TU/4.ttf(0)/m/it/12 Nullspace exploration \TU/4.ttf(0)/m/n/12 permite descubrir nuevas
+ []
+
+File: Images/moveIt/gui9.png Graphic file (type bmp)
+<Images/moveIt/gui9.png>
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[53
+
+]
+File: Images/moveIt/gui10.png Graphic file (type bmp)
+<Images/moveIt/gui10.png>
+File: Images/moveIt/gui11.png Graphic file (type bmp)
+<Images/moveIt/gui11.png>
+File: Images/moveIt/gui12.png Graphic file (type bmp)
+<Images/moveIt/gui12.png>
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[54]
+File: Images/moveIt/gui13.png Graphic file (type bmp)
+<Images/moveIt/gui13.png>
+
+Underfull \hbox (badness 3713) in paragraph at lines 212--222
+\TU/4.ttf(0)/m/n/12 o consultar la escena de planificación. En particular, el componente \TU/lmtt/m/n/12 move_-group \TU/4.ttf(0)/m/n/12 actúa
+ []
+
+
+Underfull \hbox (badness 1205) in paragraph at lines 212--222
+\TU/4.ttf(0)/m/n/12 como servidor central y ofrece una acción denominada \TU/lmtt/m/n/12 /move_-action\TU/4.ttf(0)/m/n/12 , basada en el tipo
+ []
+
+
+Underfull \hbox (badness 1377) in paragraph at lines 226--230
+[]\TU/4.ttf(0)/m/n/12 Acción \TU/lmtt/m/n/12 /move_-action\TU/4.ttf(0)/m/n/12 : interfaz principal para solicitar planes y ejecutar movimientos
+ []
+
+
+Underfull \hbox (badness 1354) in paragraph at lines 226--230
+\TU/4.ttf(0)/m/n/12 mediante el tipo \TU/lmtt/m/n/12 MoveGroup\TU/4.ttf(0)/m/n/12 . Permite definir objetivos articulares, pose targets, rutas
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 240--245
+
+ []
+
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[55
+
+]
+File: Images/moveIt/gz.png Graphic file (type bmp)
+<Images/moveIt/gz.png>
+File: Images/moveIt/gz2.png Graphic file (type bmp)
+<Images/moveIt/gz2.png>
+File: Images/moveIt/gz3.png Graphic file (type bmp)
+<Images/moveIt/gz3.png>
+)
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[56]
 \openout2 = `coste.aux'.
 
  (./coste.tex
 File: Images/ucm_uned.png Graphic file (type bmp)
 <Images/ucm_uned.png>
-) [67
+
+Underfull \hbox (badness 1178) in paragraph at lines 13--16
+[]\TU/4.ttf(0)/m/n/12 Los costes directos corresponden a los elementos necesarios para disponer del robot en
+ []
+
+
+Underfull \hbox (badness 1990) in paragraph at lines 43--46
+[]\TU/4.ttf(0)/m/n/12 Integración con ROS2 y MoveIt2: aunque el fabricante proporciona paquetes ROS2
+ []
+
+
+Underfull \hbox (badness 1248) in paragraph at lines 57--64
+[]\TU/4.ttf(0)/m/n/12 El \TU/4.ttf(0)/m/it/12 xArm6 \TU/4.ttf(0)/m/n/12 destaca por su relación coste–prestaciones en comparación con manipuladores
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 57--64
+
+ []
+
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[57
 
 
 
-]
+])
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[58]
 \openout2 = `anexo.aux'.
 
  (./anexo.tex
 File: Images/ucm_uned.png Graphic file (type bmp)
 <Images/ucm_uned.png>
- (./Matlab/dh.m) (./Matlab/dh_salida.txt) [68
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 15.
+ (./Matlab/dh.m) (./Matlab/dh_salida.txt)
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[59
 
 
 
-] (./Matlab/dh_mod.m) (./Matlab/dh_mod_salida.txt)) [69]
+] (./Matlab/dh_mod.m) (./Matlab/dh_mod_salida.txt) (./Matlab/ik.m
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[60]) (./Matlab/ik_nr.m
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[61]
+Missing character: There is no ∈ (U+2208) in font [lmmono8-regular]:!
+Missing character: There is no ∈ (U+2208) in font [lmmono8-regular]:!
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[62]) (./Matlab/ik_nr_salida.m) (./Matlab/jac.m
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[63]
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[64]) (./Matlab/traj.m
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[65]
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[66]) (./Matlab/traj_salida.m) (./Matlab/cin_control.m
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[67]
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[68]
+Overfull \hbox (2.87476pt too wide) in paragraph at lines 162--163
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]  
+ []
+
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[69])
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[70] (./Matlab/cin_control_salida.m)
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[71] (./Matlab/inercias.txt
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[72
+
+]) (./Matlab/din_control.m
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[73]) (./Matlab/din_control_salida.m)
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[74] (./Matlab/main.m
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[75
+
+]
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[76]) (./Matlab/model.m
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[77]) (./Matlab/kinematic_planner.m
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[78]
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[79]) (./Matlab/dynamic_replanner.m
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[80]) (./Matlab/controller.m
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[81])
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[82] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+) (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+) (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
+) (./Matlab/xarm6_action_client.cpp
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[83
+
+]))
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[84]
 File: Images/ucm_uned.png Graphic file (type bmp)
 <Images/ucm_uned.png>
 
@@ -1767,7 +2615,14 @@ Underfull \hbox (badness 1205) in paragraph at lines 54--54
 \TU/4.ttf(0)/m/n/12 Parameters». En: \TU/4.ttf(0)/m/it/12 Proceedings of the IEEE International Conference on Robotics and
  []
 
-[70
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[85
 
 
 ]
@@ -1780,7 +2635,14 @@ Underfull \hbox (badness 6094) in paragraph at lines 54--54
 []\TU/4.ttf(0)/m/n/12 Charles W. Wampler. «  Manipulator inverse kinematic solutions based on vector
  []
 
-[71] (./main.aux
+File: Images/visens.jpg Graphic file (type bmp)
+<Images/visens.jpg>
+
+Package fancyhdr Warning: \footskip is too small (30.0pt): 
+(fancyhdr)                Make it at least 37.95914pt, for example:
+(fancyhdr)                \setlength{\footskip}{37.95914pt}.
+
+[86] (./main.aux
 LaTeX Info: Redefining \sptext on input line 12.
 LaTeX Info: Redefining \. on input line 12.
 LaTeX Info: Redefining \% on input line 12.
@@ -1797,18 +2659,23 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: F2EB51D6F5026727BC772C84B3FA96AD;10986.
+(rerunfilecheck)             Checksum: 3A0B535C3583E767F8BDB1E38B3A17FD;13364.
+
+Package biblatex Warning: Please (re)run Biber on the file:
+(biblatex)                main
+(biblatex)                and rerun LaTeX afterwards.
+
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 29365 strings out of 476824
- 570345 string characters out of 5803866
- 2223627 words of memory out of 5000000
- 50721 multiletter control sequences out of 15000+600000
- 563991 words of font info for 92 fonts, out of 8000000 for 9000
+ 30101 strings out of 476824
+ 582740 string characters out of 5803866
+ 2230627 words of memory out of 5000000
+ 51418 multiletter control sequences out of 15000+600000
+ 563999 words of font info for 93 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 109i,14n,107p,736b,6683s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 109i,14n,107p,736b,6684s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (71 pages).
+Output written on main.pdf (86 pages).

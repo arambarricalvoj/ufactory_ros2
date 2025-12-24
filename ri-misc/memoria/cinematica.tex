@@ -126,21 +126,8 @@ T_0^{\,6}(q) = A_1(q_1)\;A_2(q_2+\text{offset}_2)\;A_3(q_3+\text{offset}_3)\;A_4
 \] \\
 
 Podemos calcular y comprobar el resultado en \textit{Matlab} \cite{matlabonline2025} y la \textit{toolbox} de
-Peter Corke \cite{corke_robotics_toolbox}:
-\lstinputlisting[
-    caption={Código Matlab para la cinemática directa con parámetros DH clásicos.},
-    label={lst:dh},
-    breaklines=true,
-    breakatwhitespace=true
-]{Matlab/dh.m}
-\lstinputlisting[
-    caption={Salida numérica de la cinemática directa DH clásica.},
-    label={lst:dh_salida},
-    breaklines=true,
-    breakatwhitespace=true
-]{Matlab/dh_salida.txt}
+Peter Corke \cite{corke_robotics_toolbox}, códigos \ref{lst:dh} y \ref{lst:dh_salida}.
 
-\clearpage
 \subsubsection{Parámetros modificados de Denavit-Hartenberg} \label{sec:dh-mod}
 El método clásico de Denavit-Hartenberg, propuesto en 1955, presentaba ciertas limitaciones en la colocación de los sistemas
 de referencia, especialmente cuando dos ejes consecutivos eran paralelos. En estos casos podían aparecer ambigüedades en la
@@ -188,7 +175,6 @@ coordenadas locales de eslabón \cite{corke1996}. Además, facilita los cálculo
 y dinámica, evitando las ambigüedades de colocación presentes en el método estándar y es la notación más clara
 y transparente para el análisis mecánico. \\
 
-\newpage
 En la figura \ref{fig:dh_mod} se presentan los parámetros modificados de Denavit-Hartenberg proporcionados por el fabricante, con 
 \[
 a_2 = \sqrt{284.5^2 + 53.5^2} = 289.48866
@@ -283,25 +269,13 @@ Siendo la transformación total:
 T_0^{\,6}(q) = A_1(q_1)\;A_2(q_2+T2_{\text{offset}})\;A_3(q_3+T3_{\text{offset}})\;A_4(q_4)\;A_5(q_5)\;A_6(q_6)
 \]\\
 
-\newpage
 Podemos calcular y comprobar el resultado en \textit{Matlab} \cite{matlabonline2025} y la \textit{toolbox} de
-Peter Corke \cite{corke_robotics_toolbox}:
-\lstinputlisting[
-    caption={Código Matlab para la cinemática directa con parámetros DH modificados.},
-    label={lst:dh_mod},
-    breaklines=true,
-    breakatwhitespace=true
-]{Matlab/dh_mod.m}
-\lstinputlisting[
-    caption={Salida numérica de la cinemática directa DH modificada.},
-    label={lst:dh_mod_salida},
-    breaklines=true,
-    breakatwhitespace=true
-]{Matlab/dh_mod_salida.txt}
+Peter Corke \cite{corke_robotics_toolbox}, códigos \ref{lst:dh_mod} y \ref{lst:dh_mod_salida}. 
+En la figura \ref{fig:dh} se presenta el modelado del robot en \textit{Matlab}. \\
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[scale=0.9]{Images/cinematica/modelado2.png}
+    \includegraphics[scale=1.5]{Images/cinematica/modelado2.png}
     \caption{Modelado del \textit{UFactory xArm6} en \textit{Matlab} con parámetros DH modificados.}
     \label{fig:dh}
 \end{figure}
@@ -447,15 +421,9 @@ r_{33} &=
 
 % https://www.youtube.com/watch?v=mxf5H84L0Wo
 
-\newpage
 Estas ecuaciones se han obtenido con la ayuda de \textit{Matlab} \cite{matlabonline2025} y la
-\textit{toolbox} de Peter Corke \cite{corke_robotics_toolbox}:
-\lstinputlisting[
-    caption={Código Matlab para obtener las ecuaciones de posición y orientación con parámetros DH modificados.},
-    label={lst:ik},
-    breaklines=true,
-    breakatwhitespace=true
-]{Matlab/ik.m}
+\textit{toolbox} de Peter Corke \cite{corke_robotics_toolbox} mediante el código 
+\ref{lst:ik}. \\
 
 \clearpage
 \subsubsection{Pseudoinversa del Jacobiano y Newton--Raphson}
@@ -664,7 +632,7 @@ q_{k+1} = q_k + J^{\dagger}(q_k)\,(x_d - f(q_k)),
 pero aplicada a una cinemática directa escalar y sencilla. \\
 
 
-\subsubsection{Cálculo de cinemática inversa para \textit{UFactory xArm6}}
+\subsubsection{Cálculo de cinemática inversa para el \textit{UFactory xArm6}}
 
 De la tabla \ref{tab:actuators} se conoce que las articulaciones del robot presentan límites 
 físicos de movimiento, por lo que el método iterativo de Newton–Raphson debe modificarse para 
@@ -714,25 +682,9 @@ La combinación de penalización suave y amortiguación
 permite obtener soluciones de cinemática inversa que respetan los límites articulares, evitan configuraciones cercanas a singularidades y mantienen la 
 convergencia del método incluso en zonas estrechas del espacio de trabajo. \\
 
-A continuación se expone la porción de código de \textit{Matlab} \cite{matlabonline2025} y la \textit{Robotics Toolbox} de
+En los códigos \ref{lst:ik_nr} y \ref{lst:ik_nr_salida} se expone la porción de código de \textit{Matlab} \cite{matlabonline2025} y la \textit{Robotics Toolbox} de
 Peter Corke \cite{corke_robotics_toolbox} con la que se ha programado la 
-cinemática inversa para el \textit{UFactory xArm6}:
-\lstinputlisting[
-    caption={Cálculo de la cinemática inversa del robot \textit{UFactory xArm6}.},
-    label={lst:ik_nr},
-    breaklines=true,
-    breakatwhitespace=true
-]{Matlab/ik_nr.m}
-
-\lstinputlisting[
-    caption={Salida del cálculo de la cinemática inversa del robot \textit{UFactory xArm6}.},
-    label={lst:ik_nr},
-    breaklines=true,
-    breakatwhitespace=true
-]{Matlab/ik_nr_salida.m}
-
-
-\newpage
+cinemática inversa para el \textit{UFactory xArm6}. \\
 
 \subsection{Cinemática diferencial y Jacobiano}
 Tal y como se expone en el apartado anterior, la cinemática diferencial describe la relación entre las velocidades articulares $\dot{q}$ y la
@@ -754,17 +706,12 @@ se pueden calcular las matrices de rotación y vectores de posición necesarios 
 el Jacobiano y para calcular las velocidades lineales y angulares de las articulaciones y del efector.
 Dado que la matriz de transformación resultante es una expresión grande, su manejo 
 manual simbólico resulta muy tedioso, por lo que se ha calculado con ayuda de \textit{Matlab} 
-\cite{matlabonline2025} y la \textit{Robotics Toolbox} de Peter Corke \cite{corke_robotics_toolbox}: \\
-\lstinputlisting[
-    caption={Cálculo de la cinemática diferencial y Jacobiano mediante parámetros DH modificados.},
-    label={lst:jac},
-    breaklines=true,
-    breakatwhitespace=true
-]{Matlab/jac.m}
+\cite{matlabonline2025} y la \textit{Robotics Toolbox} de Peter Corke \cite{corke_robotics_toolbox}
+en el código \ref{lst:jac}. \\
+
 
 \newpage
 \subsection{Generación de trayectorias}
-
 La generación de trayectorias se implementa mediante
 el planificador de \textit{MoveIt 2} y el paquete \textit{xarm\_planner}, integrados en el repositorio
 oficial \cite{xarm_ros2}. Este planificador permite definir trayectorias en espacio articular 
@@ -774,7 +721,7 @@ y cartesiano, que son posteriormente ejecutadas en tiempo real a través de \tex
 Los tipos de trayectorias que se pueden generar son \cite{barrientos2007fundamentos}: lineales y circulares en espacio cartesiano, 
 polinómicas en espacio articular y multipunto (\textit{multi-waypoint}). \\
 
-\subsubsection{\textbf{Trayectorias lineales en espacio cartesiano}} 
+\subsubsection{Trayectorias lineales en espacio cartesiano} 
     el efector final se desplaza siguiendo una línea recta entre dos poses definidas. 
     Matemáticamente,
 \[
@@ -790,7 +737,7 @@ polinómicas en espacio articular y multipunto (\textit{multi-waypoint}). \\
     \textit{Iterative Parabolic Time Parameterization (IPTP)}, que ajusta los perfiles de 
     velocidad y aceleración de cada articulación para cumplir los límites dinámicos del robot. \\
 
-\subsubsection{\textbf{Trayectorias circulares en espacio cartesiano}}
+\subsubsection{Trayectorias circulares en espacio cartesiano}
     se definen mediante un arco de circunferencia, especificando centro $c$, radio $r$ y ángulo 
     barrido $\theta(t)$:
 \[
@@ -804,7 +751,7 @@ polinómicas en espacio articular y multipunto (\textit{multi-waypoint}). \\
     pulido o soldadura. En este caso, también pueden aparecer discontinuidades en la velocidad
     y aceleración, siendo necesario aplicar el algoritmo \textit{IPTP}. \\
 
-\subsubsection{\textbf{Trayectorias polinómicas en espacio articular}}
+\subsubsection{Trayectorias polinómicas en espacio articular}
 Cuando se especifican directamente configuraciones articulares, \textit{MoveIt} genera 
 trayectorias suaves mediante interpolación polinómica que garantizan continuidad en posición
 y velocidad evitando saltos bruscos. Sin embargo, con el objetivo de asegurar que 
@@ -850,7 +797,7 @@ a_5 &= \frac{12(q_{i,f} - q_{i,0}) - (6\dot{q}_{i,f} + 6\dot{q}_{i,0})T - (\ddot
 \end{aligned}
 \] \\
 
-\subsubsection{\textbf{Trayectorias \textit{spline} (\textit{multi-waypoint})}}
+\subsubsection{Trayectorias \textit{spline} (\textit{multi-waypoint})}
 Cuando se definen múltiples puntos intermedios en espacio cartesiano, \textit{MoveIt} 
 interpola mediante \textit{splines} cúbicos, asegurando continuidad en posición y velocidad a lo 
 largo de toda la trayectoria. Sin embargo, esta interpolación geométrica 
@@ -904,23 +851,9 @@ que las posiciones obtenidas en durante la trayectoria son realizables. Es impor
 tener en cuenta que previo al cálculo de esta trayectoria es necesario obtener las posiciones 
 articulares finales deseadas mediante cinemática inversa. \\
 
-Las imágenes \ref{fig:traj} y \ref{fig:traj2} muestran la trayectoria calculada mediante el código 
+Las imágenes \ref{fig:traj} y \ref{fig:traj_2} muestran la trayectoria calculada mediante el código 
 \ref{lst:traj} para las posiciones indicadas en el código \ref{lst:traj_salida}. \\
 
-\lstinputlisting[
-    caption={Generación de trayectoria articular realizable.},
-    label={lst:traj},
-    breaklines=true,
-    breakatwhitespace=true
-]{Matlab/traj.m}
-\lstinputlisting[
-    caption={Salida de la generación de trayectoria articular realizable.},
-    label={lst:traj_salida},
-    breaklines=true,
-    breakatwhitespace=true
-]{Matlab/traj_salida.m}
-
-\clearpage
 \vfill
 \begin{figure}[htb]
     \centering
@@ -933,11 +866,11 @@ Las imágenes \ref{fig:traj} y \ref{fig:traj2} muestran la trayectoria calculada
     \centering
     \includegraphics[scale=0.9]{Images/cinematica/traj2.png}
     \caption{Trayectoria realizable del efector.}
-    \label{fig:traj2}
+    \label{fig:traj_2}
 \end{figure}
 \vfill
+\vspace{1.0cm}
 
-\clearpage
 \subsection{Control cinemático}
 Para llevar a cabo el control cinemático del brazo robótico es necesario combinar todo el estudio
 cinemático presentado, tal que los pasos a seguir son:
@@ -970,7 +903,6 @@ articulares y cartesianas, y los códigos \ref{lst:cin_control} y \ref{lst:cin_c
     \caption{Trayectoria articular realizable.}
     \label{fig:cin_control}
 \end{figure}
-\clearpage
 \vfill
 \begin{figure}[htb]
     \centering
@@ -986,7 +918,6 @@ articulares y cartesianas, y los códigos \ref{lst:cin_control} y \ref{lst:cin_c
     \label{fig:cin_control_v_art}
 \end{figure}
 \vfill
-\clearpage
 \vfill
 \begin{figure}[htb]
     \centering
@@ -1002,24 +933,9 @@ articulares y cartesianas, y los códigos \ref{lst:cin_control} y \ref{lst:cin_c
     \label{fig:cin_control_a_art}
 \end{figure}
 \vfill
-\clearpage
 \begin{figure}[htb]
     \centering
     \includegraphics[scale=0.9]{Images/cinematica/cin_control_a_art.png}
     \caption{Aceleraciones articulares.}
     \label{fig:cin_control_vcart}
 \end{figure}
-
-\lstinputlisting[
-    caption={Control cinemático completo.},
-    label={lst:cin_control},
-    breaklines=true,
-    breakatwhitespace=true
-]{Matlab/cin_control.m}
-\lstinputlisting[
-    caption={Salida del control cinemático completo.},
-    label={lst:cin_control2},
-    breaklines=true,
-    breakatwhitespace=true
-]{Matlab/cin_control_salida.m}
-

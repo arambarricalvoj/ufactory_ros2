@@ -1,10 +1,8 @@
 function [Q_torque, dQ_torque, ddQ_torque, t_torque, tau_all, tau_peak_final, k_opt, did_retime] = ...
     dynamic_replanner(robot, Q_des, dQ_des, ddQ_des, t, tau_max)
 
-    %% ===============================
-    %  AJUSTE DE LONGITUDES
-    % ===============================
-    % ddQ tiene N-2 muestras → recortamos todo a esa longitud
+    % Ajuste de longitudes
+    % ddQ tiene N-2 muestras --> recortamos todo a esa longitud
     Ndd = size(ddQ_des,1);
     Q_des   = Q_des(1:Ndd,:);
     dQ_des  = dQ_des(1:Ndd,:);
@@ -19,9 +17,7 @@ function [Q_torque, dQ_torque, ddQ_torque, t_torque, tau_all, tau_peak_final, k_
     tol = 1e-3;       
     max_iter = 20;
 
-    %% ============================================
     %  Función interna para evaluar torque con factor k
-    %% ============================================
     function [tau_peak, tau_all, t_new, dQ_new, ddQ_new] = ...
             eval_tau(robot, Q, dQ, ddQ, t, k, grav)
 
@@ -40,14 +36,10 @@ function [Q_torque, dQ_torque, ddQ_torque, t_torque, tau_all, tau_peak_final, k_
         tau_peak = max(abs(tau_all),[],1);
     end
 
-    %% ===============================
     %  Evaluar torque original (k = 1)
-    % ===============================
     [tau_peak, ~, ~, ~, ~] = eval_tau(robot, Q_des, dQ_des, ddQ_des, t, 1.0, grav);
 
-    %% ===============================
-    %  CASO 1: NO HAY RETIMING
-    % ===============================
+    %  Caso 1: no hay retiming
     if all(tau_peak <= tau_max)
         disp('La trayectoria original ya cumple límites de par.');
         k_opt = 1.0;
@@ -61,9 +53,7 @@ function [Q_torque, dQ_torque, ddQ_torque, t_torque, tau_all, tau_peak_final, k_
         return;
     end
 
-    %% ===============================
-    %  CASO 2: SÍ HAY RETIMING
-    % ===============================
+    %  Caso 2: sí hay retiming
     disp('Buscando factor de escalado óptimo...');
 
     for iter = 1:max_iter
@@ -84,18 +74,14 @@ function [Q_torque, dQ_torque, ddQ_torque, t_torque, tau_all, tau_peak_final, k_
 
     k_opt = k_high;
 
-    %% ===============================
-    %  Construir trayectoria final
-    % ===============================
+    % Construir trayectoria final
     [tau_peak_final, tau_all, t_torque, dQ_torque, ddQ_torque] = ...
         eval_tau(robot, Q_des, dQ_des, ddQ_des, t, k_opt, grav);
 
     Q_torque = Q_des;
     did_retime = true;
 
-    %% ===============================
-    %  Impresiones SOLO si hubo retiming
-    % ===============================
+    % Impresiones SOLO si hubo retiming
     fprintf('\n=== RESULTADOS DEL RETIMING ===\n');
     fprintf('Factor de escalado óptimo k = %.4f\n', k_opt);
     fprintf('Nuevo tiempo total de trayectoria: %.4f s\n', t_torque(end));

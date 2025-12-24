@@ -1,22 +1,15 @@
 function [q_real_hist, dq_real_hist, tau_hist] = controller( ...
         robot, Q_des, dQ_des, ddQ_des, t, grav, Kp, Kd, Ki)
 
-    N  = size(Q_des,1);
-    dt = t(2) - t(1);
-
-    % ===============================
     % Ajuste de longitudes
-    % ===============================
-    Ndd = size(ddQ_des,1);
+    N = size(ddQ_des,1);
     
-    Q_des   = Q_des(1:Ndd,:);
-    dQ_des  = dQ_des(1:Ndd,:);
-    ddQ_des = ddQ_des(1:Ndd,:);
-    t       = t(1:Ndd);
+    Q_des   = Q_des(1:N,:);
+    dQ_des  = dQ_des(1:N,:);
+    ddQ_des = ddQ_des(1:N,:);
+    dt = t(2) - t(1);
+    t       = t(1:N);
     
-    N = Ndd;
-
-
     % Históricos
     q_real_hist  = zeros(N,6);
     dq_real_hist = zeros(N,6);
@@ -37,45 +30,43 @@ function [q_real_hist, dq_real_hist, tau_hist] = controller( ...
 
     for k = 1:N
 
-        % ======== Señales deseadas ========
+        % Señales deseadas
         q_d   = Q_des(k,:);
         dq_d  = dQ_des(k,:);
         ddq_d = ddQ_des(k,:);
 
-        % ======== Error ========
+        % Error
         e    = q_d  - q_real;
         edot = dq_d - dq_real;
         e_int = e_int + e*dt;
 
-        % ======== PID ========
+        % PID
         ddq_ref = ddq_d + Kp.*e + Kd.*edot + Ki.*e_int;
 
-        % ======== Torque PID ========
+        % Torque PID
         tau_pid = robot.rne(q_real, dq_real, ddq_ref);
 
-        % ======== Perturbación física ========
+        % Perturbación física
         tau_total = tau_pid + tau_pert(k);
 
-        % ======== Dinámica directa ========
+        % Dinámica directa
         M = robot.inertia(q_real);
         C = robot.coriolis(q_real, dq_real);
         g = robot.gravload(q_real);
 
         ddq_real = M \ (tau_total' - C*dq_real' - g');
 
-        % ======== Integración ========
+        % Integración
         dq_real = dq_real + ddq_real'*dt;
         q_real  = q_real  + dq_real*dt;
 
-        % ======== Guardar ========
+        % Guardar
         q_real_hist(k,:)  = q_real;
         dq_real_hist(k,:) = dq_real;
         tau_hist(k,:)     = tau_total;
     end
 
-    %% ================================
-    %  GRÁFICAS
-    % ================================
+    % Gráficas
     figure;
     plot(t, Q_des, '--', 'LineWidth', 1.2); hold on;
     plot(t, q_real_hist, 'LineWidth', 1.4);

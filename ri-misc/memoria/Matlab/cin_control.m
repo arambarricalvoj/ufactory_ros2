@@ -2,19 +2,15 @@ clear; clc; close all;
 syms q1 q2 q3 q4 q5 q6 a2 T2_offset T3_offset real
 pi2 = sym(pi)/2;
 
-%% ================================
-%  Modelo xArm6 (DH modificado)
-% ================================
-L1 = Link([0     267    0      0        0  0], 'modified');
-L2 = Link([0     0      0     -pi2      0  T2_offset], 'modified');
-L3 = Link([0     0      a2     0        0  T3_offset], 'modified');
-L4 = Link([0     342.5  77.5  -pi2      0  0], 'modified');
-L5 = Link([0     0      0      pi2      0  0], 'modified');
-L6 = Link([0     97     76    -pi2      0  0], 'modified');
+% Definición de eslabones según la tabla DH modificada
+L1 = Link([0     267    0      0        0  0], 'modified');        % Eslabón 1
+L2 = Link([0     0      0     -pi2      0  T2_offset], 'modified');% Eslabón 2
+L3 = Link([0     0      a2     0        0  T3_offset], 'modified');% Eslabón 3
+L4 = Link([0     342.5  77.5  -pi2      0  0], 'modified');        % Eslabón 4
+L5 = Link([0     0      0      pi2      0  0], 'modified');        % Eslabón 5
+L6 = Link([0     97     76    -pi2      0  0], 'modified');        % Eslabón 6
 
-%% ================================
-%  Transformaciones y Jacobiano
-% ================================
+% Transformaciones y Jacobiano
 T01 = L1.A(q1).T; T12 = L2.A(q2).T; T23 = L3.A(q3).T;
 T34 = L4.A(q4).T; T45 = L5.A(q5).T; T56 = L6.A(q6).T;
 T06 = simplify(T01 * T12 * T23 * T34 * T45 * T56);
@@ -26,14 +22,12 @@ p_fun = matlabFunction(p06, 'Vars', {q1,q2,q3,q4,q5,q6,a2,T2_offset,T3_offset});
 J_fun = matlabFunction(Jv, 'Vars', {q1,q2,q3,q4,q5,q6,a2,T2_offset,T3_offset});
 T_fun = matlabFunction(T06, 'Vars', {q1,q2,q3,q4,q5,q6,a2,T2_offset,T3_offset});
 
-%% ================================
-%  Parámetros del robot
-% ================================
+% Parámetros del robot
 a2_val        = 289.48866;
 T2_offset_val = deg2rad(-79.34995);
 T3_offset_val = deg2rad(79.34995);
 
-% Límites físicos → matemáticos (deg)
+% Límites físicos matemáticos (deg)
 q1_min = -360;     q1_max =  360;
 q2_min = -117 - rad2deg(T2_offset_val);
 q2_max =  116 - rad2deg(T2_offset_val);
@@ -46,9 +40,7 @@ q6_min = -360;     q6_max =  360;
 q_min = deg2rad([q1_min, q2_min, q3_min, q4_min, q5_min, q6_min])';
 q_max = deg2rad([q1_max, q2_max, q3_max, q4_max, q5_max, q6_max])';
 
-%% ================================
-%  Entrada: articulaciones actuales, pose final y duración
-% ================================
+% Entrada: articulaciones actuales, pose final y duración
 dlg = inputdlg( ...
     {'Articulaciones actuales [q1 q2 q3 q4 q5 q6] en grados (matemático):', ...
      'Posición final del efector [x y z] en mm:', ...
@@ -77,9 +69,7 @@ T_init = T_fun(q_init(1), q_init(2), q_init(3), q_init(4), q_init(5), q_init(6),
                a2_val, T2_offset_val, T3_offset_val);
 p_init = T_init(1:3,4);
 
-%% ================================
-%  Verificación de alcanzabilidad (radio de acción)
-% ================================
+% Verificación de alcanzabilidad (radio de acción)
 reach_max = 700; % mm (xArm6)
 d_goal = norm(p_goal);
 
@@ -92,10 +82,7 @@ end
 fprintf('Objetivo a %.1f mm, dentro del alcance máximo %.1f mm -> Realizable\n', ...
     d_goal, reach_max);
 
-%% ================================
-%  IK numérica (solo posición) con penalización de límites
-%  (SIN clamping: se mantiene tu diseño original)
-% ================================
+% IK numérica con penalización de límites
 tol = 1e-6; maxIter = 80; K = 0.005; % penalización
 q_mid = (q_min + q_max)/2;
 
@@ -105,9 +92,7 @@ q_goal = newtonIK(p_goal, q_goal_seed, p_fun, J_fun, ...
                   a2_val, T2_offset_val, T3_offset_val, ...
                   q_min, q_max, q_mid, K, tol, maxIter);
 
-%% ================================
-%  Trayectoria quíntica + IPTP
-% ================================
+% Trayectoria quíntica + escalado
 n = 300; t = linspace(0,T,n);
 Q = quinticTraj(q_init.', q_goal.', T, t);
 
@@ -115,12 +100,10 @@ Q = quinticTraj(q_init.', q_goal.', T, t);
 vel_max = deg2rad([180 180 180 180 180 180]);       % rad/s
 acc_max = deg2rad([1500 1500 1500 1500 1500 1500]); % rad/s^2
 
-% IPTP: escalar tiempo si excede límites (recalcula la quintic con T escalado)
-[Q, t, T_scaled] = iptp_scale_time(Q, t, vel_max, acc_max);
+% Escalado: escalar tiempo si excede límites (recalcula la quintic con T escalado)
+[Q, t, T_scaled] = scale_traj(Q, t, vel_max, acc_max);
 
-%% ================================
-%  Cálculo de velocidades y aceleraciones
-% ================================
+% Cálculo de velocidades y aceleraciones
 dt = t(2) - t(1);          % intervalo de muestreo
 dQ = diff(Q) / dt;         % velocidades articulares (rad/s), tamaño (n-1) x 6
 ddQ = diff(dQ) / dt;       % aceleraciones articulares (rad/s^2), tamaño (n-2) x 6
@@ -132,9 +115,7 @@ for k = 1:(n-1)
     v_cart(k,:) = (J_now * dQ(k,:)').'; % [vx vy vz] en mm/s si p_fun/T_fun están en mm
 end
 
-%% ================================
-%  Impresión de resultados (físicos y matemáticos)
-% ================================
+% Impresión de resultados (físicos y matemáticos)
 q0      = q_init(:).';
 qf      = q_goal(:).';
 
@@ -154,18 +135,14 @@ disp('=== Velocidades articulares finales [deg/s] ==='); disp(rad2deg(dQ(end,:))
 disp('=== Aceleraciones articulares iniciales [deg/s^2] ==='); disp(rad2deg(ddQ(1,:)));
 disp('=== Aceleraciones articulares finales [deg/s^2] ==='); disp(rad2deg(ddQ(end,:)));
 
-%% ================================
-%  Trayectoria del efector final
-% ================================
+% Trayectoria del efector final
 P = zeros(n,3);
 for k=1:n
     Tnow = T_fun(Q(k,1),Q(k,2),Q(k,3),Q(k,4),Q(k,5),Q(k,6), a2_val, T2_offset_val, T3_offset_val);
     P(k,:) = Tnow(1:3,4).';
 end
 
-%% ================================
-%  Gráficas con anotaciones (posiciones físicas)
-% ================================
+% Gráficas con anotaciones (posiciones físicas)
 % Añadir offsets a J2 y J3 para graficar valores físicos
 Q_phys = Q;
 Q_phys(:,2) = Q_phys(:,2) + T2_offset_val; % offset J2
@@ -187,9 +164,7 @@ for i=1:6
         'VerticalAlignment','top','HorizontalAlignment','left');
 end
 
-%% ================================
-%  Gráficas de velocidades y aceleraciones articulares
-% ================================
+% Gráficas de velocidades y aceleraciones articulares
 % Nota: dQ es de longitud n-1 y ddQ de n-2
 figure;
 plot(t(1:end-1), rad2deg(dQ), 'LineWidth',1.2); grid on;
@@ -203,9 +178,7 @@ xlabel('Tiempo [s]'); ylabel('Aceleración [°/s^2]');
 legend('q1','q2','q3','q4','q5','q6','Location','bestoutside');
 title('Aceleraciones articulares');
 
-%% ================================
-%  Gráfica de velocidad y aceleración cartesiana del efector
-% ================================
+% Gráfica de velocidad y aceleración cartesiana del efector
 figure;
 plot(t(1:end-1), v_cart, 'LineWidth',1.2); grid on;
 xlabel('Tiempo [s]'); ylabel('Velocidad lineal [mm/s]');
@@ -220,9 +193,7 @@ xlabel('Tiempo [s]'); ylabel('Aceleración lineal [mm/s^2]');
 legend('a_x','a_y','a_z','Location','bestoutside');
 title('Aceleración cartesiana del efector');
 
-%% ================================
-%  Trayectoria del efector final (posición)
-% ================================
+% Trayectoria del efector final (posición)
 figure;
 plot3(P(:,1),P(:,2),P(:,3),'b-','LineWidth',2); hold on;
 plot3(P(1,1),P(1,2),P(1,3),'go','MarkerFaceColor','g'); text(P(1,1),P(1,2),P(1,3),'Inicio', ... 
@@ -232,9 +203,7 @@ plot3(P(end,1),P(end,2),P(end,3),'ro','MarkerFaceColor','r'); text(P(end,1),P(en
 grid on; xlabel('X [mm]'); ylabel('Y [mm]'); zlabel('Z [mm]');
 title('Trayectoria del efector final');
 
-%% ================================
-%  Funciones auxiliares
-% ================================
+% Funciones auxiliares
 function q_sol = newtonIK(p_d, q_seed, p_fun, J_fun, a2_val, T2_offset_val, T3_offset_val, q_min, ...
     q_max, q_mid, K, tol, maxIter)
     % Newton–Raphson SIN clamping (solo penalización suave de límites)
@@ -263,7 +232,7 @@ function Q = quinticTraj(q0, qf, T, t)
     end
 end
 
-function [Q_out, t_out, T_scaled] = iptp_scale_time(Q, t, vel_max, acc_max)
+function [Q_out, t_out, T_scaled] = scale_traj(Q, t, vel_max, acc_max)
     % Escalado temporal para respetar límites de velocidad y aceleración
     dt = t(2) - t(1);
     dQ  = diff(Q)/dt;
