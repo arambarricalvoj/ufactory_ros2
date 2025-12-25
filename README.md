@@ -1,11 +1,12 @@
-# Trabajo final sobre la materia
+# RI-MISC
+## Trabajo final sobre la materia de la asigantura de Robótica Industrial del Máster en Ingeniería de Sistema y Control de la UCM-UNED
 Esta rama corresponde al proyecto final de la asignatura de Robótica Industrial del Máster en Ingeniería de Sistemas y Control de la Universidad Complutense de Madrid y la UNED, curso académico 2025/2026.
 
 En ``memoria.pdf`` se encuentra la memoria descriptiva del proyecto con todo el código.
 
 El directorio ``matlab/`` contiene los ficheros ``.m`` para ejecutar el controlador completo explicado en la memoria.
 
-El directorio ``control_ws`` contiene el nodo de ROS2 en C++ expuesto en la memoria con el que se controla el brazo robótico *UFactory xArm6*.
+El directorio ``control_ws/`` contiene el nodo de ROS2 en C++ expuesto en la memoria con el que se controla el brazo robótico *UFactory xArm6*.
 
 En este README se explica cómo ejecutar el nodo de ROS2.
 
